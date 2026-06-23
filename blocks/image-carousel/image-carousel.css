@@ -1,0 +1,66 @@
+.image-carousel {
+  position: relative;
+}
+
+.image-carousel .image-carousel-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.image-carousel .image-carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.image-carousel .image-carousel-slide.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.image-carousel .image-carousel-link,
+.image-carousel .image-carousel-slide picture,
+.image-carousel .image-carousel-slide img {
+  display: block;
+  width: 100%;
+}
+
+.image-carousel .image-carousel-slide img {
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* dots */
+.image-carousel .image-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.image-carousel .image-carousel-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 1px solid #fa1432;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.image-carousel .image-carousel-dot.is-active {
+  background: #fa1432;
+}
+
+@media (width < 600px) {
+  .image-carousel .image-carousel-slide img {
+    border-radius: 8px;
+  }
+}
