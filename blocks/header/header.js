@@ -14,6 +14,10 @@ const CHEVRON_SVG = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden
   <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>`;
 
+const SEARCH_SVG = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
+</svg>`;
+
 /**
  * fetch the nav fragment for local (aem up) or DA/EDS production
  * @param {string} navPath path to the nav doc without the .plain.html suffix
@@ -40,6 +44,22 @@ function closeAllPanels(nav) {
  * build the desktop/mobile megamenu from the nav list section
  * @param {Element} listSection the section div containing the top-level <ul>
  */
+/**
+ * Direct-child link of a list item, whether bare (`<li><a>`) or wrapped by DA/EDS
+ * in a paragraph (`<li><p><a>`). Returns null if none.
+ */
+function directLink(li) {
+  return li.querySelector(':scope > a') || li.querySelector(':scope > p > a');
+}
+
+/**
+ * Direct-child sub-list of a list item. DA/EDS keeps the nested <ul> as a direct
+ * child of the <li> even when the label link is wrapped in a <p>.
+ */
+function directSubUl(li) {
+  return li.querySelector(':scope > ul');
+}
+
 function buildNavSections(listSection) {
   const topUl = listSection.querySelector(':scope > ul');
   if (!topUl) return null;
@@ -47,22 +67,26 @@ function buildNavSections(listSection) {
     l1.classList.add('nav-l1');
     l1.setAttribute('aria-expanded', 'false');
 
-    const trigger = l1.querySelector(':scope > a');
-    const label = trigger ? trigger.textContent.trim() : '';
-    // L1 does not navigate — replace with a button-like span
+    const trigger = directLink(l1);
+    const label = trigger ? trigger.textContent.trim() : l1.textContent.trim().split('\n')[0].trim();
+    // L1 does not navigate — replace the label (and its <p> wrapper) with a button
     const l1btn = document.createElement('button');
     l1btn.type = 'button';
     l1btn.className = 'nav-l1-trigger';
     l1btn.innerHTML = `<span>${label}</span>${CHEVRON_SVG}`;
-    if (trigger) trigger.replaceWith(l1btn); else l1.prepend(l1btn);
+    const toReplace = trigger ? (trigger.closest('p') || trigger) : null;
+    if (toReplace) toReplace.replaceWith(l1btn); else l1.prepend(l1btn);
 
-    const panel = l1.querySelector(':scope > ul');
-    if (!panel) return;
+    const panel = directSubUl(l1);
+    if (!panel) {
+      l1.classList.add('nav-l1-flat');
+      return;
+    }
     panel.classList.add('nav-panel');
 
     // Determine if this is a "big" menu (has L2 categories with nested ul) or a flat list
     const l2items = [...panel.querySelectorAll(':scope > li')];
-    const hasCategories = l2items.some((li) => li.querySelector(':scope > ul'));
+    const hasCategories = l2items.some((li) => directSubUl(li));
 
     if (hasCategories) {
       l1.classList.add('nav-l1-mega');
@@ -72,8 +96,8 @@ function buildNavSections(listSection) {
       content.className = 'nav-panel-content';
 
       l2items.forEach((li) => {
-        const sub = li.querySelector(':scope > ul');
-        const a = li.querySelector(':scope > a');
+        const sub = directSubUl(li);
+        const a = directLink(li);
         if (sub) {
           // L2 category — does not navigate
           const catBtn = document.createElement('button');
@@ -97,7 +121,10 @@ function buildNavSections(listSection) {
           catBtn.addEventListener('click', activate);
           catBtn.addEventListener('focus', activate);
         } else if (a) {
-          // top-level "Discover X" link in the sidebar header
+          // top-level "Discover X" link in the sidebar header.
+          // Unwrap any <p> so the link is a direct child (consistent local + DA).
+          const wrap = a.closest('p');
+          if (wrap && wrap.parentElement === li) li.replaceChild(a, wrap);
           li.classList.add('nav-panel-discover');
           sidebar.prepend(li);
         }
@@ -156,7 +183,7 @@ function buildSearch() {
   search.className = 'nav-search';
   search.innerHTML = `
     <button type="button" class="nav-search-toggle" aria-label="Search" aria-expanded="false">
-      <img src="/content/images/search-mob.svg" alt="" width="22" height="22">
+      ${SEARCH_SVG}
     </button>
     <form class="nav-search-form" role="search" action="https://www.kotak.bank.in/en/search.html">
       <input type="search" name="q" placeholder="Search" aria-label="Search">

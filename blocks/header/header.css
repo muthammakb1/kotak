@@ -471,3 +471,13 @@ header nav .nav-hamburger {
     right: -60px;
   }
 }
+
+/* DA/EDS wraps standalone links in <p>; keep them tidy across environments */
+header nav .nav-l3-list li > p {
+  margin: 0;
+}
+
+header nav .nav-l1 > p:empty,
+header nav .nav-panel p:empty {
+  display: none;
+}
