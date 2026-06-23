@@ -1,0 +1,10 @@
+{
+  "sites": {
+    "kotak": {
+      "previewOrg": "muthammakb1",
+      "previewSite": "kotak",
+      "contentHostUrl": "https://content.da.live/muthammakb1/kotak/"
+    }
+  },
+  "type": "da"
+}
