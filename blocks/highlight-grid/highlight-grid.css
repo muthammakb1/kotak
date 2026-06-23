@@ -1,0 +1,120 @@
+.highlight-grid .highlight-grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.highlight-grid .highlight-grid-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 8%);
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* media */
+.highlight-grid .highlight-grid-media,
+.highlight-grid .highlight-grid-media picture,
+.highlight-grid .highlight-grid-media img,
+.highlight-grid .highlight-grid-iframe {
+  display: block;
+  width: 100%;
+}
+
+.highlight-grid .highlight-grid-media {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 2 / 1;
+}
+
+.highlight-grid .highlight-grid-media img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.highlight-grid .highlight-grid-iframe {
+  height: 100%;
+  border: 0;
+}
+
+/* video card */
+.highlight-grid .highlight-grid-video-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.highlight-grid .highlight-grid-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.highlight-grid .highlight-grid-play svg {
+  filter: drop-shadow(0 1px 4px rgb(0 0 0 / 30%));
+  transition: transform 0.2s ease;
+}
+
+.highlight-grid .highlight-grid-video-trigger:hover .highlight-grid-play svg {
+  transform: scale(1.1);
+}
+
+/* content card */
+.highlight-grid .highlight-grid-title {
+  margin: 0 0 20px;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #1c1c1c;
+}
+
+.highlight-grid .highlight-grid-content .highlight-grid-media {
+  margin-bottom: 20px;
+}
+
+.highlight-grid .highlight-grid-body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+
+.highlight-grid .highlight-grid-body p {
+  margin: 0 0 12px;
+}
+
+.highlight-grid .highlight-grid-body p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight-grid .highlight-grid-body strong,
+.highlight-grid .highlight-grid-body b,
+.highlight-grid .highlight-grid-body em {
+  font-weight: 700;
+  font-style: italic;
+  color: #1c1c1c;
+}
+
+/* desktop: video (wider) + content side by side */
+@media (width >= 900px) {
+  .highlight-grid .highlight-grid-wrapper {
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+
+  .highlight-grid .highlight-grid-card {
+    padding: 32px;
+  }
+
+  .highlight-grid .highlight-grid-title {
+    font-size: 28px;
+  }
+}
