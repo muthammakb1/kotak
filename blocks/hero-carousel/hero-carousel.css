@@ -1,0 +1,174 @@
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-carousel .hero-carousel-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.hero-carousel .hero-carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+/* the active slide is the only in-flow one, so it sets the carousel height */
+.hero-carousel .hero-carousel-slide.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.hero-carousel .hero-carousel-media,
+.hero-carousel .hero-carousel-media picture,
+.hero-carousel .hero-carousel-media img {
+  display: block;
+  width: 100%;
+}
+
+.hero-carousel .hero-carousel-media img {
+  height: auto;
+  object-fit: cover;
+}
+
+/* overlaid content */
+.hero-carousel .hero-carousel-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  box-sizing: border-box;
+  padding: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.hero-carousel .hero-carousel-title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.hero-carousel .hero-carousel-subtitle {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  max-width: 36rem;
+}
+
+.hero-carousel .hero-carousel-cta {
+  display: inline-block;
+  background: #fa1432;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: 30px;
+}
+
+.hero-carousel .hero-carousel-cta:hover {
+  background: #d40f29;
+}
+
+/* arrows */
+.hero-carousel .hero-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 70%);
+  color: #013366;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-carousel .hero-carousel-arrow:hover {
+  background: #fff;
+}
+
+.hero-carousel .hero-carousel-prev { left: 16px; }
+.hero-carousel .hero-carousel-next { right: 16px; }
+
+/* dots */
+.hero-carousel .hero-carousel-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hero-carousel .hero-carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 60%);
+  cursor: pointer;
+}
+
+.hero-carousel .hero-carousel-dot.is-active {
+  background: #fa1432;
+  width: 24px;
+  border-radius: 5px;
+}
+
+/* mobile */
+@media (width < 600px) {
+  .hero-carousel .hero-carousel-content {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .hero-carousel .hero-carousel-title {
+    font-size: 20px;
+  }
+
+  .hero-carousel .hero-carousel-subtitle {
+    font-size: 14px;
+  }
+
+  .hero-carousel .hero-carousel-arrow {
+    display: none;
+  }
+}
+
+/* desktop */
+@media (width >= 900px) {
+  .hero-carousel .hero-carousel-content {
+    padding: 48px 64px;
+    gap: 20px;
+  }
+
+  .hero-carousel .hero-carousel-title {
+    font-size: 40px;
+  }
+
+  .hero-carousel .hero-carousel-subtitle {
+    font-size: 18px;
+  }
+}
