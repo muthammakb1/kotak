@@ -80,6 +80,7 @@ header .header-menu-li {
 
 /* L1 label row */
 header .headerdiv {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -117,12 +118,25 @@ header .header-divider {
   align-self: center;
 }
 
+/* invisible hover bridge: fills the gap between the L1 label and the dropdown
+   so the cursor can travel into the panel without leaving a hoverable surface */
+header .header-menu-li.active-header-menu .headerdiv::after {
+  content: '';
+  position: absolute;
+  left: -16px;
+  right: -16px;
+  top: 100%;
+  height: 32px;
+  background: transparent;
+  z-index: 98;
+}
+
 /* dropdown panel container */
 header .header-menu-divmain {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 82px;
+  top: 72px;
   width: 640px;
   max-width: calc(100vw - 40px);
   background: #fff;

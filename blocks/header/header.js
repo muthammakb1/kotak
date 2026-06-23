@@ -231,12 +231,15 @@ function buildHeaderMenu(listSection) {
 }
 
 function wireMenuBehavior(menu) {
+  let closeTimer = null;
+
   menu.querySelectorAll('.header-menu-li').forEach((l1) => {
     const panel = l1.querySelector(':scope > .header-menu-divmain');
     if (!panel) return;
     const headerdiv = l1.querySelector(':scope > .headerdiv');
 
     const open = () => {
+      clearTimeout(closeTimer);
       closeAllMenus(menu);
       l1.classList.add('active-header-menu');
       panel.classList.remove('disp-none');
@@ -245,9 +248,17 @@ function wireMenuBehavior(menu) {
       l1.classList.remove('active-header-menu');
       panel.classList.add('disp-none');
     };
+    // hover-intent: delay close so moving the cursor across the gap from the
+    // L1 label into the dropdown does not dismiss the panel.
+    const scheduleClose = () => {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(close, 250);
+    };
 
     l1.addEventListener('mouseenter', () => { if (isDesktop.matches) open(); });
-    l1.addEventListener('mouseleave', () => { if (isDesktop.matches) close(); });
+    l1.addEventListener('mouseleave', () => { if (isDesktop.matches) scheduleClose(); });
+    panel.addEventListener('mouseenter', () => { if (isDesktop.matches) clearTimeout(closeTimer); });
+    panel.addEventListener('mouseleave', () => { if (isDesktop.matches) scheduleClose(); });
 
     headerdiv.addEventListener('click', () => {
       const isOpen = l1.classList.contains('active-header-menu');
