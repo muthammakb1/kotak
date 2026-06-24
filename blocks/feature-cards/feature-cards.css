@@ -101,7 +101,7 @@
     align-items: stretch;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 50px;
   }
 
   .section.rates-charges-container:has(.feature-cards.rates-row) > div {
