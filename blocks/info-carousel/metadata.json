@@ -1,0 +1,38 @@
+{
+  "variantName": "info-carousel",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-06-24T09:45:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.kotak.bank.in/en/personal-banking/accounts/savings-account.html",
+    "originPage": "Kotak product pages",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "feature",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "title + subtitle + icon + link per item",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "icon feature rows/sliders",
+      "multi-item carousels of icon+title+description cards",
+      "offers/options sliders"
+    ],
+    "notSuitableFor": [
+      "full product cards with CTAs (use cards-account)",
+      "hero banners (use hero-carousel)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/kotakcl/en/personal-banking/accounts/savings-account"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-24T09:45:00.000Z"
+  }
+}
