@@ -91,4 +91,39 @@
   .feature-cards .feature-card-title {
     font-size: 28px;
   }
+
+  /* feature-cards (2 cards) + rates-charges share one row of 3 equal columns,
+     constrained to the same 1200px content area as other sections */
+  .section.rates-charges-container:has(.feature-cards.rates-row) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .section.rates-charges-container:has(.feature-cards.rates-row) > div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section.rates-charges-container:has(.feature-cards.rates-row) > .feature-cards-wrapper {
+    grid-column: span 2;
+  }
+
+  /* let both columns fill the tallest column so all three cards match height */
+  .section.rates-charges-container:has(.feature-cards.rates-row) > div,
+  .feature-cards.rates-row,
+  .feature-cards.rates-row .feature-cards-grid,
+  .rates-charges {
+    height: 100%;
+  }
+
+  .feature-cards.rates-row .feature-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
 }
