@@ -1,12 +1,13 @@
 /* full-bleed dark band with the same side spacing as decision-tools */
 main > .section.trust-section-container {
+  margin: 0;
   background: rgb(0 56 116);
 }
 
 main > .section.trust-section-container > div {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 84px 40px;
+  padding: 50px 40px;
 }
 
 .trust-section,

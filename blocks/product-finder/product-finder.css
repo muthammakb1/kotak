@@ -1,8 +1,12 @@
 /* same side spacing as the other standalone-page blocks */
+main > .section.product-finder-container {
+  margin: 0;
+}
+
 main > .section.product-finder-container > div {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 84px 40px;
+  padding: 50px 40px;
 }
 
 .product-finder,
