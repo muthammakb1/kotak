@@ -87,8 +87,29 @@ function buildStoryItem(item) {
   return li;
 }
 
+/** A config row carries "background | <value>" instead of story content. */
+function isConfigRow(row) {
+  const cells = [...row.children];
+  if (cells.length < 2 || cells[0].querySelector('img')) return false;
+  return cells[0].textContent.trim().toLowerCase() === 'background';
+}
+
+/** Apply an authored background to the section so it spans full width as a band. */
+function applyBackground(block, rawRows) {
+  const section = block.closest('.section');
+  rawRows.filter(isConfigRow).forEach((row) => {
+    const value = [...row.children][1].textContent.trim();
+    if (value && section) {
+      section.style.background = value;
+      section.classList.add('has-section-bg');
+    }
+  });
+}
+
 export default function decorate(block) {
-  const rows = [...block.children].map(readRow);
+  const rawRows = [...block.children];
+  applyBackground(block, rawRows);
+  const rows = rawRows.filter((row) => !isConfigRow(row)).map(readRow);
   // first row with an image = featured; rows with image + title = stories;
   // a row with only a link (no image, no title) = "view all"
   const featured = rows.find((r) => r.image && r.title);

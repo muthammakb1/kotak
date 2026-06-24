@@ -1,3 +1,16 @@
+/* full-width background band when a background is authored via metadata;
+   collapse the top margin so the band sits flush under the previous section */
+.section.feature-cards-has-bg {
+  margin-top: 0;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+/* the section above the band loses its bottom margin so no white gap remains */
+.section:has(+ .section.feature-cards-has-bg) {
+  margin-bottom: 0;
+}
+
 .feature-cards .feature-cards-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -92,16 +105,17 @@
     font-size: 28px;
   }
 
-  /* feature-cards (2 cards) + rates-charges share one row of 3 equal columns,
-     constrained to the same 1200px content area as other sections */
+  /* feature-cards (2 cards) + rates-charges share one row of 3 equal columns.
+     The section stays full width so an authored background spans edge to edge,
+     while the grid content is centred to the same 1200px area as other sections. */
   .section.rates-charges-container:has(.feature-cards.rates-row) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     align-items: stretch;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 50px;
+    max-width: none;
+    margin: 0;
+    padding: 32px max(50px, calc((100% - 1200px) / 2 + 50px));
   }
 
   .section.rates-charges-container:has(.feature-cards.rates-row) > div {

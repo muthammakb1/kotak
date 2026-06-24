@@ -143,9 +143,32 @@ function buildContentCard(card) {
   return item;
 }
 
+/** A config row carries "background | <value>" instead of card content. */
+function isConfigRow(row) {
+  const cells = [...row.children];
+  if (cells.length < 2 || cells[0].querySelector('img')) return false;
+  return cells[0].textContent.trim().toLowerCase() === 'background';
+}
+
+/** Apply an authored background to the section so it spans full width as a band. */
+function applyBackground(block, rows) {
+  const section = block.closest('.section');
+  rows.filter(isConfigRow).forEach((row) => {
+    const value = [...row.children][1].textContent.trim();
+    if (value && section) {
+      section.style.background = value;
+      section.classList.add('has-section-bg');
+    }
+  });
+}
+
 export default function decorate(block) {
   const rows = [...block.children];
-  const cards = rows.map(readCard).filter((c) => c.image || c.title || c.videoHref);
+  applyBackground(block, rows);
+  const cards = rows
+    .filter((row) => !isConfigRow(row))
+    .map(readCard)
+    .filter((c) => c.image || c.title || c.videoHref);
 
   block.textContent = '';
   const grid = document.createElement('div');
