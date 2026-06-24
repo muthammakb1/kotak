@@ -1,30 +1,29 @@
 .floating-button {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
-  z-index: 200;
+  right: 28px;
+  bottom: 28px;
+  z-index: 90;
 }
 
 .floating-button .floating-button-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 13px 22px;
+  gap: 11px;
+  padding: 14px 18px;
   border: 0;
-  border-radius: 12px;
+  border-radius: 14px;
   background: rgb(0 56 116);
-  color: #fff;
+  color: rgb(255 255 255);
   font-family: inter, sans-serif;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: rgb(20 22 26 / 22%) 0 8px 22px;
+  box-shadow: rgb(20 22 26 / 28%) 0 14px 36px;
   transition: 0.16s;
 }
 
 .floating-button .floating-button-btn:hover {
   background: rgb(0 44 92);
-  box-shadow: rgb(20 22 26 / 30%) 0 10px 26px;
 }
 
 .floating-button .floating-button-dot {
@@ -32,4 +31,223 @@
   height: 10px;
   border-radius: 50%;
   background: rgb(237 28 36);
+}
+
+.floating-button .floating-button-panel {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 90;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  background: rgb(255 255 255);
+  border: 1px solid rgb(227 232 239);
+  border-radius: 16px;
+  box-shadow: rgb(20 22 26 / 26%) 0 24px 60px;
+  overflow: hidden;
+  font-family: inter, sans-serif;
+  animation: kpanel 0.2s ease both;
+}
+
+@keyframes kpanel {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floating-button .floating-button-panel-header {
+  background: rgb(0 56 116);
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.floating-button .floating-button-panel-title {
+  margin: 0;
+  color: rgb(246 242 234);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.floating-button .floating-button-panel-subtitle {
+  margin: 4px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(139 148 161);
+}
+
+.floating-button .floating-button-panel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(46 204 113);
+}
+
+.floating-button .floating-button-panel-close {
+  border: 0;
+  background: transparent;
+  color: rgb(246 242 234);
+  cursor: pointer;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.floating-button .floating-button-panel-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.floating-button .floating-button-panel-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: min(60vh, 440px);
+  overflow-y: auto;
+}
+
+.floating-button .floating-button-panel-greeting {
+  margin: 0;
+  font-size: 14px;
+  color: rgb(60 61 64);
+  line-height: 1.55;
+  background: rgb(245 247 250);
+  border-radius: 10px;
+  padding: 13px 15px;
+}
+
+.floating-button .floating-button-panel-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floating-button .floating-button-panel-option {
+  text-align: left;
+  border: 1px solid rgb(227 232 239);
+  background: rgb(255 255 255);
+  font-family: inherit;
+  font-size: 13.5px;
+  color: rgb(0 56 116);
+  padding: 11px 14px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.floating-button .floating-button-panel-option:hover {
+  border-color: rgb(237 28 36);
+  background: rgb(252 237 237);
+}
+
+.floating-button .floating-button-panel-rec {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.floating-button .floating-button-panel-rec-reason {
+  margin: 0;
+  font-size: 14px;
+  color: rgb(0 56 116);
+  line-height: 1.55;
+  background: rgb(252 237 237);
+  border: 1px solid rgb(246 212 214);
+  border-radius: 10px;
+  padding: 13px 15px;
+}
+
+.floating-button .floating-button-panel-rec-card {
+  border: 1px solid rgb(227 232 239);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.floating-button .floating-button-panel-rec-eyebrow {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(139 148 161);
+}
+
+.floating-button .floating-button-panel-rec-title {
+  margin: 6px 0 0;
+  font-size: 18px;
+  color: rgb(0 56 116);
+}
+
+.floating-button .floating-button-panel-rec-cta {
+  display: inline-block;
+  margin-top: 12px;
+  background: rgb(237 28 36);
+  color: rgb(255 255 255);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.floating-button .floating-button-panel-rec-cta:hover {
+  background: rgb(206 22 29);
+}
+
+.floating-button .floating-button-panel-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-top: 1px solid rgb(234 238 243);
+}
+
+.floating-button .floating-button-panel-input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  color: rgb(60 61 64);
+  outline: none;
+}
+
+.floating-button .floating-button-panel-input::placeholder {
+  color: rgb(139 148 161);
+}
+
+.floating-button .floating-button-panel-send {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(237 28 36);
+  color: rgb(255 255 255);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.15s;
+}
+
+.floating-button .floating-button-panel-send:hover {
+  background: rgb(206 22 29);
+}
+
+.floating-button .floating-button-panel-send svg {
+  width: 18px;
+  height: 18px;
 }
