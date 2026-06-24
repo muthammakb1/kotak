@@ -2,6 +2,7 @@ footer .footer-4 {
   background: rgb(245 247 250);
   border-top: 1px solid rgb(227 232 239);
   color: rgb(70 80 94);
+  font-family: inter, sans-serif;
 }
 
 footer .footer-4 .footer-4-inner {

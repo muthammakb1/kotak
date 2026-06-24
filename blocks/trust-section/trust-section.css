@@ -8,6 +8,12 @@ main > .section.trust-section-container > div {
   padding: 84px 40px;
 }
 
+.trust-section,
+.trust-section h2,
+.trust-section h3 {
+  font-family: inter, sans-serif;
+}
+
 .trust-section .trust-section-eyebrow {
   margin: 0;
   font-size: 11px;
