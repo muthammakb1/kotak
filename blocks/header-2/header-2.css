@@ -203,6 +203,11 @@ header .header-2 .header-2-mega-featured {
   white-space: normal;
 }
 
+header .header-2 .header-2-mega-featured:hover {
+  background: rgb(0 56 116);
+  color: inherit;
+}
+
 header .header-2 .header-2-mega-featured p {
   white-space: normal;
 }
@@ -234,6 +239,7 @@ header .header-2 .header-2-mega-featured-desc {
 }
 
 header .header-2 .header-2-mega-featured-cta {
+  display: inline-block;
   margin: 24px 0 0;
   font-size: 14px;
   font-weight: 600;
