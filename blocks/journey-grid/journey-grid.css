@@ -4,6 +4,12 @@ main > .section.journey-grid-container > div {
   padding: 84px 40px;
 }
 
+.journey-grid,
+.journey-grid h2,
+.journey-grid h3 {
+  font-family: inter, sans-serif;
+}
+
 .journey-grid .journey-grid-eyebrow {
   margin: 0;
   font-size: 11px;
