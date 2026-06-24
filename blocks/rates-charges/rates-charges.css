@@ -1,0 +1,113 @@
+.rates-charges {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 8%);
+}
+
+/* dark heading bar (rendered from the title row) */
+.rates-charges .rates-charges-heading {
+  background: #58595b;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+  padding: 18px 24px;
+}
+
+.rates-charges .rates-charges-list {
+  padding: 0 24px;
+}
+
+.rates-charges .rates-charges-panel {
+  border-bottom: 1px solid #ececec;
+}
+
+.rates-charges .rates-charges-panel:last-child {
+  border-bottom: 0;
+}
+
+/* accordion header */
+.rates-charges .rates-charges-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 17px 0;
+  font: inherit;
+}
+
+.rates-charges .rates-charges-icon {
+  flex: 0 0 auto;
+  display: flex;
+}
+
+.rates-charges .rates-charges-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.rates-charges .rates-charges-label {
+  flex: 1 1 auto;
+  text-align: left;
+  font-size: 16px;
+  color: #1c1c1c;
+}
+
+.rates-charges .rates-charges-chevron {
+  flex: 0 0 auto;
+  display: flex;
+  color: #ed4223;
+  transition: transform 0.2s ease;
+}
+
+.rates-charges .rates-charges-header[aria-expanded='true'] .rates-charges-chevron {
+  transform: rotate(180deg);
+}
+
+/* body */
+.rates-charges .rates-charges-body {
+  padding: 0 0 18px 44px;
+}
+
+.rates-charges .rates-charges-subheading {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c1c1c;
+}
+
+.rates-charges .rates-charges-rate {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 0;
+  text-decoration: none;
+}
+
+.rates-charges .rates-charges-rate-label {
+  color: #ed4223;
+  font-size: 15px;
+}
+
+.rates-charges .rates-charges-rate-value {
+  color: #1c1c1c;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* see all rates */
+.rates-charges .rates-charges-seeall {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 24px 18px;
+  color: #ed4223;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}

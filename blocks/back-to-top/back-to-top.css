@@ -1,0 +1,30 @@
+.back-to-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.back-to-top .back-to-top-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px 0;
+  font: inherit;
+  font-size: 18px;
+  color: #1c1c1c;
+}
+
+.back-to-top .back-to-top-icon {
+  display: flex;
+  color: #1c1c1c;
+}
+
+.back-to-top .back-to-top-button:hover {
+  color: #ed4223;
+}
+
+.back-to-top .back-to-top-button:hover .back-to-top-icon {
+  color: #ed4223;
+}
