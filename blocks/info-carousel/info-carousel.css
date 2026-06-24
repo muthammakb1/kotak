@@ -1,5 +1,9 @@
 /* center the section's main title (e.g. "Need Help?") above the carousel */
 .info-carousel-container .default-content-wrapper h2 {
+  font-family: roboto, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #0f3464;
   text-align: center;
 }
 
@@ -92,13 +96,29 @@
     flex: 0 0 calc((100% - 4 * 24px) / 5);
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 12px;
     height: 90px;
-    padding: 1.6rem;
+    padding: 16px;
     background: #fff;
-    border: 0.1rem solid #f0f0f0;
-    border-radius: 1.2rem;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
     box-shadow: 0 0.4px 0.8px #0000000d;
+  }
+
+  .info-carousel .info-carousel-title {
+    font-family: roboto, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 0;
+    color: #333;
+  }
+
+  .info-carousel .info-carousel-subtitle {
+    font-family: roboto, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 0;
+    color: #707070;
   }
 }
 

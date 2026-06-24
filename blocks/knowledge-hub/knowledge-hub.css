@@ -1,3 +1,11 @@
+.knowledge-hub-container .default-content-wrapper h2 {
+  font-family: roboto, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #0f3464;
+  text-align: center;
+}
+
 .knowledge-hub .knowledge-hub-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -105,10 +113,13 @@
   display: block;
 }
 
+.knowledge-hub .knowledge-hub-story picture {
+  flex: 0 0 70px;
+}
+
 .knowledge-hub .knowledge-hub-story img {
-  width: 64px;
-  height: 44px;
-  flex: 0 0 64px;
+  width: 70px;
+  height: 40px;
   border-radius: 6px;
   object-fit: cover;
 }
@@ -116,7 +127,8 @@
 .knowledge-hub .knowledge-hub-story-text {
   font-size: 15px;
   line-height: 1.35;
-  color: #0a5cb8;
+  color: #0f3464;
+  text-decoration: none;
 }
 
 .knowledge-hub .knowledge-hub-story:hover .knowledge-hub-story-text {
@@ -139,7 +151,7 @@
   .knowledge-hub .knowledge-hub-grid {
     grid-template-columns: 2fr 1fr;
     gap: 30px;
-    align-items: start;
+    align-items: stretch;
   }
 
   .knowledge-hub .knowledge-hub-featured,
