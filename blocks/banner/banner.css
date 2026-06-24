@@ -21,26 +21,34 @@ main > .section.banner-container > div {
   background: rgb(0 27 58);
 }
 
+.banner .banner-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 560px;
+  padding: 56px 60px;
+  box-sizing: border-box;
+}
+
+/* ---- left column ---- */
+.banner .banner-left {
+  flex: 1 1 auto;
+  max-width: 620px;
+}
+
+.banner .banner-carousel {
+  overflow: hidden;
+}
+
 .banner .banner-track {
   display: flex;
   transition: transform 0.5s ease;
 }
 
-.banner .banner-slide {
-  position: relative;
-  flex: 0 0 100%;
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 56px 60px;
-  box-sizing: border-box;
-}
-
-/* ---- left content ---- */
 .banner .banner-content {
-  max-width: 620px;
+  flex: 0 0 100%;
+  min-width: 0;
 }
 
 .banner .banner-eyebrow {
@@ -121,6 +129,60 @@ main > .section.banner-container > div {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgb(255 255 255 / 60%);
+}
+
+/* ---- controls (inside container) ---- */
+.banner .banner-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.banner .banner-nav {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 50%;
+  background: transparent;
+  color: rgb(255 255 255);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.15s;
+}
+
+.banner .banner-nav:hover {
+  border-color: rgb(255 255 255 / 70%);
+  background: rgb(255 255 255 / 8%);
+}
+
+.banner .banner-nav svg {
+  width: 18px;
+  height: 18px;
+}
+
+.banner .banner-dots {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-left: 8px;
+}
+
+.banner .banner-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 28%);
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.banner .banner-dot-active {
+  background: rgb(255 255 255);
 }
 
 /* ---- right account card ---- */
@@ -296,70 +358,16 @@ main > .section.banner-container > div {
   color: rgb(232 238 246);
 }
 
-/* ---- controls ---- */
-.banner .banner-controls {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.banner .banner-nav {
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgb(227 232 239);
-  border-radius: 50%;
-  background: rgb(255 255 255);
-  color: rgb(0 56 116);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.15s;
-}
-
-.banner .banner-nav:hover {
-  border-color: rgb(0 56 116);
-  background: rgb(234 240 247);
-}
-
-.banner .banner-nav svg {
-  width: 18px;
-  height: 18px;
-}
-
-.banner .banner-dots {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.banner .banner-dot {
-  width: 9px;
-  height: 9px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: rgb(203 211 222);
-  cursor: pointer;
-  transition: 0.15s;
-}
-
-.banner .banner-dot-active {
-  background: rgb(0 56 116);
-}
-
-.banner .banner-counter {
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: rgb(116 117 122);
-}
-
 @media (width <= 900px) {
-  .banner .banner-slide {
+  .banner .banner-layout {
     flex-direction: column;
     align-items: flex-start;
     padding: 40px 28px;
+  }
+
+  .banner .banner-left {
+    max-width: none;
+    width: 100%;
   }
 
   .banner .banner-card {

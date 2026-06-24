@@ -1,19 +1,19 @@
 /**
- * Authoring rows (first cell is a keyword):
- *   slide | <title>   (one row per carousel slide; title may contain two lines)
+ * Authoring rows (first cell is the keyword "slide"); one row per carousel slide:
+ *   slide | eyebrow | title | description | primaryLabel | primaryHref | secLabel | secHref
  *
- * Everything else (eyebrow, description, CTAs, stats, account-card mock) is
- * identical across slides per the design, so it is rendered from constants.
+ * Only the left content (eyebrow / title / description / CTAs) rotates.
+ * The stats row, controls and the account-card mock stay fixed.
  */
-const EYEBROW = 'Banking, the way it should feel';
-const DESCRIPTION = 'Start a fully digital account in under five minutes, then run your money in real time — from one place that always has your back.';
-const CTA_PRIMARY = { label: 'Open an Account', href: 'https://www.kotak811.com/open-zero-balance-savings-account' };
-const CTA_SECONDARY = { label: 'Explore products', href: '/standalone-homepage' };
 const STATS = [
   { value: '5 Cr+', label: 'Customers' },
   { value: '₹4.8L Cr', label: 'Assets' },
   { value: 'RBI', label: 'Regulated · DICGC' },
 ];
+
+function cellText(cell, fallback = '') {
+  return cell ? cell.textContent.trim() : fallback;
+}
 
 function buildAccountCard() {
   const card = document.createElement('div');
@@ -60,36 +60,76 @@ function buildAccountCard() {
   return card;
 }
 
-function buildSlide(title) {
-  const slide = document.createElement('div');
-  slide.className = 'banner-slide';
-
+function buildContent(slide) {
   const content = document.createElement('div');
   content.className = 'banner-content';
 
   const eyebrow = document.createElement('p');
   eyebrow.className = 'banner-eyebrow';
-  eyebrow.textContent = EYEBROW;
+  eyebrow.textContent = slide.eyebrow;
 
   const heading = document.createElement('h1');
   heading.className = 'banner-title';
-  heading.innerHTML = title;
+  heading.innerHTML = slide.title;
 
   const desc = document.createElement('p');
   desc.className = 'banner-desc';
-  desc.textContent = DESCRIPTION;
+  desc.textContent = slide.desc;
 
   const ctas = document.createElement('div');
   ctas.className = 'banner-ctas';
   const primary = document.createElement('a');
   primary.className = 'banner-cta-primary';
-  primary.href = CTA_PRIMARY.href;
-  primary.textContent = CTA_PRIMARY.label;
+  primary.href = slide.primaryHref;
+  primary.textContent = slide.primaryLabel;
   const secondary = document.createElement('a');
   secondary.className = 'banner-cta-secondary';
-  secondary.href = CTA_SECONDARY.href;
-  secondary.textContent = `${CTA_SECONDARY.label} →`;
+  secondary.href = slide.secondaryHref;
+  secondary.textContent = `${slide.secondaryLabel} →`;
   ctas.append(primary, secondary);
+
+  content.append(eyebrow, heading, desc, ctas);
+  return content;
+}
+
+export default function decorate(block) {
+  const slides = [...block.children]
+    .map((row) => {
+      const cells = [...row.children];
+      if (cellText(cells[0]).toLowerCase() !== 'slide') return null;
+      return {
+        eyebrow: cellText(cells[1]),
+        title: cells[2] ? cells[2].innerHTML.trim() : '',
+        desc: cellText(cells[3]),
+        primaryLabel: cellText(cells[4], 'Open an Account'),
+        primaryHref: cellText(cells[5], '#'),
+        secondaryLabel: cellText(cells[6], 'Explore products'),
+        secondaryHref: cellText(cells[7], '#'),
+      };
+    })
+    .filter(Boolean);
+
+  if (!slides.length) return;
+
+  block.textContent = '';
+
+  const viewport = document.createElement('div');
+  viewport.className = 'banner-viewport';
+
+  const layout = document.createElement('div');
+  layout.className = 'banner-layout';
+
+  // ---- left column: rotating content + fixed stats + controls ----
+  const left = document.createElement('div');
+  left.className = 'banner-left';
+
+  const carousel = document.createElement('div');
+  carousel.className = 'banner-carousel';
+  const track = document.createElement('div');
+  track.className = 'banner-track';
+  slides.forEach((s) => track.append(buildContent(s)));
+  carousel.append(track);
+  left.append(carousel);
 
   const stats = document.createElement('div');
   stats.className = 'banner-stats';
@@ -99,38 +139,11 @@ function buildSlide(title) {
     stat.innerHTML = `<p class="banner-stat-value">${s.value}</p><p class="banner-stat-label">${s.label}</p>`;
     stats.append(stat);
   });
+  left.append(stats);
 
-  content.append(eyebrow, heading, desc, ctas, stats);
-  slide.append(content, buildAccountCard());
-  return slide;
-}
-
-export default function decorate(block) {
-  const titles = [...block.children]
-    .map((row) => {
-      const cells = [...row.children];
-      const key = cells[0] ? cells[0].textContent.trim().toLowerCase() : '';
-      if (key !== 'slide' || !cells[1]) return null;
-      return cells[1].innerHTML.trim();
-    })
-    .filter(Boolean);
-
-  if (!titles.length) {
-    titles.push('Open in minutes.<br>Stay for decades.');
-  }
-
-  block.textContent = '';
-
-  const viewport = document.createElement('div');
-  viewport.className = 'banner-viewport';
-  const track = document.createElement('div');
-  track.className = 'banner-track';
-  titles.forEach((t) => track.append(buildSlide(t)));
-  viewport.append(track);
-  block.append(viewport);
-
+  // ---- controls (inside the container) ----
+  const total = slides.length;
   let index = 0;
-  const total = titles.length;
 
   const controls = document.createElement('div');
   controls.className = 'banner-controls';
@@ -149,7 +162,7 @@ export default function decorate(block) {
 
   const dots = document.createElement('div');
   dots.className = 'banner-dots';
-  const dotEls = titles.map((_, i) => {
+  const dotEls = slides.map((_, i) => {
     const dot = document.createElement('button');
     dot.type = 'button';
     dot.className = 'banner-dot';
@@ -158,22 +171,20 @@ export default function decorate(block) {
     return dot;
   });
 
-  const counter = document.createElement('span');
-  counter.className = 'banner-counter';
+  controls.append(prev, next, dots);
+  left.append(controls);
 
   const update = () => {
     track.style.transform = `translateX(-${index * 100}%)`;
     dotEls.forEach((d, i) => d.classList.toggle('banner-dot-active', i === index));
-    const pad = (n) => String(n).padStart(2, '0');
-    counter.textContent = `${pad(index + 1)} / ${pad(total)}`;
   };
-
   const go = (i) => { index = (i + total) % total; update(); };
   prev.addEventListener('click', () => go(index - 1));
   next.addEventListener('click', () => go(index + 1));
   dotEls.forEach((d, i) => d.addEventListener('click', () => go(i)));
 
-  controls.append(prev, next, dots, counter);
-  block.append(controls);
+  layout.append(left, buildAccountCard());
+  viewport.append(layout);
+  block.append(viewport);
   update();
 }
