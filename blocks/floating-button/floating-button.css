@@ -1,0 +1,35 @@
+.floating-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 200;
+}
+
+.floating-button .floating-button-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border: 0;
+  border-radius: 12px;
+  background: rgb(0 56 116);
+  color: #fff;
+  font-family: inter, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: rgb(20 22 26 / 22%) 0 8px 22px;
+  transition: 0.16s;
+}
+
+.floating-button .floating-button-btn:hover {
+  background: rgb(0 44 92);
+  box-shadow: rgb(20 22 26 / 30%) 0 10px 26px;
+}
+
+.floating-button .floating-button-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(237 28 36);
+}
