@@ -195,4 +195,13 @@ main > .section.hero-carousel-container > div {
   .hero-carousel .hero-carousel-subtitle {
     font-size: 18px;
   }
+
+  .hero-carousel .hero-carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+  }
+
+  .hero-carousel .hero-carousel-prev { left: 11px; }
+  .hero-carousel .hero-carousel-next { right: 11px; }
 }
