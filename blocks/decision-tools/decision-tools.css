@@ -1,6 +1,7 @@
 /* full-bleed section padding for the standalone page tool block */
 main > .section.decision-tools-container > div {
-  max-width: none;
+  max-width: 1240px;
+  margin: 0 auto;
   padding: 84px 40px;
 }
 
