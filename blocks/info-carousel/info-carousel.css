@@ -129,3 +129,118 @@
     flex: 0 0 calc((100% - 24px) / 2);
   }
 }
+
+/* ==========================================================================
+   "Why choose" benefits grid variant
+   Scoped to the first info-carousel instance via its section container class
+   (.cards-account-container). Renders a STATIC icon grid (no carousel),
+   matching the original Kotak "what-we-offer" section.
+   Other info-carousel instances (offers, legacy-accounts) are unaffected.
+   ========================================================================== */
+
+/* light-grey wrapper background behind the grid */
+.cards-account-container .info-carousel {
+  background: rgb(249 249 250);
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.cards-account-container .info-carousel .info-carousel-viewport {
+  overflow: visible;
+}
+
+/* static grid: wrap cards, no horizontal scroll transform */
+.cards-account-container .info-carousel .info-carousel-track {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  transform: none !important;
+  transition: none;
+}
+
+/* card: flat (no bg/border/shadow), icon stacked above text */
+.cards-account-container .info-carousel .info-carousel-card {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  min-height: 0;
+  height: auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 18px 15px;
+}
+
+.cards-account-container .info-carousel .info-carousel-icon img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.cards-account-container .info-carousel .info-carousel-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cards-account-container .info-carousel .info-carousel-title {
+  font-family: roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(15 52 100);
+  line-height: 19.8px;
+  margin: 20px 0;
+}
+
+.cards-account-container .info-carousel .info-carousel-subtitle {
+  font-family: roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(102 102 102);
+  line-height: 1.43;
+  margin: 0 0 20px;
+}
+
+/* tablet: 2 columns */
+@media (width >= 600px) and (width < 900px) {
+  .cards-account-container .info-carousel .info-carousel-card {
+    flex: 0 0 50%;
+  }
+}
+
+/* desktop: 4 columns, top padding to match original rhythm */
+@media (width >= 900px) {
+  .cards-account-container .info-carousel .info-carousel-card {
+    flex: 0 0 25%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    height: auto;
+    padding: 32px 15px 18px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .cards-account-container .info-carousel .info-carousel-title {
+    font-family: roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(15 52 100);
+    line-height: 19.8px;
+    margin: 20px 0;
+  }
+
+  .cards-account-container .info-carousel .info-carousel-subtitle {
+    font-family: roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(102 102 102);
+    line-height: 1.43;
+    margin: 0 0 20px;
+  }
+}

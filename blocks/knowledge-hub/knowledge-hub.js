@@ -1,73 +1,34 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-const ARROW_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+const ARROW_SVG = `<svg class="knowledge-hub-arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
   <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
   <path d="M10 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>`;
 
+/** Direct-child link of a cell, whether bare or wrapped in a paragraph. */
 function cellLink(cell) {
   if (!cell) return '';
   const a = cell.querySelector('a');
-  return a ? a.getAttribute('href') : cell.textContent.trim();
+  return a ? a.getAttribute('href') : '';
 }
 
 /**
  * Read one row's cells in authoring order:
- * 0 eyebrow, 1 title, 2 image, 3 redirection link
+ * 0 card header, 1 link title, 2 image (optional), 3 redirection link
  */
 function readRow(row) {
   const cells = [...row.children];
   return {
-    eyebrow: cells[0] ? cells[0].textContent.trim() : '',
+    header: cells[0] ? cells[0].textContent.trim() : '',
     title: cells[1] ? cells[1].textContent.trim() : '',
     image: cells[2] ? cells[2].querySelector('img') : null,
-    href: cellLink(cells[3]),
+    href: cellLink(cells[3]) || (cells[3] ? cells[3].textContent.trim() : ''),
   };
 }
 
-function buildFeatured(item) {
-  const a = document.createElement('a');
-  a.className = 'knowledge-hub-featured';
-  if (item.href) a.href = item.href;
-
-  if (item.image) {
-    const picture = document.createElement('picture');
-    const img = document.createElement('img');
-    img.src = item.image.getAttribute('src');
-    img.alt = item.title || '';
-    img.loading = 'lazy';
-    picture.append(img);
-    a.append(picture);
-  }
-
-  const overlay = document.createElement('div');
-  overlay.className = 'knowledge-hub-featured-overlay';
-  if (item.eyebrow) {
-    const eyebrow = document.createElement('p');
-    eyebrow.className = 'knowledge-hub-eyebrow';
-    eyebrow.textContent = item.eyebrow;
-    overlay.append(eyebrow);
-  }
-  if (item.title) {
-    const h = document.createElement('h3');
-    h.className = 'knowledge-hub-featured-title';
-    h.textContent = item.title;
-    overlay.append(h);
-  }
-  const readMore = document.createElement('span');
-  readMore.className = 'knowledge-hub-readmore';
-  readMore.innerHTML = `<span>Read more</span>${ARROW_SVG}`;
-  overlay.append(readMore);
-
-  a.append(overlay);
-  return a;
-}
-
-function buildStoryItem(item) {
+function buildListItem(item) {
   const li = document.createElement('li');
-  const a = document.createElement('a');
-  a.className = 'knowledge-hub-story';
-  if (item.href) a.href = item.href;
+  li.className = 'knowledge-hub-item';
 
   if (item.image) {
     const picture = document.createElement('picture');
@@ -76,60 +37,96 @@ function buildStoryItem(item) {
     img.alt = '';
     img.loading = 'lazy';
     picture.append(img);
-    a.append(picture);
+    li.append(picture);
   }
-  const text = document.createElement('span');
-  text.className = 'knowledge-hub-story-text';
-  text.textContent = item.title;
-  a.append(text);
 
-  li.append(a);
+  const text = document.createElement('span');
+  text.className = 'knowledge-hub-item-text';
+  if (item.href) {
+    const a = document.createElement('a');
+    a.href = item.href;
+    a.textContent = item.title;
+    text.append(a);
+  } else {
+    text.textContent = item.title;
+  }
+  li.append(text);
   return li;
+}
+
+function buildCard(card) {
+  const col = document.createElement('div');
+  col.className = 'knowledge-hub-col';
+
+  const inner = document.createElement('div');
+  inner.className = 'knowledge-hub-card';
+
+  if (card.header) {
+    const header = document.createElement('p');
+    header.className = 'knowledge-hub-header';
+    header.textContent = card.header;
+    inner.append(header);
+  }
+
+  if (card.items.length) {
+    const list = document.createElement('ul');
+    list.className = 'knowledge-hub-list';
+    card.items.forEach((it) => list.append(buildListItem(it)));
+    inner.append(list);
+  }
+
+  if (card.cta) {
+    const cta = document.createElement('a');
+    cta.className = 'knowledge-hub-cta';
+    cta.href = card.cta;
+    cta.innerHTML = `<span>${card.ctaLabel}</span>${ARROW_SVG}`;
+    inner.append(cta);
+  }
+
+  col.append(inner);
+  return col;
 }
 
 export default function decorate(block) {
   const rows = [...block.children].map(readRow);
-  // first row with an image = featured; rows with image + title = stories;
-  // a row with only a link (no image, no title) = "view all"
-  const featured = rows.find((r) => r.image && r.title);
-  const featuredIndex = rows.indexOf(featured);
-  const stories = rows.filter((r, i) => i !== featuredIndex && r.image && r.title);
-  const viewAll = rows.find((r) => !r.image && !r.title && r.href);
+
+  // Group rows into cards keyed by header text. Rows with no title/image but a
+  // href act as the card's "view all" CTA for the most recent header.
+  const ctaLabelFor = (header) => {
+    const h = (header || '').toLowerCase();
+    if (h.includes('service request')) return 'View Service Requests';
+    if (h.includes('helpcenter') || h.includes('help center')) return 'View All Topics';
+    if (h.includes('learn') || h.includes('stor')) return 'View all stories';
+    return 'View all';
+  };
+
+  const cards = [];
+  let current = null;
+  rows.forEach((r) => {
+    if (r.title) {
+      if (!current || current.header !== r.header) {
+        current = {
+          header: r.header, items: [], cta: '', ctaLabel: ctaLabelFor(r.header),
+        };
+        cards.push(current);
+      }
+      current.items.push(r);
+    } else if (r.href) {
+      // CTA row -- attach to the current card if present.
+      if (current) current.cta = r.href;
+    }
+  });
 
   block.textContent = '';
 
   const grid = document.createElement('div');
   grid.className = 'knowledge-hub-grid';
-
-  if (featured) grid.append(buildFeatured(featured));
-
-  const aside = document.createElement('div');
-  aside.className = 'knowledge-hub-aside';
-  const asideTitle = document.createElement('p');
-  asideTitle.className = 'knowledge-hub-aside-title';
-  asideTitle.textContent = featured && featured.eyebrow ? featured.eyebrow : 'Stories in focus';
-  aside.append(asideTitle);
-
-  const list = document.createElement('ul');
-  list.className = 'knowledge-hub-list';
-  stories.forEach((s) => list.append(buildStoryItem(s)));
-  aside.append(list);
-
-  if (viewAll) {
-    const link = document.createElement('a');
-    link.className = 'knowledge-hub-viewall';
-    link.href = viewAll.href;
-    link.innerHTML = `<span>View all stories</span>${ARROW_SVG}`;
-    aside.append(link);
-  }
-
-  grid.append(aside);
+  cards.forEach((c) => grid.append(buildCard(c)));
   block.append(grid);
 
-  // optimize images
+  // optimize thumbnail images
   block.querySelectorAll('picture > img').forEach((img) => {
-    const isFeatured = !!img.closest('.knowledge-hub-featured');
-    const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: isFeatured ? '1000' : '150' }]);
+    const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '150' }]);
     img.closest('picture').replaceWith(optimized);
   });
 }

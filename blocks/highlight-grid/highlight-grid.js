@@ -26,18 +26,30 @@ function readCard(row) {
   };
 }
 
-/** Convert a YouTube watch/embed URL into an embeddable URL. */
-function toEmbedUrl(url) {
+/** Extract the YouTube video id from a watch/embed/short URL. */
+function youTubeId(url) {
   try {
     const u = new URL(url, window.location.href);
-    if (/youtube\.com\/embed\//.test(u.pathname) || u.pathname.includes('/embed/')) return u.href;
-    const id = u.searchParams.get('v');
-    if (id) return `https://www.youtube.com/embed/${id}?autoplay=1`;
-    if (u.hostname === 'youtu.be') return `https://www.youtube.com${u.pathname}?autoplay=1`;
-    return u.href;
+    const m = u.pathname.match(/\/embed\/([^/?]+)/);
+    if (m) return m[1];
+    if (u.hostname === 'youtu.be') return u.pathname.replace(/^\//, '');
+    const v = u.searchParams.get('v');
+    return v || '';
   } catch (e) {
-    return url;
+    return '';
   }
+}
+
+/** Convert a YouTube watch/embed URL into an embeddable autoplay URL. */
+function toEmbedUrl(url) {
+  const id = youTubeId(url);
+  if (id) return `https://www.youtube.com/embed/${id}?autoplay=1`;
+  return url;
+}
+
+/** Build a thumbnail URL for a YouTube video id. */
+function youTubeThumb(id) {
+  return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : '';
 }
 
 /** Open the YouTube video in a centered modal overlay. */
@@ -86,17 +98,26 @@ function buildVideoCard(card) {
   const item = document.createElement('div');
   item.className = 'highlight-grid-card highlight-grid-video';
 
+  if (card.title) {
+    const h = document.createElement('p');
+    h.className = 'highlight-grid-title';
+    h.textContent = card.title;
+    item.append(h);
+  }
+
   const trigger = document.createElement('button');
   trigger.type = 'button';
   trigger.className = 'highlight-grid-video-trigger';
   trigger.setAttribute('aria-label', card.title || 'Play video');
 
-  if (card.image) {
+  const id = youTubeId(card.videoHref);
+  const thumbSrc = (card.image && card.image.getAttribute('src')) || youTubeThumb(id);
+  if (thumbSrc) {
     const media = document.createElement('div');
     media.className = 'highlight-grid-media';
     const picture = document.createElement('picture');
     const img = document.createElement('img');
-    img.src = card.image.getAttribute('src');
+    img.src = thumbSrc;
     img.alt = card.title || '';
     img.loading = 'lazy';
     picture.append(img);
@@ -155,8 +176,14 @@ export default function decorate(block) {
   });
   block.append(grid);
 
-  // optimize thumbnail images
+  // optimize same-origin thumbnail images (external YouTube thumbs stay as-is)
   block.querySelectorAll('picture > img').forEach((img) => {
+    try {
+      const u = new URL(img.src, window.location.href);
+      if (u.origin !== window.location.origin) return;
+    } catch (e) {
+      return;
+    }
     const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     img.closest('picture').replaceWith(optimized);
   });

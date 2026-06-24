@@ -1,0 +1,62 @@
+.table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.43;
+}
+
+.table table th,
+.table table td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table table th p,
+.table table td p {
+  margin: 0;
+}
+
+.table table td p + p {
+  margin-top: 0.25em;
+}
+
+/* header row */
+.table table thead th {
+  font-weight: 700;
+  vertical-align: bottom;
+}
+
+/* no header variant */
+.table.no-header table tbody tr {
+  border-top: 1px solid #dadada;
+}
+
+/* striped variant */
+.table.striped tbody tr:nth-child(odd) {
+  background-color: var(--light-color);
+}
+
+/* bordered variant - Kotak red header, grey body */
+.table.bordered table th,
+.table.bordered table td {
+  border: 1px solid rgb(222 226 230);
+}
+
+.table.bordered table thead th {
+  background-color: rgb(255 0 0);
+  color: rgb(255 255 255);
+  font-weight: 700;
+}
+
+.table.bordered table tbody td {
+  background-color: rgb(236 236 237);
+  color: rgb(102 102 102);
+}

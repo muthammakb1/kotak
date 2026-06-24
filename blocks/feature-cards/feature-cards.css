@@ -1,15 +1,15 @@
 .feature-cards .feature-cards-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 32px;
 }
 
 .feature-cards .feature-card {
   background: #fff;
-  border: 1px solid #ebebeb;
+  border: 0;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 3px 6px rgb(0 0 0 / 8%);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
   display: flex;
   flex-direction: column;
 }
@@ -29,8 +29,8 @@
 .feature-cards .feature-card-body {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 20px 24px 28px;
+  gap: 10px;
+  padding: 24px 24px 20px;
   flex: 1 1 auto;
 }
 
@@ -45,33 +45,40 @@
 
 .feature-cards .feature-card-title {
   margin: 0;
-  font-size: 26px;
-  line-height: 1.25;
-  font-weight: 400;
-  color: #1c1c1c;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #003874;
+  font-family: var(--body-font-family);
 }
 
 .feature-cards .feature-card-desc {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #4a4a4a;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #292929;
 }
 
 .feature-cards .feature-card-cta {
   margin-top: auto;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: #ed4223;
-  font-weight: 700;
-  font-size: 15px;
+  gap: 5px;
+  color: #ee1c25;
+  font-weight: 600;
+  font-size: 14px;
   text-decoration: none;
-  padding-top: 12px;
+  padding-top: 14px;
 }
 
 .feature-cards .feature-card-cta:hover {
-  color: #d6371b;
+  color: #ee1c25;
+  text-decoration: none;
+}
+
+.feature-cards .feature-card-cta svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* tablet */
@@ -89,7 +96,7 @@
   }
 
   .feature-cards .feature-card-title {
-    font-size: 28px;
+    font-size: 22px;
   }
 
   /* feature-cards (2 cards) + rates-charges share one row of 3 equal columns,

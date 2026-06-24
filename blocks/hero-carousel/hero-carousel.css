@@ -48,7 +48,7 @@ main > .section.hero-carousel-container > div {
   object-fit: cover;
 }
 
-/* overlaid content */
+/* overlaid content: centered 1170px container, text vertically centered over image */
 .hero-carousel .hero-carousel-content {
   position: absolute;
   inset: 0;
@@ -56,25 +56,28 @@ main > .section.hero-carousel-container > div {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 16px;
+  gap: 10px;
   box-sizing: border-box;
-  padding: 24px;
-  max-width: 1280px;
+  padding: 0 15px;
+  max-width: 1170px;
   margin: 0 auto;
 }
 
 .hero-carousel .hero-carousel-title {
-  margin: 0;
+  margin: 20px 0 10px;
   font-size: 28px;
   line-height: 1.2;
   font-weight: 700;
+  color: #fff;
 }
 
 .hero-carousel .hero-carousel-subtitle {
   margin: 0;
   font-size: 16px;
-  line-height: 1.4;
-  max-width: 36rem;
+  line-height: 22px;
+  font-weight: 400;
+  max-width: 55%;
+  color: #fff;
 }
 
 .hero-carousel .hero-carousel-cta {
@@ -152,6 +155,10 @@ main > .section.hero-carousel-container > div {
   cursor: pointer;
 }
 
+.hero-carousel .hero-carousel-dot {
+  margin: 0 5px;
+}
+
 .hero-carousel .hero-carousel-dot.is-active {
   background: #fa1432;
   width: 24px;
@@ -180,9 +187,19 @@ main > .section.hero-carousel-container > div {
 
 /* desktop */
 @media (width >= 900px) {
+  .hero-carousel .hero-carousel-slide.is-active {
+    height: 400px;
+  }
+
+  .hero-carousel .hero-carousel-media,
+  .hero-carousel .hero-carousel-media picture,
+  .hero-carousel .hero-carousel-media img {
+    height: 400px;
+  }
+
   .hero-carousel .hero-carousel-content {
-    padding: 48px 64px;
-    gap: 20px;
+    padding: 0 15px;
+    gap: 10px;
   }
 
   .hero-carousel .hero-carousel-title {
@@ -190,10 +207,13 @@ main > .section.hero-carousel-container > div {
     font-size: 44px;
     line-height: 52px;
     font-weight: 700;
+    margin: 20px 0 10px;
   }
 
   .hero-carousel .hero-carousel-subtitle {
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 22px;
+    max-width: 55%;
   }
 
   .hero-carousel .hero-carousel-arrow {

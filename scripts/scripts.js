@@ -10,7 +10,36 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  readBlockConfig,
+  toClassName,
 } from './aem.js';
+
+/**
+ * Applies Section Metadata blocks to their parent section.
+ * Mirrors the aem.live delivery pipeline so styles like "light-grey"
+ * also render in the local --html-folder preview.
+ * @param {Element} main The main element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > .section .section-metadata').forEach((metaBlock) => {
+    const section = metaBlock.closest('.section');
+    if (!section) return;
+    const meta = readBlockConfig(metaBlock);
+    Object.keys(meta).forEach((key) => {
+      if (key === 'style') {
+        const styles = meta.style
+          .split(',')
+          .map((style) => toClassName(style.trim()))
+          .filter((style) => style);
+        styles.forEach((style) => section.classList.add(style));
+      } else {
+        section.dataset[toClassName(key)] = meta[key];
+      }
+    });
+    const wrapper = metaBlock.closest('.section-metadata-wrapper');
+    (wrapper || metaBlock).remove();
+  });
+}
 
 /**
  * load fonts.css and set a session storage flag
@@ -126,6 +155,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }
