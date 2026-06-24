@@ -90,6 +90,15 @@
 @media (width >= 900px) {
   .info-carousel .info-carousel-card {
     flex: 0 0 calc((100% - 4 * 24px) / 5);
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    height: 90px;
+    padding: 1.6rem;
+    background: #fff;
+    border: 0.1rem solid #f0f0f0;
+    border-radius: 1.2rem;
+    box-shadow: 0 0.4px 0.8px #0000000d;
   }
 }
 

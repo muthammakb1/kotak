@@ -65,9 +65,9 @@
 /* aside */
 .knowledge-hub .knowledge-hub-aside {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 8%);
-  padding: 24px;
+  padding: 16px;
   box-sizing: border-box;
 }
 

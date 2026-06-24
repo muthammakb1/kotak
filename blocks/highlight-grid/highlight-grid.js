@@ -40,6 +40,48 @@ function toEmbedUrl(url) {
   }
 }
 
+/** Open the YouTube video in a centered modal overlay. */
+function openVideoModal(embedUrl, title) {
+  const overlay = document.createElement('div');
+  overlay.className = 'highlight-grid-modal';
+
+  const dialog = document.createElement('div');
+  dialog.className = 'highlight-grid-modal-dialog';
+
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'highlight-grid-modal-close';
+  close.setAttribute('aria-label', 'Close video');
+  close.innerHTML = '&times;';
+
+  const frameWrap = document.createElement('div');
+  frameWrap.className = 'highlight-grid-modal-frame';
+  const iframe = document.createElement('iframe');
+  iframe.src = embedUrl;
+  iframe.title = title || 'Video';
+  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+  iframe.allowFullscreen = true;
+  frameWrap.append(iframe);
+
+  dialog.append(close, frameWrap);
+  overlay.append(dialog);
+
+  const controller = new AbortController();
+  const removeModal = () => {
+    overlay.remove();
+    controller.abort();
+  };
+  close.addEventListener('click', removeModal, { signal: controller.signal });
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) removeModal();
+  }, { signal: controller.signal });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') removeModal();
+  }, { signal: controller.signal });
+
+  document.body.append(overlay);
+}
+
 function buildVideoCard(card) {
   const item = document.createElement('div');
   item.className = 'highlight-grid-card highlight-grid-video';
@@ -64,17 +106,7 @@ function buildVideoCard(card) {
   trigger.insertAdjacentHTML('beforeend', `<span class="highlight-grid-play">${PLAY_SVG}</span>`);
 
   const embedUrl = toEmbedUrl(card.videoHref);
-  trigger.addEventListener('click', () => {
-    const media = trigger.querySelector('.highlight-grid-media');
-    const iframe = document.createElement('iframe');
-    iframe.className = 'highlight-grid-iframe';
-    iframe.src = embedUrl;
-    iframe.title = card.title || 'Video';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    iframe.allowFullscreen = true;
-    media.replaceChildren(iframe);
-    trigger.querySelector('.highlight-grid-play')?.remove();
-  });
+  trigger.addEventListener('click', () => openVideoModal(embedUrl, card.title));
 
   item.append(trigger);
   return item;

@@ -279,10 +279,22 @@ header .header-menu-li-flat .header-menu-divmain {
   min-width: 300px;
   left: auto;
   transform: none;
+  background: #f1f3f9;
+  border-top-left-radius: 3.2rem;
 }
 
 header .header-menu-li-flat .header-menul1 {
-  padding: 12px 0;
+  padding: 0;
+  background: #f1f3f9;
+}
+
+header .header-menu-li-flat .header-menul1-scroll {
+  flex: 1 1 auto;
+  background: #f1f3f9;
+}
+
+header .header-menu-li-flat .sub-header-ul {
+  padding: 16px 0;
 }
 
 header .header-menu-li-flat .sub-header-ul > li > a.header-menul1-span {
@@ -359,14 +371,19 @@ header .header-login {
 
 header .header-login .header-loginicon {
   display: flex;
+  align-items: center;
 }
 
 header .header-login .header-loginicon img {
   width: 18px;
   height: 18px;
+  display: block;
 }
 
 header .header-login a {
+  display: flex;
+  align-items: center;
+  line-height: 1;
   color: #fff;
   font-weight: 700;
   font-size: 14px;
