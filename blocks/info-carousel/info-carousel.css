@@ -1,0 +1,101 @@
+/* center the section's main title (e.g. "Need Help?") above the carousel */
+.info-carousel-container .default-content-wrapper h2 {
+  text-align: center;
+}
+
+.info-carousel {
+  position: relative;
+}
+
+.info-carousel .info-carousel-viewport {
+  overflow: hidden;
+}
+
+.info-carousel .info-carousel-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.4s ease;
+}
+
+/* card */
+.info-carousel .info-carousel-card {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 8%);
+  padding: 20px 22px;
+  text-decoration: none;
+  min-height: 96px;
+}
+
+.info-carousel .info-carousel-icon {
+  flex: 0 0 auto;
+  display: flex;
+}
+
+.info-carousel .info-carousel-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.info-carousel .info-carousel-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-carousel .info-carousel-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #00005a;
+  line-height: 1.2;
+}
+
+.info-carousel .info-carousel-subtitle {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #4a4a4a;
+}
+
+/* dots */
+.info-carousel .info-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.info-carousel .info-carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #cfd3dc;
+  cursor: pointer;
+}
+
+.info-carousel .info-carousel-dot.is-active {
+  background: #0a5cb8;
+  width: 26px;
+  border-radius: 5px;
+}
+
+/* desktop: 5 cards per page */
+@media (width >= 900px) {
+  .info-carousel .info-carousel-card {
+    flex: 0 0 calc((100% - 4 * 24px) / 5);
+  }
+}
+
+/* tablet: 2 per page */
+@media (width >= 600px) and (width < 900px) {
+  .info-carousel .info-carousel-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+}
