@@ -1,0 +1,79 @@
+/* full-bleed dark band with the same side spacing as decision-tools */
+main > .section.trust-section-container {
+  background: rgb(0 56 116);
+}
+
+main > .section.trust-section-container > div {
+  max-width: none;
+  padding: 84px 40px;
+}
+
+.trust-section .trust-section-eyebrow {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(237 28 36);
+}
+
+.trust-section .trust-section-heading {
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: clamp(28px, 3.6vw, 42px);
+  letter-spacing: -0.01em;
+  color: rgb(246 242 234);
+  max-width: 22ch;
+}
+
+/* 4-tile grid */
+.trust-section .trust-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 38px;
+  background: rgb(237 233 225 / 12%);
+  border: 1px solid rgb(237 233 225 / 12%);
+}
+
+.trust-section .trust-section-tile {
+  background: rgb(0 56 116);
+  padding: 28px 32px;
+}
+
+.trust-section .trust-section-tile-title {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 400;
+  color: rgb(244 241 234);
+}
+
+.trust-section .trust-section-tile-desc {
+  margin-top: 9px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgb(139 148 161);
+}
+
+/* stats strip */
+.trust-section .trust-section-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 44px;
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid rgb(237 233 225 / 12%);
+}
+
+.trust-section .trust-section-stat-value {
+  margin: 0;
+  font-size: 26px;
+  color: rgb(244 241 234);
+}
+
+.trust-section .trust-section-stat-label {
+  margin-top: 4px;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(116 113 106);
+}
