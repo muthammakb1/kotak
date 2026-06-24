@@ -98,8 +98,12 @@ export default function decorate(block) {
   const goTo = (p) => {
     const pages = pageCount();
     page = (p + pages) % pages;
-    const offset = page * pageSize() * (cardEls[0].getBoundingClientRect().width
-      + parseFloat(getComputedStyle(track).columnGap || 0));
+    const step = cardEls[0].getBoundingClientRect().width
+      + parseFloat(getComputedStyle(track).columnGap || 0);
+    // clamp so the final page aligns to the last card (no trailing blank space)
+    const maxStart = Math.max(0, cardEls.length - pageSize());
+    const startIndex = Math.min(page * pageSize(), maxStart);
+    const offset = startIndex * step;
     track.style.transform = `translateX(-${offset}px)`;
     [...nav.children].forEach((d, i) => {
       d.classList.toggle('is-active', i === page);
