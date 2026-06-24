@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://www.kotak.bank.in/en/personal-banking/accounts/savings-account.html",
+  "path": "en/personal-banking/accounts/savings-account",
+  "timestamp": "2026-06-24T10:08:03.858Z",
+  "title": "Savings Account - Open Bank Account Online Instantly | Kotak Bank",
+  "template": "savings-account",
+  "blocks": [
+    "hero-carousel",
+    "info-carousel",
+    "info-carousel",
+    "info-carousel",
+    "info-carousel",
+    "info-carousel",
+    "cards-account",
+    "knowledge-hub",
+    "accordion-faq",
+    "highlight-grid",
+    "feature-cards",
+    "cards-testimonial"
+  ]
+}

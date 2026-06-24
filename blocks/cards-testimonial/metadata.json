@@ -1,0 +1,37 @@
+{
+  "variantName": "cards-testimonial",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-06-24T09:45:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.kotak.bank.in/en/personal-banking/accounts/savings-account.html",
+    "originPage": "Savings Account product page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "grey",
+    "density": "spacious",
+    "purpose": "testimonial",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "reviewer name + star rating + quote + date",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "customer testimonial carousels/grids",
+      "review cards with rating and date"
+    ],
+    "notSuitableFor": [
+      "product cards with images and CTAs (use cards-account)",
+      "icon feature rows (use info-carousel)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/kotakcl/en/personal-banking/accounts/savings-account"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-24T09:45:00.000Z"
+  }
+}

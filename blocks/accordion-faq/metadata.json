@@ -1,0 +1,38 @@
+{
+  "variantName": "accordion-faq",
+  "baseBlock": "accordion",
+  "version": "1.0.0",
+  "created": "2026-06-24T09:45:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.kotak.bank.in/en/personal-banking/accounts/savings-account.html",
+    "originPage": "Savings Account product page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "faq",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "question heading + rich-text answer per item",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "FAQ sections",
+      "expandable question/answer lists",
+      "product detail toggles"
+    ],
+    "notSuitableFor": [
+      "rates/charges tables with icons (use rates-charges)",
+      "non-interactive content lists"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/kotakcl/en/personal-banking/accounts/savings-account"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-24T09:45:00.000Z"
+  }
+}
