@@ -1,0 +1,58 @@
+header .header-2 {
+  background: #00005a;
+  color: #fff;
+}
+
+header .header-2 .header-2-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+header .header-2 .header-2-brand {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+header .header-2 .header-2-brand img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+header .header-2 .header-2-nav {
+  flex: 1 1 auto;
+}
+
+header .header-2 .header-2-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+header .header-2 .header-2-nav a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+}
+
+header .header-2 .header-2-nav a:hover {
+  text-decoration: underline;
+}
+
+@media (width >= 900px) {
+  header .header-2 .header-2-inner {
+    padding: 16px 50px;
+  }
+}
