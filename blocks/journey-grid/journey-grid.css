@@ -1,8 +1,14 @@
 /* same side spacing as the other standalone-page blocks */
+main > .section.journey-grid-container {
+  margin: 0;
+  background: rgb(245 247 250);
+  border-top: 1px solid rgb(234 238 243);
+}
+
 main > .section.journey-grid-container > div {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 84px 40px;
+  padding: 50px 40px;
 }
 
 .journey-grid,

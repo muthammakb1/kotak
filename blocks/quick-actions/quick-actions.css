@@ -1,0 +1,84 @@
+main > .section.quick-actions-container {
+  margin: 0;
+  background: rgb(245 247 250);
+  border-top: 1px solid rgb(234 238 243);
+  border-bottom: 1px solid rgb(234 238 243);
+}
+
+main > .section.quick-actions-container > div {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 50px 40px;
+}
+
+.quick-actions,
+.quick-actions h2 {
+  font-family: inter, sans-serif;
+}
+
+.quick-actions .quick-actions-heading {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(26px, 3.2vw, 36px);
+  letter-spacing: -0.01em;
+  color: rgb(0 56 116);
+}
+
+.quick-actions .quick-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.quick-actions .quick-actions-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  text-align: left;
+  background: rgb(255 255 255);
+  border: 1px solid rgb(227 232 239);
+  border-radius: 10px;
+  padding: 22px 20px;
+  cursor: pointer;
+  transition: 0.16s;
+  font-family: inherit;
+}
+
+.quick-actions .quick-actions-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: rgb(20 22 26 / 7%) 0 10px 24px;
+}
+
+.quick-actions .quick-actions-icon {
+  display: inline-flex;
+  color: rgb(0 56 116);
+}
+
+.quick-actions .quick-actions-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.quick-actions .quick-actions-tile-alert .quick-actions-icon {
+  color: rgb(237 28 36);
+}
+
+.quick-actions .quick-actions-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(0 56 116);
+}
+
+@media (width >= 600px) {
+  .quick-actions .quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .quick-actions .quick-actions-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
