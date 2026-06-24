@@ -1,10 +1,27 @@
+/* full-bleed: footer-1 band spans the whole page width with one background */
+footer .footer > div:has(.footer-1) {
+  max-width: none;
+  padding: 0;
+}
+
+footer .footer-1-container {
+  max-width: none;
+  padding: 0;
+}
+
+footer .footer-wrapper:has(.footer-1) {
+  background: #ececec;
+}
+
 .footer-1 {
   background: #ececec;
   padding: 8px 0;
 }
 
 .footer-1 .footer-1-section {
-  padding: 16px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
   border-bottom: 1px solid #d5d5d5;
 }
 
