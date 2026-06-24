@@ -1,6 +1,7 @@
 /* same side spacing as the other standalone-page blocks */
 main > .section.journey-grid-container > div {
-  max-width: none;
+  max-width: 1240px;
+  margin: 0 auto;
   padding: 84px 40px;
 }
 

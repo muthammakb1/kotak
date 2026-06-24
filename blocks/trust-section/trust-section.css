@@ -4,7 +4,8 @@ main > .section.trust-section-container {
 }
 
 main > .section.trust-section-container > div {
-  max-width: none;
+  max-width: 1240px;
+  margin: 0 auto;
   padding: 84px 40px;
 }
 
