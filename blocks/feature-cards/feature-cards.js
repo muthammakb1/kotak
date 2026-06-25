@@ -97,9 +97,38 @@ function buildCard(card) {
   return item;
 }
 
+/**
+ * A config row carries a key/value pair (e.g. "background | #ececed") instead of
+ * card content: first cell is text-only (no image) and a second cell holds the value.
+ */
+function isConfigRow(row) {
+  const cells = [...row.children];
+  if (cells.length < 2) return false;
+  if (cells[0].querySelector('img')) return false;
+  const key = cells[0].textContent.trim().toLowerCase();
+  return key === 'background';
+}
+
 export default function decorate(block) {
   const rows = [...block.children];
-  const cards = rows.map(readCard).filter((c) => c.desktopImg || c.mobileImg || c.title2);
+
+  // apply authored metadata (e.g. background color) so each page can override it.
+  // background goes on the section so it spans full width as a band.
+  const section = block.closest('.section');
+  rows.filter(isConfigRow).forEach((row) => {
+    const cells = [...row.children];
+    const key = cells[0].textContent.trim().toLowerCase();
+    const value = cells[1].textContent.trim();
+    if (key === 'background' && value && section) {
+      section.style.background = value;
+      section.classList.add('feature-cards-has-bg');
+    }
+  });
+
+  const cards = rows
+    .filter((row) => !isConfigRow(row))
+    .map(readCard)
+    .filter((c) => c.desktopImg || c.mobileImg || c.title2);
 
   block.textContent = '';
   const grid = document.createElement('div');

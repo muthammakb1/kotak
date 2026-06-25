@@ -1,0 +1,37 @@
+{
+  "variantName": "highlight-grid",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-06-24T09:45:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.kotak.bank.in/en/personal-banking/accounts/savings-account.html",
+    "originPage": "Kotak product pages",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "feature",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "title + image + body text + optional video link",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "related videos cards with play overlay",
+      "feature cards with image, body, and video link"
+    ],
+    "notSuitableFor": [
+      "icon feature rows (use info-carousel)",
+      "product cards with CTAs (use cards-account / feature-cards)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/kotakcl/en/personal-banking/accounts/savings-account"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-24T09:45:00.000Z"
+  }
+}

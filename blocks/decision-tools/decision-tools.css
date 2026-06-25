@@ -1,0 +1,186 @@
+/* full-bleed section padding for the standalone page tool block */
+main > .section.decision-tools-container {
+  margin: 0;
+}
+
+main > .section.decision-tools-container > div {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 50px 40px;
+}
+
+.decision-tools,
+.decision-tools h2,
+.decision-tools h3 {
+  font-family: inter, sans-serif;
+}
+
+.decision-tools .decision-tools-eyebrow {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(237 28 36);
+}
+
+.decision-tools .decision-tools-heading {
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: clamp(28px, 3.6vw, 42px);
+  letter-spacing: -0.01em;
+  color: rgb(0 56 116);
+  max-width: 20ch;
+}
+
+.decision-tools .decision-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+/* embedded calculator card */
+.decision-tools .decision-tools-calc {
+  background: #fff;
+  border: 1px solid rgb(227 232 239);
+  border-radius: 12px;
+  padding: 28px 32px 32px;
+}
+
+.decision-tools .decision-tools-calc-eyebrow {
+  margin: 0;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(237 28 36);
+}
+
+.decision-tools .decision-tools-calc-title {
+  margin: 8px 0 28px;
+  font-size: 30px;
+  font-weight: 400;
+  color: rgb(0 56 116);
+}
+
+.decision-tools .decision-tools-calc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: rgb(90 91 94);
+}
+
+.decision-tools .decision-tools-calc-amount {
+  font-weight: 700;
+  color: rgb(0 56 116);
+}
+
+/* range slider */
+.decision-tools .decision-tools-slider {
+  --fill: 50%;
+
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  margin: 16px 0 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    rgb(237 28 36) 0%,
+    rgb(237 28 36) var(--fill),
+    rgb(227 232 239) var(--fill),
+    rgb(227 232 239) 100%
+  );
+  cursor: pointer;
+}
+
+.decision-tools .decision-tools-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgb(237 28 36);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 25%);
+  cursor: pointer;
+}
+
+.decision-tools .decision-tools-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgb(237 28 36);
+  border: 3px solid #fff;
+  cursor: pointer;
+}
+
+.decision-tools .decision-tools-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgb(139 148 161);
+}
+
+.decision-tools .decision-tools-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgb(227 232 239);
+}
+
+.decision-tools .decision-tools-stat-value {
+  margin: 0;
+  font-size: 30px;
+  color: rgb(0 56 116);
+}
+
+.decision-tools .decision-tools-stat-label {
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(139 148 161);
+}
+
+/* decision guide cards */
+.decision-tools .decision-tools-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.decision-tools .decision-tools-card {
+  background: rgb(255 255 255);
+  border: 1px solid rgb(227 232 239);
+  border-radius: 12px;
+  padding: 22px;
+  cursor: pointer;
+  transition: 0.16s;
+}
+
+.decision-tools .decision-tools-card:hover {
+  box-shadow: rgb(20 22 26 / 6%) 0 10px 24px;
+}
+
+.decision-tools .decision-tools-card-category {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(139 148 161);
+}
+
+.decision-tools .decision-tools-card-title {
+  margin-top: 7px;
+  font-size: 19px;
+  color: rgb(0 56 116);
+}
+
+/* desktop: calculator + guide list side by side */
+@media (width >= 900px) {
+  .decision-tools .decision-tools-grid {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 28px;
+  }
+}

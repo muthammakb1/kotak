@@ -10,7 +10,24 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  decorateBlock,
+  loadBlock,
+  getMetadata,
 } from './aem.js';
+
+/**
+ * Loads a custom-named block into a wrapper element (header or footer).
+ * Lets a page swap in an alternate header/footer via the `header`/`footer`
+ * page metadata, e.g. `<meta name="header" content="header-2">`.
+ * @param {Element} wrapper The <header> or <footer> element
+ * @param {string} blockName The block to load
+ */
+async function loadNamedBlock(wrapper, blockName) {
+  const block = buildBlock(blockName, '');
+  wrapper.append(block);
+  decorateBlock(block);
+  return loadBlock(block);
+}
 
 /**
  * load fonts.css and set a session storage flag
@@ -159,7 +176,11 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadHeader(doc.querySelector('header'));
+  // allow a page to use an alternate header/footer block via metadata
+  const headerName = getMetadata('header');
+  const footerName = getMetadata('footer-block');
+  if (headerName) loadNamedBlock(doc.querySelector('header'), headerName);
+  else loadHeader(doc.querySelector('header'));
 
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -168,7 +189,8 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadFooter(doc.querySelector('footer'));
+  if (footerName) loadNamedBlock(doc.querySelector('footer'), footerName);
+  else loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();

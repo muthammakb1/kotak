@@ -316,6 +316,19 @@ main > .section:first-of-type {
   margin-top: 0;
 }
 
+/* full-width background band when a background is authored via block metadata;
+   collapse adjacent margins so the band sits flush against neighbouring sections */
+main > .section.has-section-bg {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+main > .section:has(+ .section.has-section-bg) {
+  margin-bottom: 0;
+}
+
 /* section metadata */
 main .section.light,
 main .section.highlight {

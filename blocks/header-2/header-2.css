@@ -1,0 +1,390 @@
+/* this header is taller than the default --nav-height; let it set its own height */
+header:has(.header-2) {
+  height: auto;
+}
+
+header .header-2 {
+  font-family: inter, sans-serif;
+  background: rgb(255 255 255);
+}
+
+/* shared inner width for all three tiers — matches the page section width */
+header .header-2 .header-2-top-inner,
+header .header-2 .header-2-inner,
+header .header-2 .header-2-demo-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ---- top utility bar ---- */
+header .header-2 .header-2-top {
+  background: rgb(0 56 116);
+  color: rgb(185 180 169);
+}
+
+header .header-2 .header-2-top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 42px;
+}
+
+header .header-2 .header-2-top-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+header .header-2 .header-2-top-link {
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: rgb(185 180 169);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+header .header-2 .header-2-top-link:hover {
+  color: rgb(237 233 225);
+}
+
+header .header-2 .header-2-top-link-fraud {
+  color: rgb(237 28 36);
+}
+
+header .header-2 .header-2-netbanking {
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(237 233 225);
+  border: 1px solid rgb(237 233 225 / 28%);
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+header .header-2 .header-2-netbanking:hover {
+  border-color: rgb(237 233 225 / 60%);
+}
+
+/* ---- main brand / nav row ---- */
+header .header-2 .header-2-main {
+  position: relative;
+  background: rgb(255 255 255);
+}
+
+header .header-2 .header-2-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  min-height: 72px;
+}
+
+header .header-2 .header-2-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+header .header-2 .header-2-brand img {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
+header .header-2 .header-2-nav {
+  flex: 1 1 auto;
+}
+
+header .header-2 .header-2-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+header .header-2 .header-2-nav a {
+  display: inline-block;
+  font-size: 15px;
+  color: rgb(60 61 64);
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.15s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+header .header-2 .header-2-nav-item {
+  position: static;
+}
+
+/* stylelint-disable no-descending-specificity */
+header .header-2 .header-2-nav a:hover,
+header .header-2 .header-2-nav-item-open > a {
+  background: rgb(234 240 247);
+  color: rgb(237 28 36);
+}
+/* stylelint-enable no-descending-specificity */
+
+/* ---- mega menu ---- */
+header .header-2 .header-2-mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgb(245 247 250);
+  border-top: 1px solid rgb(227 232 239);
+  box-shadow: rgb(20 22 26 / 8%) 0 24px 40px;
+  z-index: 10;
+}
+
+header .header-2 .header-2-mega-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  align-items: start;
+}
+
+header .header-2 .header-2-mega-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px 24px;
+}
+
+header .header-2 .header-2-mega-col-title {
+  margin: 0 0 14px;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(237 28 36);
+}
+
+header .header-2 .header-2-mega-col-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+header .header-2 .header-2-mega-col-links .header-2-mega-link {
+  font-size: 14px;
+  line-height: 1.3;
+  color: rgb(60 61 64);
+  text-decoration: none;
+  padding: 0;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+header .header-2 .header-2-mega-col-links .header-2-mega-link:hover {
+  background: transparent;
+  color: rgb(237 28 36);
+}
+
+header .header-2 .header-2-mega-featured {
+  background: rgb(0 56 116);
+  border-radius: 10px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  text-decoration: none;
+  white-space: normal;
+}
+
+header .header-2 .header-2-mega-featured:hover {
+  background: rgb(0 56 116);
+  color: inherit;
+}
+
+header .header-2 .header-2-mega-featured p {
+  white-space: normal;
+}
+
+header .header-2 .header-2-mega-featured-eyebrow {
+  margin: 0;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(237 28 36);
+}
+
+header .header-2 .header-2-mega-featured-title {
+  font-size: 26px;
+  color: rgb(246 242 234);
+  margin: 12px 0 0;
+  line-height: 1.18;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+header .header-2 .header-2-mega-featured-desc {
+  font-size: 14px;
+  color: rgb(139 148 161);
+  margin: 10px 0 0;
+  line-height: 1.55;
+  max-width: 34ch;
+}
+
+header .header-2 .header-2-mega-featured-cta {
+  display: inline-block;
+  margin: 24px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(255 255 255);
+  border-bottom: 1px solid rgb(237 28 36);
+  align-self: flex-start;
+  padding-bottom: 3px;
+}
+
+header .header-2 .header-2-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+header .header-2 .header-2-search {
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(116 117 122);
+  cursor: pointer;
+}
+
+header .header-2 .header-2-search:hover {
+  color: rgb(0 56 116);
+}
+
+header .header-2 .header-2-login {
+  background: rgb(237 28 36);
+  color: rgb(255 255 255);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+header .header-2 .header-2-login:hover {
+  background: rgb(206 22 29);
+}
+
+/* ---- demo persona bar ---- */
+header .header-2 .header-2-demo {
+  background: rgb(234 240 247);
+  border-bottom: 1px solid rgb(227 232 239);
+}
+
+header .header-2 .header-2-demo-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 56px;
+}
+
+header .header-2 .header-2-demo-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(90 107 130);
+  white-space: nowrap;
+}
+
+header .header-2 .header-2-demo-picker {
+  position: relative;
+  width: 225px;
+}
+
+header .header-2 .header-2-demo-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(255 255 255);
+  background: rgb(0 56 116);
+  border: none;
+  border-radius: 9px;
+  padding: 10px 18px;
+  cursor: pointer;
+  outline: none;
+}
+
+header .header-2 .header-2-demo-caret {
+  font-size: 11px;
+  transition: transform 0.15s;
+}
+
+header .header-2 .header-2-demo-picker-open .header-2-demo-select {
+  border-radius: 9px 9px 0 0;
+}
+
+header .header-2 .header-2-demo-picker-open .header-2-demo-caret {
+  transform: rotate(180deg);
+}
+
+header .header-2 .header-2-demo-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: rgb(0 56 116);
+  border-radius: 0 0 9px 9px;
+  box-shadow: rgb(20 22 26 / 24%) 0 18px 40px;
+  z-index: 5;
+}
+
+header .header-2 .header-2-demo-option {
+  font-size: 14px;
+  color: rgb(255 255 255);
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+header .header-2 .header-2-demo-option:hover {
+  background: rgb(20 84 160);
+  color: rgb(255 255 255);
+}
+
+header .header-2 .header-2-demo-option[aria-selected="true"] {
+  background: rgb(0 102 204);
+  color: rgb(255 255 255);
+}
+
+header .header-2 .header-2-demo-note {
+  font-size: 12.5px;
+  color: rgb(90 107 130);
+  margin-left: auto;
+}
+
+@media (width >= 900px) {
+  header .header-2 .header-2-demo-note {
+    white-space: nowrap;
+  }
+}

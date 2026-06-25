@@ -1,0 +1,97 @@
+/* same side spacing as the other standalone-page blocks */
+main > .section.product-finder-container {
+  margin: 0;
+}
+
+main > .section.product-finder-container > div {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 50px 40px;
+}
+
+.product-finder,
+.product-finder h2 {
+  font-family: inter, sans-serif;
+}
+
+.product-finder .product-finder-card {
+  background: #fff;
+  border: 1px solid rgb(227 232 239);
+  border-radius: 16px;
+  padding: 44px 48px;
+}
+
+.product-finder .product-finder-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.product-finder .product-finder-eyebrow {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(237 28 36);
+}
+
+.product-finder .product-finder-heading {
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: clamp(26px, 3.2vw, 38px);
+  letter-spacing: -0.01em;
+  color: rgb(0 56 116);
+  max-width: 18ch;
+}
+
+.product-finder .product-finder-badge {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(116 117 122);
+}
+
+.product-finder .product-finder-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(237 28 36);
+}
+
+.product-finder .product-finder-chips {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.product-finder .product-finder-chip {
+  border: 1px solid rgb(227 232 239);
+  color: rgb(60 61 64);
+  background: rgb(255 255 255);
+  font-size: 14px;
+  padding: 11px 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.15s;
+  font-family: inherit;
+}
+
+.product-finder .product-finder-chip:hover {
+  border-color: rgb(0 56 116);
+  color: rgb(0 56 116);
+}
+
+.product-finder .product-finder-note {
+  border-top: 1px solid rgb(234 238 243);
+  margin-top: 30px;
+  padding-top: 24px;
+  font-size: 15px;
+  color: rgb(139 148 161);
+}
