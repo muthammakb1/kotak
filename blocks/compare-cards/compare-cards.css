@@ -43,7 +43,7 @@ main > .section.compare-cards-container > div {
   min-width: 180px;
   font-family: inherit;
   font-size: 15px;
-  color: rgb(0 86 179);
+  color: #000;
   background: #fff;
   border: 1px solid rgb(206 214 224);
   border-radius: 8px;

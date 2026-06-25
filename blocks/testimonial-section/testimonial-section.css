@@ -24,6 +24,7 @@ main > .section.testimonial-section-container > div {
 }
 
 .testimonial-section .testimonial-section-viewport {
+  position: relative;
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 40px;
@@ -81,35 +82,37 @@ main > .section.testimonial-section-container > div {
   color: rgb(140 140 140);
 }
 
-.testimonial-section .testimonial-section-controls {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 28px;
-}
-
 .testimonial-section .testimonial-section-nav {
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgb(206 214 224);
-  border-radius: 50%;
-  background: #fff;
-  color: #036;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: none;
+  padding: 0;
+  color: rgb(176 176 176);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: 0.15s;
+  transition: color 0.15s;
+  z-index: 2;
+}
+
+.testimonial-section .testimonial-section-prev {
+  left: 2px;
+}
+
+.testimonial-section .testimonial-section-next {
+  right: 2px;
 }
 
 .testimonial-section .testimonial-section-nav:hover {
-  border-color: #036;
-  background: rgb(234 240 247);
+  color: rgb(110 110 110);
 }
 
 .testimonial-section .testimonial-section-nav svg {
-  width: 18px;
-  height: 18px;
+  width: 40px;
+  height: 40px;
 }
 
 /* ---- offers variant ---- */

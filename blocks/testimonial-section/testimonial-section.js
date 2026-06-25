@@ -154,13 +154,13 @@ export default function decorate(block) {
   prev.type = 'button';
   prev.className = 'testimonial-section-nav testimonial-section-prev';
   prev.setAttribute('aria-label', 'Previous');
-  prev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 5 8 12 15 19"/></svg>';
+  prev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 5 8 12 15 19"/></svg>';
 
   const next = document.createElement('button');
   next.type = 'button';
   next.className = 'testimonial-section-nav testimonial-section-next';
   next.setAttribute('aria-label', 'Next');
-  next.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg>';
+  next.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg>';
 
   const update = () => {
     index = Math.min(index, maxIndex());
@@ -172,6 +172,6 @@ export default function decorate(block) {
   window.addEventListener('resize', update);
 
   controls.append(prev, next);
-  block.append(controls);
+  viewport.append(controls);
   update();
 }
