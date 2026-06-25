@@ -84,7 +84,7 @@ main > .section.banner-container > div {
 }
 
 .banner .banner-cta-primary {
-  background: rgb(237 28 36);
+  background: var(--brand-accent);
   color: rgb(255 255 255);
   font-size: 16px;
   font-weight: 600;
@@ -95,7 +95,7 @@ main > .section.banner-container > div {
 }
 
 .banner .banner-cta-primary:hover {
-  background: rgb(206 22 29);
+  background: var(--brand-accent-dark);
 }
 
 .banner .banner-cta-secondary {
@@ -226,7 +226,7 @@ main > .section.banner-container > div {
   width: 7px;
   height: 7px;
   border-radius: 2px;
-  background: rgb(237 28 36);
+  background: var(--brand-accent);
 }
 
 .banner .banner-card-balance {
@@ -348,7 +348,7 @@ main > .section.banner-container > div {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgb(237 28 36);
+  background: var(--brand-accent);
 }
 
 .banner .banner-card-ai-text {

@@ -62,7 +62,7 @@ main > .section.quick-actions-container > div {
 }
 
 .quick-actions .quick-actions-tile-alert .quick-actions-icon {
-  color: rgb(237 28 36);
+  color: var(--brand-accent);
 }
 
 .quick-actions .quick-actions-label {

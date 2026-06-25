@@ -15,6 +15,203 @@ const TOP_LINKS = [
 
 const PERSONAS = ['Personal Banking', 'Business Banking', 'NRI Banking'];
 
+/* Per-persona homepage copy. Selecting a banking option in the demo bar rewrites
+   the rendered section text in place (the reference keeps the same accent and
+   only swaps content). Keyed by the persona dropdown label. */
+const PERSONA_CONTENT = {
+  'Personal Banking': {
+    hero: {
+      eyebrow: 'Banking, the way it should feel',
+      title: 'Open in minutes.<br>Stay for decades.',
+      desc: 'Start a fully digital account in under five minutes, then run your money in real time — from one place that always has your back.',
+      primary: 'Open an Account',
+      secondary: 'Explore products',
+    },
+    quickActions: ['Open an Account', 'Apply for Credit Card', 'Explore Loans', 'Track Application', 'Pay & Transfer', 'Compare Products', 'Find Branch / ATM', 'Report Fraud / Get Help'],
+    chips: ["I'm new to Kotak", 'A credit card that works for me', 'I need a salary account', 'A low-fee starter option', 'Premium banking', 'Help me compare options'],
+    journey: {
+      eyebrow: 'Built around your life',
+      heading: 'Start where you are. We’ll take it from there.',
+      cards: [
+        { title: 'Start Banking', desc: 'Open a zero-balance account from your phone — no branch, no paperwork.', tags: '811 Digital · Savings · Salary' },
+        { title: 'Save Smarter', desc: 'Earn more on idle money with FDs and ActivMoney — without locking it away.', tags: 'Fixed Deposits · RD · ActivMoney' },
+        { title: 'Borrow with Confidence', desc: 'See your real EMI and total cost before you commit a single rupee.', tags: 'Home · Personal · Vehicle' },
+        { title: 'Spend & Earn', desc: 'Pick a card that rewards how you already spend, with fees shown up front.', tags: 'Credit Cards · Rewards · Cashback' },
+        { title: 'Grow My Wealth', desc: 'From your first ₹500 SIP to a managed portfolio, all in one place.', tags: 'Mutual Funds · Stocks · PMS' },
+        { title: 'Protect What Matters', desc: 'Life, health and motor cover for the things you can’t afford to lose.', tags: 'Life · Health · Motor' },
+      ],
+    },
+    trust: {
+      heading: 'Built to be trusted with more than your money.',
+      tiles: [
+        { title: 'Your money is insured by law.', desc: 'Deposits up to ₹5 lakh are covered under DICGC, and Kotak is regulated by the RBI.' },
+        { title: 'Locked down to your device.', desc: '256-bit encryption, multi-factor authentication and device binding on every session.' },
+        { title: 'If fraud happens, you don’t pay.', desc: 'Real-time alerts on every transaction and a zero-liability policy on unauthorised use.' },
+        { title: 'No fee you didn’t see coming.', desc: 'Every charge is published up front. Read the full fee schedule before you open anything.' },
+      ],
+      stats: [
+        { value: '5 Cr+', label: 'Customers served' },
+        { value: '₹4.8L Cr', label: 'Assets under management' },
+        { value: '24 / 7', label: 'Support availability' },
+        { value: 'Since 2003', label: 'A bank you can place' },
+      ],
+    },
+    decision: {
+      heading: 'Decide with the numbers in front of you.',
+      calcTitle: 'EMI Calculator',
+      guides: ['Which credit card is right for you?', 'Home loan vs. rent — what makes sense now?', 'The three messages no bank will ever send you'],
+    },
+  },
+  'Business Banking': {
+    hero: {
+      eyebrow: 'Banking for builders',
+      title: 'Banking that keeps<br>pace with you.',
+      desc: 'Open a current account online, collect payments instantly, and unlock collateral-free working capital from ₹3 lakh.',
+      primary: 'Open a Current Account',
+      secondary: 'Explore business banking',
+    },
+    quickActions: ['Open Current Account', 'Collect Payments', 'Working Capital', 'Bulk Payouts', 'Pay GST / Taxes', 'Trade & Forex', 'Track Application', 'Report Fraud / Get Help'],
+    chips: ["I'm starting a business", 'I want to collect payments', 'I need working capital', 'Open a current account', 'Run payroll & salary'],
+    journey: {
+      eyebrow: 'Built around your business',
+      heading: 'Run it, fund it, grow it.',
+      cards: [
+        { title: 'Open & Operate', desc: 'Current accounts with the limits and tools a real business needs.', tags: 'Current · Pro · Privy Business' },
+        { title: 'Finance Growth', desc: 'Fund expansion with collateral-free and secured lending.', tags: 'Business Loan · Working Capital · LAP' },
+        { title: 'Collect & Pay', desc: 'Accept payments and automate payouts at scale.', tags: 'Payment Gateway · UPI · Payouts' },
+        { title: 'Trade & Forex', desc: 'Move goods and money across borders with ease.', tags: 'LC · Bank Guarantee · Export Credit' },
+        { title: 'Manage Payroll', desc: 'Pay your team on time, every time.', tags: 'Corporate Salary · Payouts API' },
+        { title: 'Treasury & Tax', desc: 'Keep idle funds working and your taxes on track.', tags: 'Sweep · CMS · GST Payments' },
+      ],
+    },
+    trust: {
+      heading: 'Banking your business can rely on.',
+      tiles: [
+        { title: 'Settlements that clear on time.', desc: 'Real-time collections and same-day settlements with transparent cut-offs.' },
+        { title: 'Secure, compliant by design.', desc: 'PCI-DSS payments, RBI-regulated processes and granular team access controls.' },
+        { title: 'A banker who knows your business.', desc: 'A dedicated relationship manager and priority resolution for your team.' },
+        { title: 'No fee you didn’t see coming.', desc: 'Every charge published up front. Read the full schedule before you sign.' },
+      ],
+      stats: [
+        { value: '40L+', label: 'Businesses banked' },
+        { value: '1,300+', label: 'Branches' },
+        { value: '99.9%', label: 'Platform uptime' },
+        { value: 'Since 2003', label: 'Trusted since' },
+      ],
+    },
+    decision: {
+      heading: 'Run the numbers before you commit.',
+      calcTitle: 'Business Loan EMI',
+      guides: ['How much working capital does your business need?', 'Term loan vs. overdraft — which costs less?', 'Protecting your business from payment fraud'],
+    },
+  },
+  'NRI Banking': {
+    hero: {
+      eyebrow: 'Banking without borders',
+      title: 'Your money, home —<br>from anywhere.',
+      desc: 'Open an NRE or NRO account in 72 hours, remit to India at live rates, and grow tax-efficient deposits.',
+      primary: 'Open an NRI Account',
+      secondary: 'Explore NRI banking',
+    },
+    quickActions: ['Open NRI Account', 'Remit to India', 'NRE / NRO FD', 'Repatriate Funds', 'Invest in India', 'Track Onboarding', 'Find Branch / ATM', 'Report Fraud / Get Help'],
+    chips: ["I'm new to NRI banking", 'I want to remit to India', 'Tax-efficient deposits', 'Invest in India', 'A home loan in India'],
+    journey: {
+      eyebrow: 'Built around your journey',
+      heading: 'India, wherever you are.',
+      cards: [
+        { title: 'Open from Abroad', desc: 'Start an NRE or NRO account without flying down to India.', tags: 'NRE · NRO · Privy' },
+        { title: 'Grow Deposits', desc: 'Tax-efficient, repatriable deposits in rupees or forex.', tags: 'NRE FD · NRO FD · FCNR' },
+        { title: 'Remit & Repatriate', desc: 'Move money to and from India at live exchange rates.', tags: 'Click2Remit · Wire · Exchange House' },
+        { title: 'Invest in India', desc: 'Participate in Indian markets, fully compliantly.', tags: 'PIS Demat · Mutual Funds · PMS' },
+        { title: 'Borrow in India', desc: 'Finance a home or property back home with ease.', tags: 'NRI Home Loan · LAP' },
+        { title: 'Protect Family', desc: 'Cover the people you’re building it all for.', tags: 'Life · Health Insurance' },
+      ],
+    },
+    trust: {
+      heading: 'Banking that respects borders and rules.',
+      tiles: [
+        { title: 'Repatriation, done right.', desc: 'FEMA-compliant transfers with clear documentation, every single time.' },
+        { title: 'Tax treated correctly.', desc: 'NRE interest is tax-free in India; DTAA benefits applied where you’re eligible.' },
+        { title: 'Secure across borders.', desc: '256-bit encryption, multi-factor authentication and device binding on every session.' },
+        { title: 'No fee you didn’t see coming.', desc: 'Transparent FX rates and charges, published before you transact.' },
+      ],
+      stats: [
+        { value: '150+', label: 'Countries served' },
+        { value: '72 hr', label: 'Account opening' },
+        { value: '24 / 7', label: 'Global support' },
+        { value: 'Since 2003', label: 'Trusted since' },
+      ],
+    },
+    decision: {
+      heading: 'Decide with the numbers in front of you.',
+      calcTitle: 'NRI Home Loan EMI',
+      guides: ['NRE vs NRO — where should your money sit?', 'Is an FCNR deposit right for you?', 'Remittance scams every NRI should know'],
+    },
+  },
+};
+
+function setText(el, value) {
+  if (el && value != null) el.textContent = value;
+}
+
+/** Rewrites the homepage section copy to match the chosen persona. */
+function applyPersonaContent(persona) {
+  const data = PERSONA_CONTENT[persona];
+  const main = document.querySelector('main');
+  if (!data || !main) return false;
+
+  const slide = main.querySelector('.banner-content');
+  if (slide) {
+    setText(slide.querySelector('.banner-eyebrow'), data.hero.eyebrow);
+    const title = slide.querySelector('.banner-title');
+    if (title) title.innerHTML = data.hero.title;
+    setText(slide.querySelector('.banner-desc'), data.hero.desc);
+    setText(slide.querySelector('.banner-cta-primary'), data.hero.primary);
+    setText(slide.querySelector('.banner-cta-secondary'), `${data.hero.secondary} →`);
+  }
+
+  main.querySelectorAll('.quick-actions-label').forEach((el, i) => setText(el, data.quickActions[i]));
+
+  main.querySelectorAll('.product-finder-chip').forEach((el, i) => {
+    if (data.chips[i]) {
+      el.textContent = data.chips[i];
+      el.hidden = false;
+    } else {
+      el.hidden = true;
+    }
+  });
+
+  setText(main.querySelector('.journey-grid-eyebrow'), data.journey.eyebrow);
+  setText(main.querySelector('.journey-grid-heading'), data.journey.heading);
+  main.querySelectorAll('.journey-grid-card').forEach((card, i) => {
+    const c = data.journey.cards[i];
+    if (!c) return;
+    setText(card.querySelector('.journey-grid-card-title'), c.title);
+    setText(card.querySelector('.journey-grid-card-desc'), c.desc);
+    setText(card.querySelector('.journey-grid-card-tags'), c.tags);
+  });
+
+  setText(main.querySelector('.trust-section-heading'), data.trust.heading);
+  main.querySelectorAll('.trust-section-tile').forEach((tile, i) => {
+    const t = data.trust.tiles[i];
+    if (!t) return;
+    setText(tile.querySelector('.trust-section-tile-title'), t.title);
+    setText(tile.querySelector('.trust-section-tile-desc'), t.desc);
+  });
+  main.querySelectorAll('.trust-section-stat').forEach((stat, i) => {
+    const s = data.trust.stats[i];
+    if (!s) return;
+    setText(stat.querySelector('.trust-section-stat-value'), s.value);
+    setText(stat.querySelector('.trust-section-stat-label'), s.label);
+  });
+
+  setText(main.querySelector('.decision-tools-heading'), data.decision.heading);
+  setText(main.querySelector('.decision-tools-calc-title'), data.decision.calcTitle);
+  main.querySelectorAll('.decision-tools-card-title').forEach((el, i) => setText(el, data.decision.guides[i]));
+
+  return !!slide;
+}
+
 const MEGA_MENUS = {
   Personal: {
     columns: [
@@ -314,6 +511,7 @@ function buildDemoBar() {
       menu.querySelectorAll('.header-2-demo-option').forEach((o) => o.removeAttribute('aria-selected'));
       li.setAttribute('aria-selected', 'true');
       setOpen(false);
+      applyPersonaContent(p);
     });
     menu.append(li);
   });

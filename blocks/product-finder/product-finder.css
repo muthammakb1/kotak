@@ -33,7 +33,7 @@ main > .section.product-finder-container > div {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgb(237 28 36);
+  color: var(--brand-accent);
 }
 
 .product-finder .product-finder-heading {
@@ -61,7 +61,7 @@ main > .section.product-finder-container > div {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgb(237 28 36);
+  background: var(--brand-accent);
 }
 
 .product-finder .product-finder-chips {

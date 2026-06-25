@@ -39,7 +39,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgb(237 28 36);
+  background: var(--brand-accent);
 }
 
 .floating-button .floating-button-panel {
@@ -157,7 +157,7 @@
 }
 
 .floating-button .floating-button-panel-option:hover {
-  border-color: rgb(237 28 36);
+  border-color: var(--brand-accent);
   background: rgb(252 237 237);
 }
 
@@ -201,7 +201,7 @@
 .floating-button .floating-button-panel-rec-cta {
   display: inline-block;
   margin-top: 12px;
-  background: rgb(237 28 36);
+  background: var(--brand-accent);
   color: rgb(255 255 255);
   font-size: 13px;
   font-weight: 600;
@@ -212,7 +212,7 @@
 }
 
 .floating-button .floating-button-panel-rec-cta:hover {
-  background: rgb(206 22 29);
+  background: var(--brand-accent-dark);
 }
 
 .floating-button .floating-button-panel-footer {
@@ -243,7 +243,7 @@
   height: 38px;
   border: 0;
   border-radius: 50%;
-  background: rgb(237 28 36);
+  background: var(--brand-accent);
   color: rgb(255 255 255);
   cursor: pointer;
   display: inline-flex;
@@ -253,7 +253,7 @@
 }
 
 .floating-button .floating-button-panel-send:hover {
-  background: rgb(206 22 29);
+  background: var(--brand-accent-dark);
 }
 
 .floating-button .floating-button-panel-send svg {
