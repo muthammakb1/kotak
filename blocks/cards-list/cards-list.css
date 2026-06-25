@@ -1,0 +1,56 @@
+main > .section.cards-list-container > div {
+  max-width: 1280px;
+}
+
+.cards-list {
+  font-family: roboto, sans-serif;
+}
+
+.cards-list .cards-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.cards-list .cards-list-card {
+  position: relative;
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: rgb(0 0 0 / 10%) 0 2px 10px;
+  pointer-events: auto !important;
+}
+
+.cards-list .cards-list-media {
+  line-height: 0;
+}
+
+.cards-list .cards-list-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.cards-list .cards-list-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 18px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.cards-list .cards-list-card:hover {
+  box-shadow: rgb(0 0 0 / 18%) 0 6px 18px;
+}
+
+@media (width >= 900px) {
+  .cards-list .cards-list-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

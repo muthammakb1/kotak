@@ -79,6 +79,7 @@ main > .section.hero-carousel-container > div {
 
 .hero-carousel .hero-carousel-cta {
   display: inline-block;
+  pointer-events: auto !important;
   background: #ed4223;
   color: #fff;
   text-decoration: none;
@@ -94,7 +95,7 @@ main > .section.hero-carousel-container > div {
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
-  cursor: pointer;
+  cursor: pointer !important;
   touch-action: manipulation;
 }
 

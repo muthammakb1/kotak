@@ -3,7 +3,8 @@
     "kotak": {
       "previewOrg": "muthammakb1",
       "previewSite": "kotak",
-      "contentHostUrl": "https://content.da.live/muthammakb1/kotak/"
+      "contentHostUrl": "https://content.da.live/muthammakb1/kotak/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
     }
   },
   "type": "da"
