@@ -20,13 +20,34 @@ const PERSONAS = ['Personal Banking', 'Business Banking', 'NRI Banking'];
    only swaps content). Keyed by the persona dropdown label. */
 const PERSONA_CONTENT = {
   'Personal Banking': {
-    hero: {
-      eyebrow: 'Banking, the way it should feel',
-      title: 'Open in minutes.<br>Stay for decades.',
-      desc: 'Start a fully digital account in under five minutes, then run your money in real time — from one place that always has your back.',
-      primary: 'Open an Account',
-      secondary: 'Explore products',
-    },
+    heroSlides: [
+      {
+        eyebrow: 'Banking, the way it should feel',
+        title: 'Open in minutes.<br>Stay for decades.',
+        desc: 'Start a fully digital account in under five minutes, then run your money in real time — from one place that always has your back.',
+        primary: 'Open an Account',
+        secondary: 'Explore products',
+      },
+      {
+        eyebrow: 'Zero-balance · Kotak 811',
+        title: 'Banking with<br>nothing held back.',
+        desc: 'Open an 811 account with Aadhaar in five minutes — zero balance, fully digital, no branch visit.',
+        primary: 'Open 811 Account',
+        secondary: 'Why 811',
+      },
+      {
+        eyebrow: 'Cards that reward you',
+        title: 'Spend smart.<br>Earn more.',
+        desc: 'Pick a credit card matched to how you actually spend, with every fee shown up front.',
+        primary: 'Explore Cards',
+        secondary: 'Compare cards',
+      },
+    ],
+    heroStats: [
+      { value: '5 Cr+', label: 'Customers' },
+      { value: '₹4.8L Cr', label: 'Assets' },
+      { value: 'RBI', label: 'Regulated · DICGC' },
+    ],
     quickActions: ['Open an Account', 'Apply for Credit Card', 'Explore Loans', 'Track Application', 'Pay & Transfer', 'Compare Products', 'Find Branch / ATM', 'Report Fraud / Get Help'],
     chips: ["I'm new to Kotak", 'A credit card that works for me', 'I need a salary account', 'A low-fee starter option', 'Premium banking', 'Help me compare options'],
     journey: {
@@ -63,13 +84,34 @@ const PERSONA_CONTENT = {
     },
   },
   'Business Banking': {
-    hero: {
-      eyebrow: 'Banking for builders',
-      title: 'Banking that keeps<br>pace with you.',
-      desc: 'Open a current account online, collect payments instantly, and unlock collateral-free working capital from ₹3 lakh.',
-      primary: 'Open a Current Account',
-      secondary: 'Explore business banking',
-    },
+    heroSlides: [
+      {
+        eyebrow: 'Banking for builders',
+        title: 'Banking that keeps<br>pace with you.',
+        desc: 'Open a current account online, collect payments instantly, and unlock collateral-free working capital from ₹3 lakh.',
+        primary: 'Open a Current Account',
+        secondary: 'Explore business banking',
+      },
+      {
+        eyebrow: 'Working capital',
+        title: 'Fuel growth<br>without the wait.',
+        desc: 'Collateral-free funding from ₹3 lakh to ₹1 crore, decisioned fast and built around your cash flow.',
+        primary: 'Check eligibility',
+        secondary: 'See loan options',
+      },
+      {
+        eyebrow: 'Collect & pay',
+        title: 'Get paid instantly.<br>Pay at scale.',
+        desc: 'Accept UPI and cards with next-day settlement, and automate vendor and salary payouts.',
+        primary: 'Start collecting',
+        secondary: 'Payment solutions',
+      },
+    ],
+    heroStats: [
+      { value: '40L+', label: 'Businesses banked' },
+      { value: '1,300+', label: 'Branches' },
+      { value: 'RBI', label: 'Regulated · PCI-DSS' },
+    ],
     quickActions: ['Open Current Account', 'Collect Payments', 'Working Capital', 'Bulk Payouts', 'Pay GST / Taxes', 'Trade & Forex', 'Track Application', 'Report Fraud / Get Help'],
     chips: ["I'm starting a business", 'I want to collect payments', 'I need working capital', 'Open a current account', 'Run payroll & salary'],
     journey: {
@@ -106,13 +148,34 @@ const PERSONA_CONTENT = {
     },
   },
   'NRI Banking': {
-    hero: {
-      eyebrow: 'Banking without borders',
-      title: 'Your money, home —<br>from anywhere.',
-      desc: 'Open an NRE or NRO account in 72 hours, remit to India at live rates, and grow tax-efficient deposits.',
-      primary: 'Open an NRI Account',
-      secondary: 'Explore NRI banking',
-    },
+    heroSlides: [
+      {
+        eyebrow: 'Banking without borders',
+        title: 'Your money, home —<br>from anywhere.',
+        desc: 'Open an NRE or NRO account in 72 hours, remit to India at live rates, and grow tax-efficient deposits.',
+        primary: 'Open an NRI Account',
+        secondary: 'Explore NRI banking',
+      },
+      {
+        eyebrow: 'Tax-efficient deposits',
+        title: 'Earn 7.2%,<br>entirely tax-free.',
+        desc: 'Book an NRE fixed deposit — interest is tax-free in India and the funds stay fully repatriable.',
+        primary: 'Book NRE FD',
+        secondary: 'Compare rates',
+      },
+      {
+        eyebrow: 'Remit in minutes',
+        title: 'Send money home,<br>instantly.',
+        desc: 'Remit to India online at live exchange rates with Click2Remit, usually credited within a day.',
+        primary: 'Remit now',
+        secondary: 'How it works',
+      },
+    ],
+    heroStats: [
+      { value: '150+', label: 'Countries served' },
+      { value: '72 hr', label: 'Account opening' },
+      { value: 'RBI · FEMA', label: 'Compliant' },
+    ],
     quickActions: ['Open NRI Account', 'Remit to India', 'NRE / NRO FD', 'Repatriate Funds', 'Invest in India', 'Track Onboarding', 'Find Branch / ATM', 'Report Fraud / Get Help'],
     chips: ["I'm new to NRI banking", 'I want to remit to India', 'Tax-efficient deposits', 'Invest in India', 'A home loan in India'],
     journey: {
@@ -160,15 +223,25 @@ function applyPersonaContent(persona) {
   const main = document.querySelector('main');
   if (!data || !main) return false;
 
-  const slide = main.querySelector('.banner-content');
-  if (slide) {
-    setText(slide.querySelector('.banner-eyebrow'), data.hero.eyebrow);
+  // each carousel slide gets its own persona copy
+  main.querySelectorAll('.banner-content').forEach((slide, i) => {
+    const s = data.heroSlides[i] || data.heroSlides[data.heroSlides.length - 1];
+    if (!s) return;
+    setText(slide.querySelector('.banner-eyebrow'), s.eyebrow);
     const title = slide.querySelector('.banner-title');
-    if (title) title.innerHTML = data.hero.title;
-    setText(slide.querySelector('.banner-desc'), data.hero.desc);
-    setText(slide.querySelector('.banner-cta-primary'), data.hero.primary);
-    setText(slide.querySelector('.banner-cta-secondary'), `${data.hero.secondary} →`);
-  }
+    if (title) title.innerHTML = s.title;
+    setText(slide.querySelector('.banner-desc'), s.desc);
+    setText(slide.querySelector('.banner-cta-primary'), s.primary);
+    setText(slide.querySelector('.banner-cta-secondary'), `${s.secondary} →`);
+  });
+
+  // hero stat strip (shared across slides)
+  main.querySelectorAll('.banner-stat').forEach((stat, i) => {
+    const s = data.heroStats[i];
+    if (!s) return;
+    setText(stat.querySelector('.banner-stat-value'), s.value);
+    setText(stat.querySelector('.banner-stat-label'), s.label);
+  });
 
   main.querySelectorAll('.quick-actions-label').forEach((el, i) => setText(el, data.quickActions[i]));
 
@@ -209,7 +282,7 @@ function applyPersonaContent(persona) {
   setText(main.querySelector('.decision-tools-calc-title'), data.decision.calcTitle);
   main.querySelectorAll('.decision-tools-card-title').forEach((el, i) => setText(el, data.decision.guides[i]));
 
-  return !!slide;
+  return !!main.querySelector('.banner-content');
 }
 
 const MEGA_MENUS = {
