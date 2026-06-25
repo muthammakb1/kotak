@@ -179,12 +179,26 @@ export default function decorate(block) {
     dotEls.forEach((d, i) => d.classList.toggle('banner-dot-active', i === index));
   };
   const go = (i) => { index = (i + total) % total; update(); };
-  prev.addEventListener('click', () => go(index - 1));
-  next.addEventListener('click', () => go(index + 1));
-  dotEls.forEach((d, i) => d.addEventListener('click', () => go(i)));
+
+  // auto-advance every 5s; reset the timer on any manual interaction and pause on hover
+  const AUTO_MS = 5000;
+  let timer;
+  const stopAuto = () => clearInterval(timer);
+  const startAuto = () => {
+    stopAuto();
+    if (total > 1) timer = setInterval(() => go(index + 1), AUTO_MS);
+  };
+  const goManual = (i) => { go(i); startAuto(); };
+
+  prev.addEventListener('click', () => goManual(index - 1));
+  next.addEventListener('click', () => goManual(index + 1));
+  dotEls.forEach((d, i) => d.addEventListener('click', () => goManual(i)));
 
   layout.append(left, buildAccountCard());
   viewport.append(layout);
   block.append(viewport);
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
   update();
+  startAuto();
 }
