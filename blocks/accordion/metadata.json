@@ -1,0 +1,39 @@
+{
+  "variantName": "accordion",
+  "baseBlock": "accordion",
+  "version": "1.0.0",
+  "created": "2026-06-25T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.kotak.bank.in/en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri.html",
+    "originPage": "stories-in-focus article page (story-article template)",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "faq",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "repeating question (summary) + answer (body) rows",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "FAQ sections",
+      "expandable Q&A lists",
+      "collapsible content panels"
+    ],
+    "notSuitableFor": [
+      "image galleries",
+      "card grids",
+      "hero banners"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-25T00:00:00.000Z"
+  }
+}

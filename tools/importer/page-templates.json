@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "story-article",
+      "urls": [
+        "https://www.kotak.bank.in/en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri.html"
+      ],
+      "representativeUrl": "https://www.kotak.bank.in/en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri.html",
+      "coverageGaps": [],
+      "description": "Stories-in-focus article page: hero banner with title, article body with sidebar related-links, FAQ accordion, and a Read Next cards section.",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": ["div.heroslider.section"]
+        },
+        {
+          "name": "columns",
+          "instances": ["section.articles-details > div.container > div.row"]
+        },
+        {
+          "name": "section-faq",
+          "instances": ["div.faq.section"],
+          "section": "light-grey"
+        },
+        {
+          "name": "accordion",
+          "instances": ["div.faq.section"]
+        },
+        {
+          "name": "section-readnext",
+          "instances": ["div.keepreading.section"],
+          "section": "light-grey"
+        },
+        {
+          "name": "knowledge-hub",
+          "instances": ["div.keepreading.section"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "rc5",
+          "name": "Hero Banner",
+          "selector": "div.heroslider.section",
+          "style": null,
+          "blocks": ["hero"],
+          "defaultContent": []
+        },
+        {
+          "id": "rc7c1",
+          "name": "Article Body + Related Information Sidebar",
+          "selector": "section.articles-details > div.container > div.row",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "rc7c2",
+          "name": "Frequently Asked Questions (FAQ Accordion)",
+          "selector": "div.faq.section",
+          "style": "light-grey",
+          "blocks": ["accordion"],
+          "defaultContent": []
+        },
+        {
+          "id": "rc7c3",
+          "name": "Read Next (Article Cards)",
+          "selector": "div.keepreading.section",
+          "style": "light-grey",
+          "blocks": ["knowledge-hub"],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}
