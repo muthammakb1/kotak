@@ -1,0 +1,61 @@
+main > .section.journey-section-container > div {
+  max-width: 1280px;
+}
+
+.journey-section {
+  font-family: roboto, sans-serif;
+}
+
+.journey-section .journey-section-title {
+  margin: 0 0 32px;
+  text-align: center;
+  font-family: roboto, serif;
+  font-weight: 500;
+  font-size: 28px;
+  color: #036;
+}
+
+.journey-section .journey-section-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: rgb(248 248 248);
+  border-radius: 8px;
+}
+
+.journey-section .journey-section-step {
+  padding: 40px 44px;
+}
+
+.journey-section .journey-section-icon {
+  display: inline-flex;
+  color: rgb(225 35 45);
+}
+
+.journey-section .journey-section-icon svg {
+  width: 56px;
+  height: 56px;
+}
+
+.journey-section .journey-section-step-title {
+  margin: 28px 0 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: #666;
+}
+
+.journey-section .journey-section-step-body {
+  margin: 22px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666;
+}
+
+@media (width >= 900px) {
+  .journey-section .journey-section-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .journey-section .journey-section-step + .journey-section-step {
+    border-left: 1px solid rgb(228 228 228);
+  }
+}

@@ -1,0 +1,198 @@
+main > .section.testimonial-section-container {
+  margin: 0;
+}
+
+main > .section.testimonial-section-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+.testimonial-section {
+  background: rgb(245 245 245);
+  padding: 50px 0;
+  font-family: roboto, sans-serif;
+}
+
+.testimonial-section .testimonial-section-title {
+  margin: 0 auto 36px;
+  max-width: 1280px;
+  padding: 0 40px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 28px;
+  color: #036;
+}
+
+.testimonial-section .testimonial-section-viewport {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.testimonial-section .testimonial-section-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.testimonial-section .testimonial-section-card {
+  flex: 0 0 calc(100% - 24px);
+  box-sizing: border-box;
+  margin: 0 12px;
+  padding: 28px 26px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 8%) 0 4px 16px;
+}
+
+.testimonial-section .testimonial-section-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(40 40 40);
+}
+
+.testimonial-section .testimonial-section-stars {
+  margin: 8px 0 14px;
+  display: flex;
+  gap: 2px;
+}
+
+.testimonial-section .testimonial-section-star {
+  font-size: 16px;
+  color: rgb(214 214 214);
+}
+
+.testimonial-section .testimonial-section-star.is-on {
+  color: rgb(245 180 30);
+}
+
+.testimonial-section .testimonial-section-desc {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #555;
+  min-height: 88px;
+}
+
+.testimonial-section .testimonial-section-date {
+  margin: 18px 0 0;
+  font-size: 12.5px;
+  color: rgb(140 140 140);
+}
+
+.testimonial-section .testimonial-section-controls {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.testimonial-section .testimonial-section-nav {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgb(206 214 224);
+  border-radius: 50%;
+  background: #fff;
+  color: #036;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.15s;
+}
+
+.testimonial-section .testimonial-section-nav:hover {
+  border-color: #036;
+  background: rgb(234 240 247);
+}
+
+.testimonial-section .testimonial-section-nav svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---- offers variant ---- */
+.testimonial-section.offers {
+  background: #fff;
+}
+
+.testimonial-section .testimonial-section-offer {
+  background: rgb(240 240 240);
+  border-radius: 6px;
+  padding: 22px 22px 26px;
+}
+
+.testimonial-section .testimonial-section-offer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.testimonial-section .testimonial-section-offer-label {
+  font-size: 15px;
+  color: rgb(60 61 64);
+}
+
+.testimonial-section .testimonial-section-offer-media {
+  margin: 14px 0 0;
+  line-height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.testimonial-section .testimonial-section-offer-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.testimonial-section .testimonial-section-offer-title {
+  margin: 18px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgb(40 40 40);
+}
+
+.testimonial-section .testimonial-section-offer-desc {
+  margin: 14px 0 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #555;
+  min-height: 66px;
+}
+
+.testimonial-section .testimonial-section-offer-valid {
+  margin: 24px 0 0;
+  font-size: 14px;
+  color: rgb(60 61 64);
+}
+
+.testimonial-section .testimonial-section-offer-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(237 28 36);
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto !important;
+}
+
+.testimonial-section .testimonial-section-offer-read svg {
+  width: 16px;
+  height: 16px;
+}
+
+.testimonial-section .testimonial-section-offer-read:hover {
+  color: rgb(206 22 29);
+}
+
+@media (width >= 900px) {
+  .testimonial-section .testimonial-section-card {
+    flex: 0 0 calc(100% / 3 - 24px);
+  }
+}

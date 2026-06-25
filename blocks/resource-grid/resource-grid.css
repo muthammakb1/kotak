@@ -1,0 +1,117 @@
+main > .section.resource-grid-container {
+  margin: 0;
+}
+
+main > .section.resource-grid-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+.resource-grid {
+  background: rgb(245 245 245);
+  padding: 50px 0;
+  font-family: roboto, sans-serif;
+}
+
+.resource-grid .resource-grid-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.resource-grid .resource-grid-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 26px 28px;
+  box-shadow: rgb(0 0 0 / 6%) 0 2px 10px;
+}
+
+.resource-grid .resource-grid-header {
+  margin: 0 0 18px;
+  font-size: 19px;
+  font-weight: 600;
+  color: #036;
+}
+
+.resource-grid .resource-grid-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resource-grid .resource-grid-item {
+  border-top: 1px solid rgb(238 238 238);
+}
+
+.resource-grid .resource-grid-item:first-child {
+  border-top: 0;
+}
+
+.resource-grid .resource-grid-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  text-decoration: none;
+  color: rgb(60 61 64);
+  pointer-events: auto !important;
+}
+
+.resource-grid .resource-grid-icon {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.resource-grid .resource-grid-text {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.resource-grid .resource-grid-arrow {
+  flex: none;
+  display: inline-flex;
+  color: rgb(237 28 36);
+}
+
+.resource-grid .resource-grid-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.resource-grid .resource-grid-link:hover .resource-grid-text {
+  color: rgb(237 28 36);
+}
+
+.resource-grid .resource-grid-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(237 28 36);
+  text-decoration: none;
+  pointer-events: auto !important;
+}
+
+.resource-grid .resource-grid-cta svg {
+  width: 15px;
+  height: 15px;
+}
+
+.resource-grid .resource-grid-cta:hover {
+  color: rgb(206 22 29);
+}
+
+@media (width >= 900px) {
+  .resource-grid .resource-grid-grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}

@@ -1,0 +1,103 @@
+main > .section.card-rate-accordion-container > div {
+  max-width: 1280px;
+}
+
+.card-rate-accordion {
+  font-family: roboto, sans-serif;
+}
+
+.card-rate-accordion .card-rate-accordion-heading {
+  margin: 0 0 24px;
+  font-weight: 500;
+  font-size: 28px;
+  color: #036;
+}
+
+.card-rate-accordion .card-rate-accordion-item {
+  border-bottom: 1px solid rgb(224 224 224);
+}
+
+.card-rate-accordion .card-rate-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 20px 4px;
+  font: 600 15px / 35px roboto, serif;
+  color: #333;
+  cursor: pointer;
+}
+
+.card-rate-accordion .card-rate-accordion-icon {
+  flex: none;
+  display: inline-flex;
+  color: rgb(237 28 36);
+}
+
+.card-rate-accordion .card-rate-accordion-icon svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.2s;
+}
+
+.card-rate-accordion .card-rate-accordion-item.is-open .card-rate-accordion-icon svg {
+  transform: rotate(180deg);
+}
+
+.card-rate-accordion .card-rate-accordion-panel {
+  padding: 0 4px 22px;
+}
+
+.card-rate-accordion .card-rate-accordion-content {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.card-rate-accordion .card-rate-accordion-content p {
+  margin: 0 0 1em;
+}
+
+.card-rate-accordion .card-rate-accordion-content p:last-child {
+  margin-bottom: 0;
+}
+
+.card-rate-accordion .card-rate-accordion-content a {
+  color: rgb(237 28 36);
+  text-decoration: none;
+}
+
+.card-rate-accordion .card-rate-accordion-content a:hover {
+  text-decoration: underline;
+}
+
+.card-rate-accordion .card-rate-accordion-content ul,
+.card-rate-accordion .card-rate-accordion-content ol {
+  margin: 0 0 1em;
+  padding-left: 22px;
+}
+
+.card-rate-accordion .card-rate-accordion-content li {
+  margin-bottom: 8px;
+}
+
+.card-rate-accordion .card-rate-accordion-content li::marker {
+  color: rgb(237 28 36);
+}
+
+.card-rate-accordion .card-rate-accordion-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1em;
+}
+
+.card-rate-accordion .card-rate-accordion-content th,
+.card-rate-accordion .card-rate-accordion-content td {
+  border: 1px solid rgb(224 224 224);
+  padding: 10px 12px;
+  text-align: left;
+}
