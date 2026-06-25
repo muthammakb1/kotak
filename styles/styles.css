@@ -19,6 +19,10 @@
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
+  /* brand accent — overridden per persona by the viewing-as demo bar */
+  --brand-accent: rgb(237 28 36);
+  --brand-accent-dark: rgb(206 22 29);
+
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
@@ -336,3 +340,4 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+

@@ -21,7 +21,7 @@ main > .section.trust-section-container > div {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgb(237 28 36);
+  color: var(--brand-accent);
 }
 
 .trust-section .trust-section-heading {
