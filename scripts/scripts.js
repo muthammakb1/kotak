@@ -148,6 +148,16 @@ function markSavingsIntro(main) {
 }
 
 /**
+ * On the credit-cards page, flag the body so the page-specific Roboto typography
+ * and the centred "Apply for Credit Card Online" heading style can be applied
+ * via CSS. Scoped to that path so other pages are unaffected.
+ */
+function markCreditCardsPage() {
+  if (!window.location.pathname.includes('/cards/credit-cards')) return;
+  document.body.classList.add('credit-cards-page');
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -159,6 +169,7 @@ export function decorateMain(main) {
   decorateBlocks(main);
   decorateButtons(main);
   markSavingsIntro(main);
+  markCreditCardsPage();
 }
 
 /**
