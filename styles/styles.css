@@ -383,6 +383,16 @@ body.credit-cards-page h4.hd1 {
   font-family: roboto, sans-serif !important;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+body.credit-cards-page h1,
+body.credit-cards-page h2,
+body.credit-cards-page h3,
+body.credit-cards-page h4,
+body.credit-cards-page h5,
+body.credit-cards-page h6 {
+  font-family: roboto, serif;
+}
+
 /* centred "Apply for Credit Card Online" heading (first content-block title) */
 body.credit-cards-page .content-block > div:first-child p {
   font-size: 22px;
