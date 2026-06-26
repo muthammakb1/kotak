@@ -1,0 +1,46 @@
+.account-steps {
+  font-family: roboto, sans-serif;
+}
+
+.account-steps .account-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.account-steps .account-steps-step {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-steps .account-steps-head {
+  padding: 16px 22px;
+  background: #ed1c24;
+  font-size: 17px;
+  font-weight: 700;
+  color: rgb(255 255 255);
+}
+
+.account-steps .account-steps-body {
+  flex: 1 1 auto;
+  padding: 26px 22px;
+  background: rgb(240 240 240);
+  font-size: 16px;
+  line-height: 1.55;
+  color: #4a4a4a;
+}
+
+.account-steps .account-steps-body p {
+  margin: 0;
+}
+
+.account-steps .account-steps-body p + p {
+  margin-top: 16px;
+}
+
+@media (width < 900px) {
+  .account-steps .account-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}

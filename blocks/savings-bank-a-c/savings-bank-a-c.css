@@ -1,0 +1,79 @@
+.savings-bank-a-c {
+  font-family: roboto, sans-serif;
+  color: #333;
+}
+
+.savings-bank-a-c .savings-bank-a-c-table {
+  border: 1px solid rgb(224 224 224);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.savings-bank-a-c .savings-bank-a-c-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgb(224 224 224);
+}
+
+.savings-bank-a-c .savings-bank-a-c-row:first-child {
+  border-top: 0;
+}
+
+.savings-bank-a-c .savings-bank-a-c-caption,
+.savings-bank-a-c .savings-bank-a-c-full {
+  grid-template-columns: 1fr;
+}
+
+.savings-bank-a-c .savings-bank-a-c-cell {
+  padding: 18px 24px;
+}
+
+.savings-bank-a-c .savings-bank-a-c-cell + .savings-bank-a-c-cell {
+  border-left: 1px solid rgb(224 224 224);
+}
+
+.savings-bank-a-c .savings-bank-a-c-cell p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.savings-bank-a-c .savings-bank-a-c-caption .savings-bank-a-c-cell p,
+.savings-bank-a-c .savings-bank-a-c-headrow .savings-bank-a-c-cell p {
+  font-weight: 700;
+}
+
+.savings-bank-a-c .savings-bank-a-c-full ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.savings-bank-a-c .savings-bank-a-c-full ol li {
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.savings-bank-a-c .savings-bank-a-c-full ol li:last-child {
+  margin-bottom: 0;
+}
+
+.savings-bank-a-c .savings-bank-a-c-cell a {
+  color: #ed1c24;
+  text-decoration: none;
+}
+
+.savings-bank-a-c .savings-bank-a-c-cell a:hover {
+  text-decoration: underline;
+}
+
+@media (width < 600px) {
+  .savings-bank-a-c .savings-bank-a-c-row {
+    grid-template-columns: 1fr;
+  }
+
+  .savings-bank-a-c .savings-bank-a-c-cell + .savings-bank-a-c-cell {
+    border-left: 0;
+    border-top: 1px solid rgb(224 224 224);
+  }
+}

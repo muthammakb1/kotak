@@ -1,13 +1,12 @@
 /**
  * Authoring rows (first cell is a keyword):
  *   intro  | <heading text> | <optional subheading text>
- *   filter | <label> | <comma-separated options>
  *   card   | <image> | <title> | <highlight/fee> | <ul bullets>
  *            | <primary label> | <primary link> | <secondary label> | <secondary link>
  *
- * Renders a centred heading + subheading, an optional filter row, and a grid
- * of cards. Each card overlays its title on the image, then lists a highlight,
- * bullet points, and up to two call-to-action links (primary button + link).
+ * Renders a centred heading + subheading and a grid of cards. Each card
+ * overlays its title on the image, then lists a highlight, bullet points,
+ * and up to two call-to-action links (primary button + link).
  */
 function readRows(block) {
   return [...block.children].map((row) => {
@@ -84,7 +83,6 @@ function buildCard(cells) {
 export default function decorate(block) {
   const rows = readRows(block);
   const intro = rows.find((r) => r.key === 'intro');
-  const filters = rows.filter((r) => r.key === 'filter');
   const cards = rows.filter((r) => r.key === 'card');
 
   block.textContent = '';
@@ -105,21 +103,6 @@ export default function decorate(block) {
       header.append(sub);
     }
     block.append(header);
-  }
-
-  if (filters.length) {
-    const bar = document.createElement('div');
-    bar.className = 'compare-cards-filters';
-    filters.forEach((f) => {
-      const group = document.createElement('div');
-      group.className = 'compare-cards-filter';
-      const label = document.createElement('span');
-      label.className = 'compare-cards-filter-label';
-      label.textContent = textOf(f.cells[0]);
-      group.append(label);
-      bar.append(group);
-    });
-    block.append(bar);
   }
 
   const grid = document.createElement('div');
