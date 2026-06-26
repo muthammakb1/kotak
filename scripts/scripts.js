@@ -135,6 +135,19 @@ function decorateButtons(main) {
 }
 
 /**
+ * On the savings-account page, flag the intro default-content section (the one
+ * holding the page H1) so it can be centred and brand-styled via CSS. Scoped to
+ * that path so other pages' default content is unaffected.
+ * @param {Element} main The main element
+ */
+function markSavingsIntro(main) {
+  if (!window.location.pathname.includes('/accounts/savings-account')) return;
+  const h1 = main.querySelector('h1');
+  const section = h1 && h1.closest('.section');
+  if (section) section.classList.add('intro-banner');
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -145,6 +158,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  markSavingsIntro(main);
 }
 
 /**

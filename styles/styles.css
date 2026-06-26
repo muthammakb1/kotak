@@ -341,3 +341,28 @@ main .section.highlight {
   padding: 40px 0;
 }
 
+/* centred intro banner: navy bold heading + lead paragraph with red link */
+main .section.intro-banner {
+  text-align: center;
+}
+
+main .section.intro-banner h1 {
+  color: #013366;
+  font-weight: 700;
+}
+
+main .section.intro-banner p {
+  max-width: 1080px;
+  margin-inline: auto;
+  color: var(--text-color);
+}
+
+main .section.intro-banner a {
+  color: #ed1c24;
+  text-decoration: none;
+}
+
+main .section.intro-banner a:hover {
+  text-decoration: underline;
+}
+

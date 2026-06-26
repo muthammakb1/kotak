@@ -205,3 +205,12 @@ main > .section.hero-carousel-container > div {
   .hero-carousel .hero-carousel-prev { left: 11px; }
   .hero-carousel .hero-carousel-next { right: 11px; }
 }
+
+/* image-text slides (headline/subheading baked into the image, CTA-only content):
+   nudge the CTA just below vertical centre so it sits under the image's
+   subheading instead of overlapping it. top % is height-relative, so it stays
+   correct as the banner scales; the slide's left padding is preserved. */
+.hero-carousel .hero-carousel-content:not(:has(.hero-carousel-title)) .hero-carousel-cta {
+  position: relative;
+  top: 14%;
+}
