@@ -62,6 +62,13 @@ main > .section.resource-grid-container > div {
 
 .resource-grid .resource-grid-icon {
   flex: none;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+/* savings-account "Learn" column uses larger rectangular thumbnails */
+body.savings-account-page .resource-grid .resource-grid-icon {
   width: 48px;
   height: 42px;
   border-radius: 4px;
