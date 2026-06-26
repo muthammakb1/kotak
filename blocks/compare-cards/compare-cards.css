@@ -1,3 +1,15 @@
+/* full-width light-grey band, matching the reference */
+main > .section.compare-cards-container {
+  margin: 0;
+  background: #f3f3f3;
+}
+
+main > .section.compare-cards-container > div {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 50px 40px;
+}
+
 .compare-cards {
   font-family: roboto, sans-serif;
 }
@@ -5,6 +17,10 @@
 .compare-cards .compare-cards-header {
   text-align: center;
   margin-bottom: 44px;
+  font-weight: normal;
+  font-family: roboto, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
 }
 
 .compare-cards .compare-cards-heading {
@@ -16,9 +32,11 @@
 
 .compare-cards .compare-cards-subheading {
   margin: 18px auto 0;
-  max-width: 100ch;
-  font-size: 17px;
+  max-width: 100%;
+  font-size: 16px;
+  font-weight: normal;
   line-height: 1.5;
+  letter-spacing: 0;
   color: #5a5b5e;
 }
 

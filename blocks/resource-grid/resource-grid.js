@@ -71,11 +71,15 @@ export default function decorate(block) {
       span.textContent = label;
       link.append(span);
 
-      const arrow = document.createElement('span');
-      arrow.className = 'resource-grid-arrow';
-      arrow.setAttribute('aria-hidden', 'true');
-      arrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><polyline points="11 9 14 12 11 15" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-      link.append(arrow);
+      // the red trailing arrow only appears on items with a thumbnail
+      // (the "Learn all about..." column), matching the reference design
+      if (iconSrc) {
+        const arrow = document.createElement('span');
+        arrow.className = 'resource-grid-arrow';
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><polyline points="11 9 14 12 11 15" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        link.append(arrow);
+      }
 
       li.append(link);
       list.append(li);

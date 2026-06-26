@@ -408,3 +408,18 @@ body.credit-cards-page .content-block > div:nth-child(2) p {
   font-size: 14px;
 }
 
+/* savings-account page: Roboto typography across the page */
+body.savings-account-page {
+  font-family: roboto, serif;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.savings-account-page h1,
+body.savings-account-page h2,
+body.savings-account-page h3,
+body.savings-account-page h4,
+body.savings-account-page h5,
+body.savings-account-page h6 {
+  font-family: roboto, serif;
+}
+
