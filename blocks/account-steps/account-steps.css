@@ -17,7 +17,7 @@
 .account-steps .account-steps-head {
   padding: 16px 22px;
   background: #ed1c24;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   color: rgb(255 255 255);
 }
@@ -26,7 +26,7 @@
   flex: 1 1 auto;
   padding: 26px 22px;
   background: rgb(240 240 240);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.55;
   color: #4a4a4a;
 }
@@ -43,4 +43,19 @@
   .account-steps .account-steps-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* centred heading + intro lines (default content in the same section) */
+main .section.account-steps-container .default-content-wrapper h2 {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  color: #003874;
+}
+
+main .section.account-steps-container .default-content-wrapper p {
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+  color: #4a4a4a;
 }

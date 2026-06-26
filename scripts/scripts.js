@@ -142,6 +142,7 @@ function decorateButtons(main) {
  */
 function markSavingsIntro(main) {
   if (!window.location.pathname.includes('/accounts/savings-account')) return;
+  document.body.classList.add('savings-account-page');
   const h1 = main.querySelector('h1');
   const section = h1 && h1.closest('.section');
   if (section) section.classList.add('intro-banner');

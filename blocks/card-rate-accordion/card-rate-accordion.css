@@ -8,9 +8,10 @@ main > .section.card-rate-accordion-container > div {
 
 .card-rate-accordion .card-rate-accordion-heading {
   margin: 0 0 24px;
-  font-weight: 500;
-  font-size: 28px;
-  color: #036;
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;
+  color: #003874;
 }
 
 .card-rate-accordion .card-rate-accordion-item {

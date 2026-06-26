@@ -62,14 +62,15 @@ main > .section.resource-grid-container > div {
 
 .resource-grid .resource-grid-icon {
   flex: none;
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
+  width: 48px;
+  height: 42px;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
 .resource-grid .resource-grid-text {
   flex: 1;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
