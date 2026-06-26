@@ -94,8 +94,8 @@ footer .footer-4 .footer-4-columns {
 footer .footer-4 .footer-4-col-title,
 footer .footer-4 .footer-4-inline-title {
   margin: 0 0 16px;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10.5px;
+  font-family: roboto, sans-serif;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
