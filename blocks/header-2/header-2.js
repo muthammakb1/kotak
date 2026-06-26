@@ -547,7 +547,7 @@ function buildMainRow(frag) {
 
   const brand = document.createElement('a');
   brand.className = 'header-2-brand';
-  brand.href = '/';
+  brand.href = 'https://main--kotak--muthammakb1.aem.page/';
   const fragSrc = frag && frag.querySelector('img') && frag.querySelector('img').getAttribute('src');
   const img = document.createElement('img');
   img.className = 'header-2-brand-logo';

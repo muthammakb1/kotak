@@ -4,7 +4,7 @@
 
 .why-choose .why-choose-heading {
   margin: 0 auto 40px;
-  max-width: 30ch;
+  max-width: 100%;
   font-size: 22px;
   font-weight: 600;
   text-align: center;
@@ -20,6 +20,7 @@
 .why-choose .why-choose-card {
   padding: 50px 24px 18px;
   border-left: 1px solid rgb(227 232 239);
+  background: rgb(248 248 248);
 }
 
 .why-choose .why-choose-card:first-child {

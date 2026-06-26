@@ -1,0 +1,126 @@
+/* full-bleed light-grey band, matching the reference */
+main > .section.explore-accounts-container {
+  margin: 0;
+  background: rgb(237 238 240);
+}
+
+main > .section.explore-accounts-container > div {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.explore-accounts {
+  font-family: roboto, sans-serif;
+}
+
+.explore-accounts .explore-accounts-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.explore-accounts .explore-accounts-heading {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #003874;
+}
+
+.explore-accounts .explore-accounts-subheading {
+  margin: 16px 0 0;
+  font-size: 16px;
+  font-style: italic;
+  color: #5a5b5e;
+}
+
+.explore-accounts .explore-accounts-viewport {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.explore-accounts .explore-accounts-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.explore-accounts .explore-accounts-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 4 * 18px) / 5);
+  gap: 18px;
+}
+
+.explore-accounts .explore-accounts-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  scroll-snap-align: start;
+  padding: 18px 20px;
+  background: rgb(255 255 255);
+  border-radius: 10px;
+  box-shadow: rgb(20 22 26 / 7%) 0 4px 16px;
+  text-decoration: none;
+  transition: 0.16s;
+}
+
+.explore-accounts .explore-accounts-card:hover {
+  transform: translateY(-2px);
+  box-shadow: rgb(20 22 26 / 12%) 0 10px 24px;
+}
+
+.explore-accounts .explore-accounts-thumb {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.explore-accounts .explore-accounts-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.explore-accounts .explore-accounts-name {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1f1f1f;
+}
+
+.explore-accounts .explore-accounts-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.explore-accounts .explore-accounts-dot {
+  width: 22px;
+  height: 5px;
+  padding: 0;
+  background: rgb(208 212 218);
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.16s;
+}
+
+.explore-accounts .explore-accounts-dot.is-active {
+  background: #003874;
+}
+
+@media (width < 900px) {
+  .explore-accounts .explore-accounts-track {
+    grid-auto-columns: calc((100% - 18px) / 2);
+  }
+}
+
+@media (width < 600px) {
+  .explore-accounts .explore-accounts-track {
+    grid-auto-columns: 85%;
+  }
+}
