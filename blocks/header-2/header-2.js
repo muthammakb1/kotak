@@ -15,6 +15,8 @@ const TOP_LINKS = [
 
 const PERSONAS = ['Personal Banking', 'Business Banking', 'NRI Banking'];
 
+const FALLBACK_LOGO = 'https://www.kotak.bank.in/content/dam/Kotak/svg-icons/navigation/kmbl-logo.svg';
+
 /* Per-persona homepage copy. Selecting a banking option in the demo bar rewrites
    the rendered section text in place (the reference keeps the same accent and
    only swaps content). Keyed by the persona dropdown label. */
@@ -546,15 +548,17 @@ function buildMainRow(frag) {
   const brand = document.createElement('a');
   brand.className = 'header-2-brand';
   brand.href = '/';
-  const brandImg = frag && frag.querySelector('img');
-  if (brandImg) {
-    const img = document.createElement('img');
-    img.src = brandImg.getAttribute('src');
-    img.alt = brandImg.getAttribute('alt') || 'Home';
-    brand.append(img);
-  } else {
-    brand.textContent = 'Kotak';
-  }
+  const fragSrc = frag && frag.querySelector('img') && frag.querySelector('img').getAttribute('src');
+  const img = document.createElement('img');
+  img.className = 'header-2-brand-logo';
+  // the authored fragment logo lives on an auth-gated da.live URL; fall back to
+  // the public Kotak logo so the brand mark always renders
+  img.src = fragSrc && !/content\.da\.live/.test(fragSrc) ? fragSrc : FALLBACK_LOGO;
+  img.alt = 'Kotak Mahindra Bank';
+  img.addEventListener('error', () => {
+    if (img.src !== FALLBACK_LOGO) img.src = FALLBACK_LOGO;
+  }, { once: true });
+  brand.append(img);
   inner.append(brand);
 
   const list = frag && frag.querySelector('ul');

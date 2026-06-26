@@ -10,6 +10,8 @@ import { getMetadata } from '../../scripts/aem.js';
  *   disclaimer | <rich text>
  *   legal      | <copyright text> | <links>
  */
+const FALLBACK_LOGO = 'https://www.kotak.bank.in/content/dam/Kotak/svg-icons/navigation/kmbl-logo.svg';
+
 async function fetchFooter(footerPath) {
   let resp = await fetch('/content/standalone-footer.plain.html');
   if (!resp.ok) resp = await fetch(`${footerPath}.plain.html`);
@@ -57,12 +59,16 @@ function buildBrandRow(cells) {
   brand.className = 'footer-4-logo';
   brand.href = '/';
   const img = cells[1] && cells[1].querySelector('img');
-  if (img) {
-    const el = document.createElement('img');
-    el.src = img.getAttribute('src');
-    el.alt = img.getAttribute('alt') || 'Kotak Mahindra Bank';
-    brand.append(el);
-  }
+  const fragSrc = img && img.getAttribute('src');
+  const el = document.createElement('img');
+  // the authored fragment logo lives on an auth-gated da.live URL; fall back to
+  // the public Kotak logo so the brand mark always renders
+  el.src = fragSrc && !/content\.da\.live/.test(fragSrc) ? fragSrc : FALLBACK_LOGO;
+  el.alt = (img && img.getAttribute('alt')) || 'Kotak Mahindra Bank';
+  el.addEventListener('error', () => {
+    if (el.src !== FALLBACK_LOGO) el.src = FALLBACK_LOGO;
+  }, { once: true });
+  brand.append(el);
   row.append(brand);
 
   const connect = document.createElement('div');
