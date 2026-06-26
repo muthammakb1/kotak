@@ -5,7 +5,7 @@
 
 .account-info h2 {
   margin: 48px 0 24px;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
   text-align: center;
   color: #003874;
@@ -17,7 +17,7 @@
 
 .account-info p {
   margin: 0 0 16px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.6;
   color: #333;
 }

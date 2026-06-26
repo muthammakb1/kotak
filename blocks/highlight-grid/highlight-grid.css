@@ -176,4 +176,9 @@
   .highlight-grid .highlight-grid-title {
     font-size: 28px;
   }
+
+  /* savings-account "Related Videos": two equal-width video columns */
+  body.savings-account-page .highlight-grid .highlight-grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

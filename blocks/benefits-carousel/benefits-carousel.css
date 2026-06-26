@@ -12,8 +12,8 @@
 
 .benefits-carousel .benefits-carousel-intro {
   margin: 18px auto 0;
-  max-width: 70ch;
-  font-size: 17px;
+  max-width: 100%;
+  font-size: 14px;
   line-height: 1.5;
   text-align: center;
   color: #4a4a4a;
@@ -86,8 +86,8 @@
 
 .benefits-carousel .benefits-carousel-caption {
   margin: 26px auto 0;
-  max-width: 22ch;
-  font-size: 17px;
+  max-width: 100%;
+  font-size: 15px;
   line-height: 1.4;
   color: #333;
 }
