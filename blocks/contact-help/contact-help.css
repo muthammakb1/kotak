@@ -1,0 +1,70 @@
+.contact-help {
+  font-family: roboto, sans-serif;
+}
+
+.contact-help .contact-help-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.contact-help .contact-help-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.contact-help .contact-help-icon {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+}
+
+.contact-help .contact-help-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.contact-help .contact-help-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.contact-help .contact-help-desc {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #4a4a4a;
+}
+
+.contact-help .contact-help-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ed1c24;
+  text-decoration: none;
+}
+
+.contact-help .contact-help-cta svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-help .contact-help-cta:hover {
+  text-decoration: underline;
+}
+
+@media (width < 900px) {
+  .contact-help .contact-help-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

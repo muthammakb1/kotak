@@ -1,0 +1,63 @@
+.account-info {
+  font-family: roboto, sans-serif;
+  color: #333;
+}
+
+.account-info h2 {
+  margin: 48px 0 24px;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  color: #003874;
+}
+
+.account-info h2:first-child {
+  margin-top: 0;
+}
+
+.account-info p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.account-info ul {
+  margin: 0 0 16px;
+  padding-left: 22px;
+  list-style: none;
+}
+
+.account-info ul li {
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.account-info ul li::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ed1c24;
+}
+
+.account-info ol {
+  margin: 0 0 16px;
+  padding-left: 26px;
+}
+
+.account-info ol li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* the How-to-Open intro line sits centred under its heading */
+.account-info.center-intro h2 + p {
+  text-align: center;
+}

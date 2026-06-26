@@ -1,0 +1,85 @@
+/* full-bleed light-grey band */
+main > .section.customer-testimonials-container {
+  margin: 0;
+  background: rgb(237 238 240);
+}
+
+main > .section.customer-testimonials-container > div {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 50px 40px;
+}
+
+.customer-testimonials {
+  font-family: roboto, sans-serif;
+}
+
+.customer-testimonials .customer-testimonials-heading {
+  margin: 0 0 40px;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  color: #2b2b2b;
+}
+
+.customer-testimonials .customer-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.customer-testimonials .customer-testimonials-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 30px 28px;
+  background: rgb(255 255 255);
+  border-radius: 8px;
+  box-shadow: rgb(20 22 26 / 6%) 0 4px 18px;
+}
+
+.customer-testimonials .customer-testimonials-name {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #003874;
+}
+
+.customer-testimonials .customer-testimonials-stars {
+  margin-bottom: 18px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.customer-testimonials .customer-testimonials-star {
+  color: rgb(214 216 220);
+}
+
+.customer-testimonials .customer-testimonials-star.is-on {
+  color: #f5b50a;
+}
+
+.customer-testimonials .customer-testimonials-review {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #4a4a4a;
+}
+
+.customer-testimonials .customer-testimonials-date {
+  margin: auto 0 0;
+  padding-top: 24px;
+  font-size: 13.5px;
+  color: #8a8a8a;
+}
+
+@media (width < 900px) {
+  .customer-testimonials .customer-testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-testimonials .customer-testimonials-card {
+    min-height: 0;
+  }
+}

@@ -86,6 +86,13 @@ function buildVideoCard(card) {
   const item = document.createElement('div');
   item.className = 'highlight-grid-card highlight-grid-video';
 
+  if (card.title) {
+    const h = document.createElement('h2');
+    h.className = 'highlight-grid-title';
+    h.textContent = card.title;
+    item.append(h);
+  }
+
   const trigger = document.createElement('button');
   trigger.type = 'button';
   trigger.className = 'highlight-grid-video-trigger';
@@ -109,6 +116,14 @@ function buildVideoCard(card) {
   trigger.addEventListener('click', () => openVideoModal(embedUrl, card.title));
 
   item.append(trigger);
+
+  if (card.bodyCell && card.bodyCell.textContent.trim()) {
+    const body = document.createElement('div');
+    body.className = 'highlight-grid-body';
+    body.append(...card.bodyCell.childNodes);
+    item.append(body);
+  }
+
   return item;
 }
 

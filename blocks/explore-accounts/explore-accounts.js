@@ -90,16 +90,28 @@ export default function decorate(block) {
   dots.className = 'explore-accounts-dots';
   block.append(dots);
 
-  const pageCount = () => {
-    if (!viewport.clientWidth) return 1;
-    return Math.max(1, Math.ceil(viewport.scrollWidth / viewport.clientWidth));
+  const cardStep = () => {
+    const first = track.querySelector('.explore-accounts-card');
+    if (!first) return viewport.clientWidth || 1;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    return first.getBoundingClientRect().width + gap;
+  };
+
+  const perPage = () => {
+    const step = cardStep();
+    if (!viewport.clientWidth || !step) return items.length || 1;
+    return Math.max(1, Math.round(viewport.clientWidth / step));
   };
 
   const renderDots = () => {
-    const pages = pageCount();
+    const itemsPerPage = perPage();
+    const pages = Math.ceil(items.length / itemsPerPage);
     dots.innerHTML = '';
     if (pages <= 1) return;
-    const active = Math.round(viewport.scrollLeft / viewport.clientWidth);
+    const active = Math.min(
+      pages - 1,
+      Math.round(viewport.scrollLeft / (itemsPerPage * cardStep())),
+    );
     for (let i = 0; i < pages; i += 1) {
       const dot = document.createElement('button');
       dot.type = 'button';
@@ -107,7 +119,7 @@ export default function decorate(block) {
       if (i === active) dot.classList.add('is-active');
       dot.setAttribute('aria-label', `Go to page ${i + 1}`);
       dot.addEventListener('click', () => {
-        viewport.scrollTo({ left: i * viewport.clientWidth, behavior: 'smooth' });
+        viewport.scrollTo({ left: i * itemsPerPage * cardStep(), behavior: 'smooth' });
       });
       dots.append(dot);
     }
@@ -115,5 +127,12 @@ export default function decorate(block) {
 
   viewport.addEventListener('scroll', renderDots, { passive: true });
   window.addEventListener('resize', renderDots);
+
+  // the section is display:none during decoration (clientWidth 0), so the dot
+  // count can only be computed once the viewport gets a real width
+  if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(renderDots);
+    ro.observe(viewport);
+  }
   renderDots();
 }
