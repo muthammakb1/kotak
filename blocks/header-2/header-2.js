@@ -48,6 +48,25 @@ const PERSONA_CONTENT = {
       { value: '₹4.8L Cr', label: 'Assets' },
       { value: 'RBI', label: 'Regulated · DICGC' },
     ],
+    card: {
+      label: 'Kotak · Savings ··6042',
+      balance: '₹ 2,48,910',
+      decimal: '.50',
+      pill: '+ ₹12,400 this month',
+      actions: ['Pay', 'Transfer', 'Invest'],
+      txns: [
+        {
+          title: 'Salary credited', meta: 'Today · 09:14', amount: '+ ₹1,42,000', dir: 'in',
+        },
+        {
+          title: 'SIP · Bluechip Fund', meta: 'Yesterday', amount: '− ₹10,000', dir: 'out',
+        },
+        {
+          title: 'Electricity bill', meta: '12 Jun · Auto-pay', amount: '− ₹2,180', dir: 'out',
+        },
+      ],
+      ai: 'Your idle balance could earn ₹1,040 more this quarter in ActivMoney.',
+    },
     quickActions: ['Open an Account', 'Apply for Credit Card', 'Explore Loans', 'Track Application', 'Pay & Transfer', 'Compare Products', 'Find Branch / ATM', 'Report Fraud / Get Help'],
     chips: ["I'm new to Kotak", 'A credit card that works for me', 'I need a salary account', 'A low-fee starter option', 'Premium banking', 'Help me compare options'],
     journey: {
@@ -112,6 +131,25 @@ const PERSONA_CONTENT = {
       { value: '1,300+', label: 'Branches' },
       { value: 'RBI', label: 'Regulated · PCI-DSS' },
     ],
+    card: {
+      label: 'Kotak · Current ··8810',
+      balance: '₹ 18,42,650',
+      decimal: '.00',
+      pill: '+ ₹3,10,000 today',
+      actions: ['Collect', 'Payout', 'GST'],
+      txns: [
+        {
+          title: 'Customer payment · UPI', meta: 'Today · 11:02', amount: '+ ₹2,80,000', dir: 'in',
+        },
+        {
+          title: 'Vendor payout · NEFT', meta: 'Today · 09:30', amount: '− ₹1,15,000', dir: 'out',
+        },
+        {
+          title: 'GST remittance', meta: '12 Jun · Auto', amount: '− ₹84,200', dir: 'out',
+        },
+      ],
+      ai: 'Your working-capital line has ₹6.2L unused — sweep idle funds to earn while it waits.',
+    },
     quickActions: ['Open Current Account', 'Collect Payments', 'Working Capital', 'Bulk Payouts', 'Pay GST / Taxes', 'Trade & Forex', 'Track Application', 'Report Fraud / Get Help'],
     chips: ["I'm starting a business", 'I want to collect payments', 'I need working capital', 'Open a current account', 'Run payroll & salary'],
     journey: {
@@ -151,7 +189,7 @@ const PERSONA_CONTENT = {
     heroSlides: [
       {
         eyebrow: 'Banking without borders',
-        title: 'Your money, home —<br>from anywhere.',
+        title: 'Your money, home<br>from anywhere.',
         desc: 'Open an NRE or NRO account in 72 hours, remit to India at live rates, and grow tax-efficient deposits.',
         primary: 'Open an NRI Account',
         secondary: 'Explore NRI banking',
@@ -176,6 +214,25 @@ const PERSONA_CONTENT = {
       { value: '72 hr', label: 'Account opening' },
       { value: 'RBI · FEMA', label: 'Compliant' },
     ],
+    card: {
+      label: 'Kotak · NRE ··4021',
+      balance: '₹ 32,18,400',
+      decimal: '.00',
+      pill: '+ $4,200 received',
+      actions: ['Remit', 'Book FD', 'Repatriate'],
+      txns: [
+        {
+          title: 'Inward remittance · USD', meta: 'Today · 08:15', amount: '+ ₹3,52,000', dir: 'in',
+        },
+        {
+          title: 'NRE FD booked', meta: 'Yesterday', amount: '− ₹10,00,000', dir: 'out',
+        },
+        {
+          title: 'Repatriation · USD', meta: '10 Jun', amount: '− ₹2,10,000', dir: 'out',
+        },
+      ],
+      ai: 'NRE FD rates are 7.2% — booking now locks tax-free interest for two years.',
+    },
     quickActions: ['Open NRI Account', 'Remit to India', 'NRE / NRO FD', 'Repatriate Funds', 'Invest in India', 'Track Onboarding', 'Find Branch / ATM', 'Report Fraud / Get Help'],
     chips: ["I'm new to NRI banking", 'I want to remit to India', 'Tax-efficient deposits', 'Invest in India', 'A home loan in India'],
     journey: {
@@ -242,6 +299,30 @@ function applyPersonaContent(persona) {
     setText(stat.querySelector('.banner-stat-value'), s.value);
     setText(stat.querySelector('.banner-stat-label'), s.label);
   });
+
+  // account-card mock (the white card on the blue banner)
+  const cardData = data.card;
+  const cardEl = main.querySelector('.banner-card');
+  if (cardData && cardEl) {
+    setText(cardEl.querySelector('.banner-card-label'), cardData.label);
+    setText(cardEl.querySelector('.banner-card-balance-main'), cardData.balance);
+    setText(cardEl.querySelector('.banner-card-balance-dec'), cardData.decimal);
+    setText(cardEl.querySelector('.banner-card-pill-text'), cardData.pill);
+    cardEl.querySelectorAll('.banner-card-action').forEach((el, i) => setText(el, cardData.actions[i]));
+    cardEl.querySelectorAll('.banner-card-txn').forEach((row, i) => {
+      const t = cardData.txns[i];
+      if (!t) return;
+      setText(row.querySelector('.banner-card-txn-title'), t.title);
+      setText(row.querySelector('.banner-card-txn-meta'), t.meta);
+      const amt = row.querySelector('.banner-card-txn-amt');
+      if (amt) {
+        amt.textContent = t.amount;
+        amt.classList.toggle('banner-card-txn-in', t.dir === 'in');
+        amt.classList.toggle('banner-card-txn-out', t.dir === 'out');
+      }
+    });
+    setText(cardEl.querySelector('.banner-card-ai-text'), cardData.ai);
+  }
 
   main.querySelectorAll('.quick-actions-label').forEach((el, i) => setText(el, data.quickActions[i]));
 

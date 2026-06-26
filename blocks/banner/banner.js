@@ -23,8 +23,8 @@ function buildAccountCard() {
       <span class="banner-card-label">Kotak · Savings ··6042</span>
       <span class="banner-card-chip" aria-hidden="true"></span>
     </div>
-    <p class="banner-card-balance">₹ 2,48,910<span class="banner-card-balance-dec">.50</span></p>
-    <p class="banner-card-pill"><span class="banner-card-pill-dot" aria-hidden="true"></span>+ ₹12,400 this month</p>
+    <p class="banner-card-balance"><span class="banner-card-balance-main">₹ 2,48,910</span><span class="banner-card-balance-dec">.50</span></p>
+    <p class="banner-card-pill"><span class="banner-card-pill-dot" aria-hidden="true"></span><span class="banner-card-pill-text">+ ₹12,400 this month</span></p>
     <div class="banner-card-actions">
       <span class="banner-card-action">Pay</span>
       <span class="banner-card-action">Transfer</span>
@@ -47,8 +47,8 @@ function buildAccountCard() {
       </div>
       <div class="banner-card-txn">
         <div>
-          <p class="banner-card-txn-title">UPI · Groceries</p>
-          <p class="banner-card-txn-meta">Yesterday</p>
+          <p class="banner-card-txn-title">Electricity bill</p>
+          <p class="banner-card-txn-meta">12 Jun · Auto-pay</p>
         </div>
         <p class="banner-card-txn-amt banner-card-txn-out">− ₹2,180</p>
       </div>
