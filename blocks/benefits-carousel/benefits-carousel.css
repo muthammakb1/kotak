@@ -1,0 +1,110 @@
+.benefits-carousel {
+  font-family: roboto, sans-serif;
+}
+
+.benefits-carousel .benefits-carousel-heading {
+  margin: 0 auto;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  color: #003874;
+}
+
+.benefits-carousel .benefits-carousel-intro {
+  margin: 18px auto 0;
+  max-width: 70ch;
+  font-size: 17px;
+  line-height: 1.5;
+  text-align: center;
+  color: #4a4a4a;
+}
+
+.benefits-carousel .benefits-carousel-stage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+}
+
+.benefits-carousel .benefits-carousel-arrow {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: 32px;
+  line-height: 1;
+  color: #9a9a9a;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.benefits-carousel .benefits-carousel-arrow:hover {
+  color: #003874;
+}
+
+.benefits-carousel .benefits-carousel-viewport {
+  flex: 1 1 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.benefits-carousel .benefits-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.benefits-carousel .benefits-carousel-track {
+  display: flex;
+  gap: 24px;
+}
+
+.benefits-carousel .benefits-carousel-item {
+  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.benefits-carousel .benefits-carousel-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgb(229 229 229);
+  border-radius: 50%;
+}
+
+.benefits-carousel .benefits-carousel-circle img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.benefits-carousel .benefits-carousel-caption {
+  margin: 26px auto 0;
+  max-width: 22ch;
+  font-size: 17px;
+  line-height: 1.4;
+  color: #333;
+}
+
+@media (width < 900px) {
+  .benefits-carousel .benefits-carousel-item {
+    flex-basis: 50%;
+  }
+
+  .benefits-carousel .benefits-carousel-circle {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (width < 600px) {
+  .benefits-carousel .benefits-carousel-item {
+    flex-basis: 80%;
+  }
+}

@@ -347,18 +347,24 @@ main .section.intro-banner {
 }
 
 main .section.intro-banner h1 {
-  color: #013366;
-  font-weight: 700;
+  font-family: roboto, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: rgb(15 52 100);
 }
 
 main .section.intro-banner p {
   max-width: 1080px;
   margin-inline: auto;
-  color: var(--text-color);
+  font-family: roboto, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4286;
+  color: #333;
 }
 
 main .section.intro-banner a {
-  color: #ed1c24;
+  color: red;
+  cursor: pointer;
   text-decoration: none;
 }
 
