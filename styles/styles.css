@@ -341,6 +341,16 @@ main .section.highlight {
   padding: 40px 0;
 }
 
+/* personal-loan page: Roboto headings */
+body.personal-loan-page h1,
+body.personal-loan-page h2,
+body.personal-loan-page h3,
+body.personal-loan-page h4,
+body.personal-loan-page h5,
+body.personal-loan-page h6 {
+  font-family: roboto, serif;
+}
+
 /* centred intro banner: navy bold heading + lead paragraph with red link */
 main .section.intro-banner {
   text-align: center;

@@ -165,6 +165,126 @@ main > .section.compare-cards-container > div {
   text-decoration: underline;
 }
 
+/* personal-loan: title sits below the image (not overlaid), no Apply Now CTA */
+body.personal-loan-page .compare-cards .compare-cards-figure::after {
+  display: none;
+}
+
+body.personal-loan-page .compare-cards .compare-cards-title {
+  position: static;
+  margin: 18px 24px 0;
+  font-size: 20px;
+  color: #1c1c1c;
+}
+
+body.personal-loan-page .compare-cards .compare-cards-primary {
+  display: none;
+}
+
+/* personal-loan: white background on the cards bands (location/budget/types) */
+body.personal-loan-page .section.compare-cards-container:has(.compare-cards.locations),
+body.personal-loan-page .section.compare-cards-container:has(.compare-cards:not(.deals, .locations)) {
+  background: #fff;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.personal-loan-page .compare-cards.locations .compare-cards-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+body.personal-loan-page .compare-cards.locations .compare-cards-figure::after {
+  display: block;
+}
+
+body.personal-loan-page .compare-cards.locations .compare-cards-figure img {
+  height: 148px;
+}
+
+body.personal-loan-page .compare-cards.locations .compare-cards-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 225px;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: roboto, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.25;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  color: #fff;
+}
+
+body.personal-loan-page .compare-cards.locations .compare-cards-body {
+  display: none;
+}
+
+/* "deals" variant: white text cards (no image), title + desc + red text CTA */
+body.personal-loan-page .compare-cards.deals .compare-cards-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-figure {
+  min-height: 0;
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-figure::after {
+  display: none;
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-figure img {
+  display: none;
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-title {
+  position: static;
+  margin: 30px 30px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1c1c1c;
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-card {
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff;
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-list li {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-list li::before {
+  display: none;
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-list {
+  padding-left: 0;
+}
+
+body.personal-loan-page .compare-cards.deals .compare-cards-secondary {
+  color: red;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (width < 900px) {
+  body.personal-loan-page .compare-cards.locations .compare-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width < 600px) {
+  body.personal-loan-page .compare-cards.locations .compare-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (width < 900px) {
   .compare-cards .compare-cards-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -174,5 +294,95 @@ main > .section.compare-cards-container > div {
 @media (width < 600px) {
   .compare-cards .compare-cards-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* owl-style carousel (personal-loan page) */
+.compare-cards.compare-cards-carousel .compare-cards-carousel-stage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.compare-cards.compare-cards-carousel .compare-cards-grid {
+  display: flex;
+  grid-template-columns: none;
+  flex: 1 1 auto;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.compare-cards.compare-cards-carousel .compare-cards-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.compare-cards.compare-cards-carousel .compare-cards-card {
+  flex: 0 0 calc((100% - 56px) / 3);
+  scroll-snap-align: start;
+}
+
+.compare-cards.compare-cards-carousel .compare-cards-carousel-arrow {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: #fff;
+  border: 1px solid rgb(220 220 220);
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.compare-cards.compare-cards-carousel .compare-cards-carousel-arrow:hover {
+  color: #ed1c24;
+  border-color: #ed1c24;
+}
+
+.compare-cards.compare-cards-carousel .compare-cards-carousel-arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.compare-cards.compare-cards-carousel .compare-cards-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.compare-cards.compare-cards-carousel .compare-cards-carousel-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  background: rgb(200 203 208);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s, width 0.15s;
+}
+
+.compare-cards.compare-cards-carousel .compare-cards-carousel-dot.is-active {
+  width: 22px;
+  border-radius: 5px;
+  background: #ed1c24;
+}
+
+@media (width < 900px) {
+  .compare-cards.compare-cards-carousel .compare-cards-card {
+    flex-basis: calc((100% - 28px) / 2);
+  }
+}
+
+@media (width < 600px) {
+  .compare-cards.compare-cards-carousel .compare-cards-card {
+    flex-basis: 85%;
   }
 }

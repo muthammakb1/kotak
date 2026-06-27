@@ -44,7 +44,7 @@ export default function decorate(block) {
   track.className = 'benefits-carousel-track';
 
   items.forEach((it) => {
-    const [iconCell, captionCell] = it.cells;
+    const [iconCell, captionCell, descCell] = it.cells;
     const item = document.createElement('div');
     item.className = 'benefits-carousel-item';
 
@@ -59,6 +59,13 @@ export default function decorate(block) {
       caption.className = 'benefits-carousel-caption';
       caption.textContent = captionCell.textContent.trim();
       item.append(caption);
+    }
+
+    if (descCell && descCell.textContent.trim()) {
+      const desc = document.createElement('p');
+      desc.className = 'benefits-carousel-desc';
+      desc.textContent = descCell.textContent.trim();
+      item.append(desc);
     }
 
     track.append(item);
