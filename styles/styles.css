@@ -351,6 +351,13 @@ body.personal-loan-page h6 {
   font-family: roboto, serif;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+body.personal-loan-page h1,
+body.personal-loan-page h2 {
+  font-size: 22px !important;
+  margin: 50px 0 20px !important;
+}
+
 /* centred intro banner: navy bold heading + lead paragraph with red link */
 main .section.intro-banner {
   text-align: center;

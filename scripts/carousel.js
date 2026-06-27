@@ -16,13 +16,13 @@ export default function enableCarousel(block, track, ns) {
 
   const prev = document.createElement('button');
   prev.type = 'button';
-  prev.className = `${ns}-carousel-arrow ${ns}-carousel-prev`;
+  prev.className = `${ns}-carousel-arrow ${ns}-carousel-prev owl-prev`;
   prev.setAttribute('aria-label', 'Previous');
   prev.innerHTML = '<span aria-hidden="true">&#8249;</span>';
 
   const next = document.createElement('button');
   next.type = 'button';
-  next.className = `${ns}-carousel-arrow ${ns}-carousel-next`;
+  next.className = `${ns}-carousel-arrow ${ns}-carousel-next owl-next`;
   next.setAttribute('aria-label', 'Next');
   next.innerHTML = '<span aria-hidden="true">&#8250;</span>';
 

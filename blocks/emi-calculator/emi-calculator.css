@@ -52,6 +52,11 @@ main > .section.emi-calculator-container > div {
   color: #331114;
 }
 
+/* override global personal-loan h1/h2 margin so the EMI heading keeps no margin */
+body.personal-loan-page .emi-calculator .emi-calculator-heading {
+  margin: 0 !important;
+}
+
 /* each input row: label · slider · underlined value */
 .emi-calculator .emi-calculator-fields {
   margin-bottom: 15px;

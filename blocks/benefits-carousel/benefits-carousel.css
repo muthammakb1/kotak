@@ -101,6 +101,29 @@
   color: #4a4a4a;
 }
 
+/* personal-loan page overrides */
+body.personal-loan-page .benefits-carousel .benefits-carousel-heading {
+  padding-top: 50px;
+}
+
+body.personal-loan-page .benefits-carousel .benefits-carousel-circle {
+  margin: 2px;
+  font-size: 15px;
+}
+
+body.personal-loan-page .benefits-carousel .benefits-carousel-circle * {
+  font-size: 15px;
+}
+
+body.personal-loan-page .benefits-carousel .benefits-carousel-caption {
+  font-size: 15px;
+}
+
+body.personal-loan-page .benefits-carousel .benefits-carousel-desc {
+  margin-top: 2px;
+  font-size: 15px;
+}
+
 @media (width < 900px) {
   .benefits-carousel .benefits-carousel-item {
     flex-basis: 50%;

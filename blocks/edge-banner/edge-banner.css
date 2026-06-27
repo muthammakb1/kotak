@@ -72,6 +72,11 @@ main > .section.edge-banner-container > div {
   color: #fff;
 }
 
+/* override global personal-loan h1/h2 margin so the banner heading keeps no margin */
+body.personal-loan-page .edge-banner .edge-banner-heading {
+  margin: 0 !important;
+}
+
 .edge-banner.edge-banner-split .edge-banner-cta {
   flex: none;
   min-width: 220px;
