@@ -1,0 +1,75 @@
+.did-you-know {
+  font-family: roboto, sans-serif;
+}
+
+.did-you-know .did-you-know-card {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 50px 15px;
+  background: #fff;
+}
+
+.did-you-know .did-you-know-heading {
+  flex: 0 0 auto;
+  margin: 0;
+  padding-right: 48px;
+  border-right: 1px solid rgb(221 221 221);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.did-you-know .did-you-know-heading-lead {
+  display: block;
+  color: #1c1c1c;
+}
+
+.did-you-know .did-you-know-heading-accent {
+  display: block;
+  color: rgb(237 28 36);
+}
+
+.did-you-know .did-you-know-content {
+  flex: 1 1 auto;
+}
+
+.did-you-know .did-you-know-body {
+  margin: 0 0 18px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgb(102 102 102);
+}
+
+.did-you-know .did-you-know-cta {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(237 28 36);
+  text-decoration: none;
+}
+
+.did-you-know .did-you-know-cta:hover {
+  text-decoration: underline;
+}
+
+@media (width < 900px) {
+  .did-you-know .did-you-know-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 36px 20px;
+  }
+
+  .did-you-know .did-you-know-heading {
+    padding-right: 0;
+    padding-bottom: 20px;
+    border-right: 0;
+    border-bottom: 1px solid rgb(221 221 221);
+    font-size: 40px;
+  }
+}

@@ -6,6 +6,8 @@
  * Renders a centred heading above a row of white review cards (navy name,
  * gold stars, review body, grey reviewed-on date) on a light-grey band.
  */
+import enableCarousel from '../../scripts/carousel.js';
+
 function text(cell) {
   return cell ? cell.textContent.trim() : '';
 }
@@ -70,4 +72,8 @@ export default function decorate(block) {
   });
 
   block.append(grid);
+
+  if (window.location.pathname.includes('/loans/personal-loan')) {
+    enableCarousel(block, grid, 'customer-testimonials');
+  }
 }

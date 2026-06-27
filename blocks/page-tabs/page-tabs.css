@@ -1,0 +1,209 @@
+main > .section.page-tabs-container {
+  margin: 0;
+  position: sticky;
+  top: var(--nav-height, 64px);
+  z-index: 100;
+  background: #fff;
+  transition: top 0.5s linear;
+}
+
+main > .section.page-tabs-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+.page-tabs {
+  font-family: roboto, sans-serif;
+  background: #fff;
+}
+
+.page-tabs .page-tabs-nav {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 20px;
+  border-bottom: 1px solid rgb(221 221 221);
+}
+
+.page-tabs .page-tabs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 34px;
+}
+
+.page-tabs .page-tabs-item {
+  display: flex;
+  align-items: stretch;
+}
+
+.page-tabs .page-tabs-item[hidden] {
+  display: none;
+}
+
+.page-tabs .page-tabs-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 22px 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(102 102 102);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.5s linear;
+}
+
+/* short rounded red bar under the tab, revealed on hover/active */
+.page-tabs .page-tabs-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 4px;
+  background: rgb(247 54 61);
+  border-radius: 4px 4px 0 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.page-tabs .page-tabs-link:hover {
+  color: rgb(247 54 61);
+}
+
+.page-tabs .page-tabs-link:hover::after {
+  transform: scaleX(1);
+}
+
+.page-tabs .page-tabs-link-active {
+  color: rgb(247 54 61);
+  font-weight: 600;
+}
+
+.page-tabs .page-tabs-link-active::after {
+  transform: scaleX(1);
+}
+
+/* More dropdown */
+.page-tabs .page-tabs-more {
+  position: relative;
+}
+
+.page-tabs .page-tabs-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 22px 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 16px;
+  color: rgb(60 61 64);
+  cursor: pointer;
+  transition: color 0.5s linear;
+}
+
+.page-tabs .page-tabs-more-btn:hover {
+  color: rgb(247 54 61);
+}
+
+.page-tabs .page-tabs-more-btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.page-tabs .page-tabs-more-open .page-tabs-more-btn svg {
+  transform: rotate(180deg);
+}
+
+.page-tabs .page-tabs-more-menu {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 20;
+  min-width: 240px;
+  background: #fff;
+  border: 1px solid rgb(228 228 228);
+  border-radius: 6px;
+  box-shadow: rgb(0 0 0 / 12%) 0 6px 20px;
+  display: none;
+}
+
+.page-tabs .page-tabs-more-open .page-tabs-more-menu {
+  display: block;
+}
+
+.page-tabs .page-tabs-more-link {
+  display: block;
+  padding: 10px 18px;
+  font-size: 15px;
+  color: rgb(60 61 64);
+  text-decoration: none;
+}
+
+.page-tabs .page-tabs-more-link:hover {
+  background: rgb(247 248 250);
+  color: rgb(247 54 61);
+}
+
+.page-tabs .page-tabs-more-link.page-tabs-link-active {
+  color: rgb(247 54 61);
+  font-weight: 600;
+}
+
+/* Apply Now button — hidden until the strip sticks below the header */
+.page-tabs .page-tabs-apply-item {
+  display: none;
+  margin-left: auto;
+  align-items: center;
+}
+
+.page-tabs .page-tabs-apply {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  background: rgb(238 28 37);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 40px;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+
+.page-tabs .page-tabs-apply:hover {
+  background: rgb(206 22 29);
+}
+
+.page-tabs.page-tabs-stuck .page-tabs-apply-item {
+  display: flex;
+}
+
+@media (width < 900px) {
+  .page-tabs .page-tabs-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-tabs .page-tabs-list {
+    gap: 22px;
+  }
+
+  .page-tabs .page-tabs-link,
+  .page-tabs .page-tabs-more-btn {
+    padding: 16px 0;
+    font-size: 14px;
+  }
+
+  .page-tabs .page-tabs-more {
+    margin-left: 0;
+  }
+}

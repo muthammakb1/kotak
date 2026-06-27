@@ -8,6 +8,8 @@
  * overlays its title on the image, then lists a highlight, bullet points,
  * and up to two call-to-action links (primary button + link).
  */
+import enableCarousel from '../../scripts/carousel.js';
+
 function readRows(block) {
   return [...block.children].map((row) => {
     const cells = [...row.children];
@@ -109,4 +111,11 @@ export default function decorate(block) {
   grid.className = 'compare-cards-grid';
   cards.forEach((c) => grid.append(buildCard(c.cells)));
   block.append(grid);
+
+  // carousel on the personal-loan page, except the static "locations"/"deals" grids
+  if (window.location.pathname.includes('/loans/personal-loan')
+    && !block.classList.contains('locations')
+    && !block.classList.contains('deals')) {
+    enableCarousel(block, grid, 'compare-cards');
+  }
 }

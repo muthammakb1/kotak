@@ -83,3 +83,85 @@ main > .section.customer-testimonials-container > div {
     min-height: 0;
   }
 }
+
+/* owl-style carousel (personal-loan page) */
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-carousel-stage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-grid {
+  display: flex;
+  grid-template-columns: none;
+  flex: 1 1 auto;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-card {
+  flex: 0 0 calc((100% - 56px) / 3);
+  scroll-snap-align: start;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-carousel-arrow {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: #fff;
+  border: 1px solid rgb(220 220 220);
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-carousel-arrow:hover {
+  color: #003874;
+  border-color: #003874;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-carousel-arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-carousel-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  background: rgb(200 203 208);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s, width 0.15s;
+}
+
+.customer-testimonials.customer-testimonials-carousel .customer-testimonials-carousel-dot.is-active {
+  width: 22px;
+  border-radius: 5px;
+  background: #003874;
+}
+
+@media (width < 900px) {
+  .customer-testimonials.customer-testimonials-carousel .customer-testimonials-card {
+    flex-basis: 85%;
+  }
+}

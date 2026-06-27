@@ -45,3 +45,75 @@ main > .section.edge-banner-container > div {
 .edge-banner .edge-banner-cta:hover {
   background: rgb(245 245 245);
 }
+
+/* split "compare-callback" variant: edge-to-edge orange-red gradient, two panels */
+.edge-banner.edge-banner-split {
+  background: linear-gradient(to right, #f37032, #ed1f23);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.edge-banner.edge-banner-split .edge-banner-inner {
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 15px 40px;
+}
+
+.edge-banner.edge-banner-split .edge-banner-inner + .edge-banner-inner {
+  border-left: 1px solid rgb(255 255 255 / 35%);
+}
+
+.edge-banner.edge-banner-split .edge-banner-heading {
+  font-size: 22px;
+  font-weight: 400;
+  font-family: roboto, serif;
+  color: #fff;
+}
+
+.edge-banner.edge-banner-split .edge-banner-cta {
+  flex: none;
+  min-width: 220px;
+  background: #fff;
+  color: red;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 12px 20px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* personal-loan: 30/70 panels on one line, 20px vertical band padding */
+body.personal-loan-page .edge-banner.edge-banner-split {
+  flex-wrap: nowrap;
+  padding: 20px 0;
+}
+
+body.personal-loan-page .edge-banner.edge-banner-split .edge-banner-inner {
+  flex: 0 0 30%;
+}
+
+body.personal-loan-page .edge-banner.edge-banner-split .edge-banner-inner + .edge-banner-inner {
+  flex-basis: 70%;
+}
+
+.edge-banner.edge-banner-split .edge-banner-cta:hover {
+  background: rgb(245 245 245);
+}
+
+@media (width < 768px) {
+  .edge-banner.edge-banner-split .edge-banner-inner {
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 16px;
+    padding: 26px 24px;
+  }
+
+  .edge-banner.edge-banner-split .edge-banner-inner + .edge-banner-inner {
+    border-left: 0;
+    border-top: 1px solid rgb(255 255 255 / 35%);
+  }
+}
