@@ -87,6 +87,10 @@ body.personal-loan-page .offers {
   border-bottom: 0;
 }
 
+body.personal-loan-page .offers .offers-list {
+  max-width: 100%;
+}
+
 body.personal-loan-page .offers .offers-item {
   gap: 16px;
   padding: 26px 24px;
@@ -95,6 +99,16 @@ body.personal-loan-page .offers .offers-item {
 
 body.personal-loan-page .offers .offers-item + .offers-item {
   border-left-color: rgb(244 212 212);
+}
+
+/* trailing red chevron on each offers item (items have no link, so add via CSS) */
+body.personal-loan-page .offers .offers-item::after {
+  content: "";
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background: no-repeat center / contain
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="%23ed1c24" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>');
 }
 
 @media (width < 900px) {

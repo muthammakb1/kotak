@@ -10,6 +10,10 @@ main > .section.compare-cards-container > div {
   padding: 50px 40px;
 }
 
+body.personal-loan-page .section.compare-cards-container > div {
+  padding: 15px 40px;
+}
+
 .compare-cards {
   font-family: roboto, sans-serif;
 }
@@ -21,6 +25,10 @@ main > .section.compare-cards-container > div {
   font-family: roboto, sans-serif;
   font-size: 16px;
   letter-spacing: 0;
+}
+
+body.personal-loan-page .compare-cards .compare-cards-header {
+  margin-bottom: 0;
 }
 
 .compare-cards .compare-cards-heading {
@@ -181,10 +189,72 @@ body.personal-loan-page .compare-cards .compare-cards-primary {
   display: none;
 }
 
+/* personal-loan "Types of Personal Loan" (plain instance only): flat cards
+   matching the reference .our-solution-box / .main-white-box look */
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-card {
+  background: #ececed;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-figure img {
+  height: 202px;
+  border-radius: 4px 4px 0 0;
+  object-fit: cover;
+}
+
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-title {
+  margin: 25px 30px 10px;
+  font-family: roboto, serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #333;
+  min-height: 60px;
+}
+
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-body {
+  padding: 0 30px 25px;
+}
+
+/* description: plain grey body text, no bullet dots */
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-list {
+  padding-left: 0;
+}
+
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-list li {
+  margin-bottom: 0;
+  font-size: 15px;
+  line-height: 23px;
+  color: rgb(102 102 102);
+}
+
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-list li::before {
+  display: none;
+}
+
+/* "Know More" red text link with arrow */
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-secondary {
+  font-family: roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: red;
+}
+
+body.personal-loan-page .compare-cards:not(.locations, .deals) .compare-cards-secondary:hover {
+  text-decoration: none;
+  color: #036;
+}
+
 /* personal-loan: white background on the cards bands (location/budget/types) */
 body.personal-loan-page .section.compare-cards-container:has(.compare-cards.locations),
 body.personal-loan-page .section.compare-cards-container:has(.compare-cards:not(.deals, .locations)) {
   background: #fff;
+}
+
+/* extra breathing room below the location/budget bands */
+body.personal-loan-page .section.compare-cards-container:has(.compare-cards.locations) > div {
+  padding-bottom: 50px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -243,9 +313,10 @@ body.personal-loan-page .compare-cards.deals .compare-cards-figure img {
 body.personal-loan-page .compare-cards.deals .compare-cards-title {
   position: static;
   margin: 30px 30px 0;
-  font-size: 24px;
-  font-weight: 700;
-  color: #1c1c1c;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(15 52 100);
+  text-align: justify;
 }
 
 body.personal-loan-page .compare-cards.deals .compare-cards-card {
@@ -267,6 +338,7 @@ body.personal-loan-page .compare-cards.deals .compare-cards-list {
   padding-left: 0;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 body.personal-loan-page .compare-cards.deals .compare-cards-secondary {
   color: red;
   font-size: 16px;

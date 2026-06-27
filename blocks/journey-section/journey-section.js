@@ -30,6 +30,7 @@ export default function decorate(block) {
     return {
       key: cells[0] ? cells[0].textContent.trim().toLowerCase() : '',
       a: cells[1] ? cells[1].textContent.trim() : '',
+      aImg: cells[1] ? cells[1].querySelector('img') : null,
       b: cells[2] ? cells[2].textContent.trim() : '',
       c: cells[3] ? cells[3].textContent.trim() : '',
     };
@@ -56,7 +57,15 @@ export default function decorate(block) {
 
       const icon = document.createElement('span');
       icon.className = 'journey-section-icon';
-      icon.append(iconSvg(s.a));
+      if (s.aImg) {
+        const img = document.createElement('img');
+        img.src = s.aImg.getAttribute('src');
+        img.alt = '';
+        img.loading = 'lazy';
+        icon.append(img);
+      } else {
+        icon.append(iconSvg(s.a));
+      }
 
       const title = document.createElement('p');
       title.className = 'journey-section-step-title';

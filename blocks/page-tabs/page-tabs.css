@@ -1,7 +1,7 @@
 main > .section.page-tabs-container {
   margin: 0;
   position: sticky;
-  top: var(--nav-height, 64px);
+  top: 82px;
   z-index: 100;
   background: #fff;
   transition: top 0.5s linear;
@@ -52,39 +52,40 @@ main > .section.page-tabs-container > div {
   color: rgb(102 102 102);
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
+  pointer-events: auto;
   transition: color 0.5s linear;
 }
 
-/* short rounded red bar under the tab, revealed on hover/active */
+/* red underline bar that grows from 0 to full width on hover/active */
 .page-tabs .page-tabs-link::after {
   content: "";
   position: absolute;
   left: 0;
-  right: 0;
   bottom: -1px;
+  width: 0;
   height: 4px;
-  background: rgb(247 54 61);
+  background: red;
   border-radius: 4px 4px 0 0;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
+  pointer-events: none;
+  transition: width 0.3s ease;
 }
 
 .page-tabs .page-tabs-link:hover {
-  color: rgb(247 54 61);
+  color: red;
 }
 
 .page-tabs .page-tabs-link:hover::after {
-  transform: scaleX(1);
+  width: 100%;
 }
 
 .page-tabs .page-tabs-link-active {
-  color: rgb(247 54 61);
+  color: red;
   font-weight: 600;
 }
 
 .page-tabs .page-tabs-link-active::after {
-  transform: scaleX(1);
+  width: 100%;
 }
 
 /* More dropdown */

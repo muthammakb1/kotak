@@ -13,7 +13,7 @@
 }
 
 .did-you-know .did-you-know-heading {
-  flex: 0 0 auto;
+  flex: 2 0 auto;
   margin: 0;
   padding-right: 48px;
   border-right: 1px solid rgb(221 221 221);
@@ -25,11 +25,16 @@
 
 .did-you-know .did-you-know-heading-lead {
   display: block;
-  color: #1c1c1c;
+  font-size: 43px;
+  font-weight: 400;
+  color: rgb(51 51 51 / 70%);
 }
 
 .did-you-know .did-you-know-heading-accent {
   display: block;
+  font-family: roboto, serif;
+  font-size: 61px;
+  font-weight: 400;
   color: rgb(237 28 36);
 }
 
@@ -47,14 +52,21 @@
 
 .did-you-know .did-you-know-cta {
   display: inline-block;
-  font-size: 14px;
+  padding: 10px 25px;
+  background: #fff;
+  border: 1px solid rgb(237 66 35);
+  border-radius: 6px;
+  font-size: 15px;
   font-weight: 600;
-  color: rgb(237 28 36);
+  text-align: center;
+  color: rgb(237 66 35);
   text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .did-you-know .did-you-know-cta:hover {
-  text-decoration: underline;
+  background: rgb(237 66 35);
+  color: #fff;
 }
 
 @media (width < 900px) {

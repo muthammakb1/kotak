@@ -59,6 +59,7 @@ main > .section.edge-banner-container > div {
   justify-content: center;
   gap: 18px;
   padding: 15px 40px;
+  box-sizing: border-box;
 }
 
 .edge-banner.edge-banner-split .edge-banner-inner + .edge-banner-inner {
@@ -70,6 +71,11 @@ main > .section.edge-banner-container > div {
   font-weight: 400;
   font-family: roboto, serif;
   color: #fff;
+}
+
+/* override global personal-loan h1/h2 margin so the banner heading keeps no margin */
+body.personal-loan-page .edge-banner .edge-banner-heading {
+  margin: 0 !important;
 }
 
 .edge-banner.edge-banner-split .edge-banner-cta {

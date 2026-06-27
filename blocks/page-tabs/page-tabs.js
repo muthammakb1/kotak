@@ -46,7 +46,17 @@ export default function decorate(block) {
     let href = '#';
     if (linkCell) {
       const a = linkCell.querySelector('a');
-      href = a ? a.getAttribute('href') : linkCell.textContent.trim() || '#';
+      // prefer the visible link text when it is itself a full URL — DA rewrites
+      // the href to a relative internal path, but the authored text keeps the
+      // intended absolute kotak.bank.in destination.
+      const textHref = linkCell.textContent.trim();
+      if (/^https?:\/\//i.test(textHref)) {
+        href = textHref;
+      } else if (a) {
+        href = a.getAttribute('href');
+      } else {
+        href = textHref || '#';
+      }
     }
 
     const item = document.createElement('li');

@@ -13,8 +13,8 @@ main > .section.emi-calculator-container > div {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
   min-height: 405px;
-  aspect-ratio: 1440 / 405;
   font-family: roboto, sans-serif;
 }
 
@@ -50,6 +50,11 @@ main > .section.emi-calculator-container > div {
   font-size: 28px;
   font-weight: 700;
   color: #331114;
+}
+
+/* override global personal-loan h1/h2 margin so the EMI heading keeps no margin */
+body.personal-loan-page .emi-calculator .emi-calculator-heading {
+  margin: 0 !important;
 }
 
 /* each input row: label · slider · underlined value */
