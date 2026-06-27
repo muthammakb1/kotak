@@ -141,3 +141,31 @@ body.personal-loan-page .benefits-carousel .benefits-carousel-desc {
     flex-basis: 80%;
   }
 }
+
+/* personal-loan: replace the ‹ › glyph arrows with chevron icons */
+body.personal-loan-page .benefits-carousel .benefits-carousel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+}
+
+body.personal-loan-page .benefits-carousel .benefits-carousel-arrow span {
+  display: none;
+}
+
+body.personal-loan-page .benefits-carousel .benefits-carousel-arrow::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-color: currentcolor;
+  mask: no-repeat center / contain;
+}
+
+body.personal-loan-page .benefits-carousel .benefits-carousel-prev::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg>');
+}
+
+body.personal-loan-page .benefits-carousel .benefits-carousel-next::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg>');
+}
