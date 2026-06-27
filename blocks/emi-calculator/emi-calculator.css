@@ -13,8 +13,8 @@ main > .section.emi-calculator-container > div {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
   min-height: 405px;
-  aspect-ratio: 1440 / 405;
   font-family: roboto, sans-serif;
 }
 
