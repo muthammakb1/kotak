@@ -1,0 +1,185 @@
+{
+  "info": {
+    "name": "DA.live (Document Authoring) API - Kotak",
+    "description": "Programmatic document management for the DA.live EDS project (org: muthammakb1, repo: kotak).\n\nWorkflow:\n1. Source API (admin.da.live) — create/read/list/delete the document HTML.\n2. AEM Admin API (admin.hlx.page) — preview then publish so the doc is served on *.aem.page / *.aem.live.\n\nAuth: all requests use an Adobe IMS bearer token. Set the `token` collection variable (or override per-environment). The token's IMS user must have access to the org/repo in DA.\n\nThe document body you upload is the EDS block-table HTML (the same structure produced by the bulk importer, e.g. content/en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri.plain.html).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "daBase", "value": "https://admin.da.live", "type": "string" },
+    { "key": "adminBase", "value": "https://admin.hlx.page", "type": "string" },
+    { "key": "org", "value": "muthammakb1", "type": "string" },
+    { "key": "repo", "value": "kotak", "type": "string" },
+    { "key": "ref", "value": "main", "type": "string" },
+    { "key": "path", "value": "en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri", "type": "string" },
+    { "key": "token", "value": "", "type": "string" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{token}}", "type": "string" }
+    ]
+  },
+  "item": [
+    {
+      "name": "Source API (admin.da.live)",
+      "item": [
+        {
+          "name": "Create / Update Document (POST source)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "data",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select the document HTML file to upload, e.g. the importer output .plain.html (block-table EDS markup)."
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{daBase}}/source/{{org}}/{{repo}}/{{path}}.html",
+              "host": ["{{daBase}}"],
+              "path": ["source", "{{org}}", "{{repo}}", "{{path}}.html"]
+            },
+            "description": "Creates or overwrites the document at {path}.html in the DA source store. Body is multipart/form-data with a `data` file part. After a successful upload the document is editable in DA but not yet served — run Preview, then Publish."
+          }
+        },
+        {
+          "name": "Create / Update Document (POST raw HTML string)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "data",
+                  "type": "text",
+                  "value": "<body><main><div><h1>How to Invest in Gold as an NRI</h1></div></main></body>",
+                  "contentType": "text/html",
+                  "description": "Inline HTML alternative to uploading a file. Replace with your block-table document markup."
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{daBase}}/source/{{org}}/{{repo}}/{{path}}.html",
+              "host": ["{{daBase}}"],
+              "path": ["source", "{{org}}", "{{repo}}", "{{path}}.html"]
+            },
+            "description": "Same as the file upload, but supplies the HTML inline as a text form field instead of a file. Useful for quick edits or scripted runs."
+          }
+        },
+        {
+          "name": "Get Document (GET source)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{daBase}}/source/{{org}}/{{repo}}/{{path}}.html",
+              "host": ["{{daBase}}"],
+              "path": ["source", "{{org}}", "{{repo}}", "{{path}}.html"]
+            },
+            "description": "Returns the stored document HTML for the given path."
+          }
+        },
+        {
+          "name": "List Folder (GET list)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{daBase}}/list/{{org}}/{{repo}}/en/stories-in-focus/nri",
+              "host": ["{{daBase}}"],
+              "path": ["list", "{{org}}", "{{repo}}", "en", "stories-in-focus", "nri"]
+            },
+            "description": "Lists documents and folders under a path. Adjust the trailing path segments to the folder you want to enumerate."
+          }
+        },
+        {
+          "name": "Delete Document (DELETE source)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{daBase}}/source/{{org}}/{{repo}}/{{path}}.html",
+              "host": ["{{daBase}}"],
+              "path": ["source", "{{org}}", "{{repo}}", "{{path}}.html"]
+            },
+            "description": "Removes the document at the given path from the DA source store."
+          }
+        },
+        {
+          "name": "Copy Document (POST copy)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "destination",
+                  "type": "text",
+                  "value": "/{{org}}/{{repo}}/en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri-copy.html",
+                  "description": "Full destination path including org/repo."
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{daBase}}/copy/{{org}}/{{repo}}/{{path}}.html",
+              "host": ["{{daBase}}"],
+              "path": ["copy", "{{org}}", "{{repo}}", "{{path}}.html"]
+            },
+            "description": "Copies the source document to a new destination path within the same org/repo."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Publish Pipeline (admin.hlx.page)",
+      "item": [
+        {
+          "name": "Preview (POST)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{adminBase}}/preview/{{org}}/{{repo}}/{{ref}}/{{path}}",
+              "host": ["{{adminBase}}"],
+              "path": ["preview", "{{org}}", "{{repo}}", "{{ref}}", "{{path}}"]
+            },
+            "description": "Renders the DA source document to the preview host ({{ref}}--{{repo}}--{{org}}.aem.page). Run this after a successful Source API upload. Note: the path here has NO .html extension."
+          }
+        },
+        {
+          "name": "Publish / Live (POST)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{adminBase}}/live/{{org}}/{{repo}}/{{ref}}/{{path}}",
+              "host": ["{{adminBase}}"],
+              "path": ["live", "{{org}}", "{{repo}}", "{{ref}}", "{{path}}"]
+            },
+            "description": "Publishes the previewed document to the live host ({{ref}}--{{repo}}--{{org}}.aem.live). Run after Preview."
+          }
+        },
+        {
+          "name": "Unpublish (DELETE live)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{adminBase}}/live/{{org}}/{{repo}}/{{ref}}/{{path}}",
+              "host": ["{{adminBase}}"],
+              "path": ["live", "{{org}}", "{{repo}}", "{{ref}}", "{{path}}"]
+            },
+            "description": "Removes the document from the live host."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.kotak.bank.in/en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri.html",
+  "path": "en/stories-in-focus/nri/how-to-invest-in-gold-as-an-nri",
+  "timestamp": "2026-06-25T09:33:06.646Z",
+  "title": "",
+  "template": "story-article",
+  "blocks": [
+    "hero",
+    "columns",
+    "accordion",
+    "knowledge-hub"
+  ]
+}
