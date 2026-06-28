@@ -62,8 +62,15 @@ function closeAllMenus(menu) {
 /**
  * Build a single L3 link in the live-site shape:
  * a.header-menu2-div > span.header-menu2-divspan > img, then span.span with the text.
+ *
+ * The label can live in three shapes depending on the nav source:
+ *   1. inside the anchor as text  (`<a><img>Savings Account</a>`)
+ *   2. on the image `alt`         (`<a><img alt="Savings Account"></a>`)
+ *   3. in a sibling <p> of the li (`<li><p><a><img></a></p><p>Savings Account</p></li>`)
+ * The DA/EDS-authored production nav uses shape 3, so we accept the source li to
+ * recover the label from a sibling paragraph when the anchor itself has none.
  */
-function buildL3Link(srcAnchor) {
+function buildL3Link(srcAnchor, srcLi) {
   const a = document.createElement('a');
   a.className = 'header-menu2-div';
   const href = srcAnchor.getAttribute('href');
@@ -79,9 +86,19 @@ function buildL3Link(srcAnchor) {
     a.append(iconSpan);
   }
 
+  // label from the anchor's own text, ignoring any text that belongs to the icon
+  let label = srcAnchor.textContent.trim();
+  if (!label) label = altLabel;
+  if (!label && srcLi) {
+    const sibling = [...srcLi.querySelectorAll(':scope > p, :scope > span')]
+      .map((el) => el.textContent.trim())
+      .find((t) => t);
+    if (sibling) label = sibling;
+  }
+
   const textSpan = document.createElement('span');
   textSpan.className = 'span';
-  textSpan.textContent = srcAnchor.textContent.trim() || altLabel;
+  textSpan.textContent = label;
   a.append(textSpan);
   return a;
 }
@@ -183,7 +200,7 @@ function buildHeaderMenu(listSection) {
         l3li.className = 'header-menu2-li';
         srcL3ul.querySelectorAll(':scope > li').forEach((srcL3li) => {
           const srcA = directLink(srcL3li);
-          if (srcA) l3li.append(buildL3Link(srcA));
+          if (srcA) l3li.append(buildL3Link(srcA, srcL3li));
         });
         l3ul.append(l3li);
         menu2Scroll.append(l3ul);
