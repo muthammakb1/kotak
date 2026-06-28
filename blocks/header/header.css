@@ -290,13 +290,10 @@ header .header-menu2-divspan img {
 }
 
 header .header-menu2-div .span {
-  flex: 1 1 auto;
-  min-width: 0;
   font-weight: 400;
   font-size: 18px;
   line-height: 36px;
   color: #1c1c1c;
-  -webkit-text-fill-color: #1c1c1c;
 }
 
 /* flat menus (About Us, Learn, Help) — single column of links, no L3 panel.

@@ -70,6 +70,8 @@ function buildL3Link(srcAnchor) {
   if (href) a.href = href;
 
   const media = srcAnchor.querySelector('picture, img');
+  const img = media ? (media.querySelector('img') || media) : null;
+  const altLabel = img && img.tagName === 'IMG' ? (img.getAttribute('alt') || '').trim() : '';
   if (media) {
     const iconSpan = document.createElement('span');
     iconSpan.className = 'header-menu2-divspan';
@@ -79,7 +81,7 @@ function buildL3Link(srcAnchor) {
 
   const textSpan = document.createElement('span');
   textSpan.className = 'span';
-  textSpan.textContent = srcAnchor.textContent.trim();
+  textSpan.textContent = srcAnchor.textContent.trim() || altLabel;
   a.append(textSpan);
   return a;
 }
