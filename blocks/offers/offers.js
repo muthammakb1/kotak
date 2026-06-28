@@ -30,34 +30,50 @@ export default function decorate(block) {
 
   rows.forEach((row) => {
     const cells = [...row.children];
-    const iconKey = cells[0] ? cells[0].textContent.trim().toLowerCase() : '';
+    const iconCell = cells[0];
+    const iconImg = iconCell ? iconCell.querySelector('img') : null;
+    const iconKey = iconCell ? iconCell.textContent.trim().toLowerCase() : '';
     const label = cells[1] ? cells[1].textContent.trim() : '';
     const linkCell = cells[2];
-    let href = '#';
+    let href = '';
     if (linkCell) {
       const a = linkCell.querySelector('a');
-      href = a ? a.getAttribute('href') : linkCell.textContent.trim() || '#';
+      href = a ? a.getAttribute('href') : linkCell.textContent.trim();
     }
     if (!label) return;
 
-    const item = document.createElement('a');
+    // anchor when there's a destination, otherwise a plain item
+    const item = document.createElement(href ? 'a' : 'div');
     item.className = 'offers-item';
-    item.href = href;
+    if (href) item.href = href;
 
     const icon = document.createElement('span');
     icon.className = 'offers-icon';
-    icon.append(iconSvg(iconKey));
+    if (iconImg) {
+      const img = document.createElement('img');
+      img.src = iconImg.getAttribute('src');
+      img.alt = '';
+      img.loading = 'lazy';
+      icon.append(img);
+    } else {
+      icon.append(iconSvg(iconKey));
+    }
 
     const text = document.createElement('span');
     text.className = 'offers-label';
     text.textContent = label;
 
-    const chevron = document.createElement('span');
-    chevron.className = 'offers-chevron';
-    chevron.setAttribute('aria-hidden', 'true');
-    chevron.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>';
+    item.append(icon, text);
 
-    item.append(icon, text, chevron);
+    // chevron only for items that link somewhere
+    if (href) {
+      const chevron = document.createElement('span');
+      chevron.className = 'offers-chevron';
+      chevron.setAttribute('aria-hidden', 'true');
+      chevron.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>';
+      item.append(chevron);
+    }
+
     list.append(item);
   });
 

@@ -59,3 +59,87 @@ main > .section.journey-section-container > div {
     border-left: 1px solid rgb(228 228 228);
   }
 }
+
+/* ----------------------------------------------------------------------------
+   personal-loan page: match the live Kotak "Get Your Personal Loan in 4 Simple
+   Steps" section. Scoped under body.personal-loan-page so the credit-cards page
+   (which reuses this block) keeps the default styling above.
+   Source computed values:
+     heading      22px/600 rgb(15 52 100) center, margin 50px 0 20px, Roboto
+     steps wrap   bg rgb(249 249 250), radius 5px, margin-top 20px
+     layout       4 cols desktop (col-md-3) / 2 tablet (col-sm-6) / 1 mobile
+     card (.offer) padding 50px 15px 18px, left aligned
+     icon         55x55, block, left aligned
+     step title   18px/600 rgb(102 102 102), margin 20px 0, Roboto
+     body text    14px/400 rgb(51 51 51), line-height 20px, margin 0
+     dividers     1px solid rgb(236 236 237) between columns
+---------------------------------------------------------------------------- */
+body.personal-loan-page .section.journey-section-container {
+  margin: 15px 0;
+}
+
+body.personal-loan-page .journey-section .journey-section-title {
+  margin: 50px 0 20px;
+  font-family: roboto, serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.1;
+  color: rgb(15 52 100);
+}
+
+body.personal-loan-page .journey-section .journey-section-steps {
+  grid-template-columns: 1fr;
+  background: rgb(249 249 250);
+  border-radius: 5px;
+}
+
+body.personal-loan-page .journey-section .journey-section-step {
+  padding: 50px 30px 18px;
+  text-align: left;
+}
+
+body.personal-loan-page .journey-section .journey-section-icon {
+  display: block;
+}
+
+body.personal-loan-page .journey-section .journey-section-icon svg,
+body.personal-loan-page .journey-section .journey-section-icon img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+body.personal-loan-page .journey-section .journey-section-step-title {
+  margin: 20px 0;
+  font-family: roboto, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.1;
+  color: #666;
+  min-height: 40px;
+}
+
+body.personal-loan-page .journey-section .journey-section-step-body {
+  margin-bottom: 20px;
+  font-family: roboto, serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #666;
+  min-height: 100px;
+}
+
+@media (width >= 600px) {
+  body.personal-loan-page .journey-section .journey-section-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  body.personal-loan-page .journey-section .journey-section-steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  body.personal-loan-page .journey-section .journey-section-step + .journey-section-step {
+    border-left: 1px solid rgb(236 236 237);
+  }
+}

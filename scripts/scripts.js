@@ -159,6 +159,19 @@ function markCreditCardsPage() {
 }
 
 /**
+ * On the personal-loan page, flag the body so page-specific block styling
+ * (e.g. the offers strip) can be applied via CSS without affecting other
+ * pages that reuse the same blocks.
+ */
+function markPersonalLoanPage(main) {
+  if (!window.location.pathname.includes('/loans/personal-loan')) return;
+  document.body.classList.add('personal-loan-page');
+  const h1 = main.querySelector('h1');
+  const section = h1 && h1.closest('.section');
+  if (section) section.classList.add('intro-banner');
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -171,6 +184,7 @@ export function decorateMain(main) {
   decorateButtons(main);
   markSavingsIntro(main);
   markCreditCardsPage();
+  markPersonalLoanPage(main);
 }
 
 /**

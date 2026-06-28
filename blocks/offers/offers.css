@@ -8,14 +8,17 @@ main > .section.offers-container > div {
 }
 
 .offers {
-  background: rgb(252 230 230);
+  /* Light neutral strip matching Kotak quick-links design language */
+  background: rgb(247 248 250);
+  border-top: 1px solid rgb(236 236 236);
+  border-bottom: 1px solid rgb(236 236 236);
   font-family: roboto, sans-serif;
 }
 
 .offers .offers-list {
   display: flex;
   align-items: stretch;
-  max-width: 1280px;
+  max-width: 1170px;
   margin: 0 auto;
 }
 
@@ -24,46 +27,88 @@ main > .section.offers-container > div {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 26px 24px;
-  color: rgb(45 45 45);
+  gap: 12px;
+  padding: 18px 24px;
+  color: rgb(16 16 16);
   text-decoration: none;
   pointer-events: auto !important;
   cursor: pointer !important;
 }
 
 .offers .offers-item + .offers-item {
-  border-left: 1px solid rgb(220 188 188);
+  border-left: 1px solid rgb(236 236 236);
 }
 
 .offers .offers-icon {
   display: inline-flex;
-  color: rgb(45 45 45);
+  flex: none;
+  color: rgb(28 54 100);
 }
 
 .offers .offers-icon svg {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+}
+
+.offers .offers-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .offers .offers-label {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
-  white-space: nowrap;
+  line-height: 20px;
 }
 
 .offers .offers-chevron {
   display: inline-flex;
-  color: rgb(237 66 35);
+  color: rgb(237 28 36);
 }
 
 .offers .offers-chevron svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .offers .offers-item:hover .offers-label {
-  color: rgb(237 66 35);
+  color: rgb(237 28 36);
+}
+
+.offers .offers-item:hover .offers-icon {
+  color: rgb(237 28 36);
+}
+
+/* personal-loan page uses a soft-pink strip with roomier items */
+body.personal-loan-page .offers {
+  background: rgb(252 230 230);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+body.personal-loan-page .offers .offers-list {
+  max-width: 100%;
+}
+
+body.personal-loan-page .offers .offers-item {
+  gap: 16px;
+  padding: 26px 24px;
+  color: rgb(45 45 45);
+}
+
+body.personal-loan-page .offers .offers-item + .offers-item {
+  border-left-color: rgb(244 212 212);
+}
+
+/* trailing red chevron on each offers item (items have no link, so add via CSS) */
+body.personal-loan-page .offers .offers-item::after {
+  content: "";
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background: no-repeat center / contain
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="%23ed1c24" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>');
 }
 
 @media (width < 900px) {
@@ -73,15 +118,15 @@ main > .section.offers-container > div {
 
   .offers .offers-item {
     justify-content: flex-start;
-    padding: 18px 24px;
+    padding: 15px 20px;
   }
 
   .offers .offers-item + .offers-item {
     border-left: 0;
-    border-top: 1px solid rgb(220 188 188);
+    border-top: 1px solid rgb(236 236 236);
   }
 
   .offers .offers-label {
-    font-size: 16px;
+    font-size: 14px;
   }
 }

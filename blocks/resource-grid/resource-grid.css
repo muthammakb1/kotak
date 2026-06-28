@@ -75,6 +75,26 @@ body.savings-account-page .resource-grid .resource-grid-icon {
   object-fit: cover;
 }
 
+/* personal-loan location/budget columns use rectangular thumbnails */
+body.personal-loan-page .resource-grid .resource-grid-icon {
+  width: 56px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+body.personal-loan-page .resource-grid .resource-grid-card {
+  padding: 16px;
+}
+
+body.personal-loan-page .resource-grid .resource-grid-header {
+  margin-bottom: 12px;
+  font-family: roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #101010;
+}
+
 .resource-grid .resource-grid-text {
   flex: 1;
   font-size: 14px;
@@ -86,6 +106,17 @@ body.savings-account-page .resource-grid .resource-grid-icon {
   display: inline-flex;
   color: rgb(237 28 36);
 }
+
+/* icon-less link lists hide the arrow by default (e.g. savings-account) */
+.resource-grid .resource-grid-link-noicon .resource-grid-arrow {
+  display: none;
+}
+
+/* personal-loan text-link columns show the trailing arrow on every row */
+body.personal-loan-page .resource-grid .resource-grid-link-noicon .resource-grid-arrow {
+  display: inline-flex;
+}
+
 
 .resource-grid .resource-grid-arrow svg {
   width: 18px;
@@ -122,4 +153,17 @@ body.savings-account-page .resource-grid .resource-grid-icon {
     grid-template-columns: repeat(3, 1fr);
     align-items: start;
   }
+}
+
+/* personal-loan: use the same simple chevron as the offers strip */
+/* stylelint-disable-next-line no-descending-specificity */
+body.personal-loan-page .resource-grid .resource-grid-arrow {
+  width: 24px;
+  height: 24px;
+  background: no-repeat center / contain
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="%23ed1c24" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>');
+}
+
+body.personal-loan-page .resource-grid .resource-grid-arrow svg {
+  display: none;
 }
