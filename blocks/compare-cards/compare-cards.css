@@ -274,10 +274,11 @@ body.personal-loan-page .compare-cards.locations .compare-cards-title {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   width: 225px;
   margin: 0 auto;
+  padding-bottom: 20px;
   overflow: hidden;
   font-family: roboto, sans-serif;
   font-size: 20px;
